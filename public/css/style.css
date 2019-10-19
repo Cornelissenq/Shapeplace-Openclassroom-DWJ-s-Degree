@@ -1,0 +1,340 @@
+
+.logo img
+{
+	display: flex;
+    width: 100%;
+}
+.menu a,.login a
+{
+	padding-right: 5%;
+	text-decoration: none;
+    color: black;
+}
+.menu a:hover, .login a:hover
+{
+	color: grey;
+	text-decoration: none;
+}
+
+.login
+{
+	text-align: right;
+} 
+.login a i
+{
+	border-radius: 50%;
+	padding: 5%;
+	background: black;
+	color: white;
+	font-size: 1.2em;
+	border:1px solid black;
+}
+/* -------------------------- BODY -------------------------*/
+body
+{
+	background: url('../images/light_toast.png');
+}
+#sessionStorage
+{
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	display: flex;
+	color: white;
+	vertical-align: center;
+	border: 1px solid lightblue;
+	padding-top: 10px;
+	z-index:50000;
+	font-style: italic;
+}
+.red
+{
+	background: red;
+}
+.green
+{
+	background: seagreen;
+}
+#sessionStorage button
+{
+	border : 0px;	
+	font-size: 1.2em;
+}
+
+/* -------------------------- FOOTER -------------------------*/
+footer
+{
+	text-align: center;
+	border-top: 1px solid black;
+	background: grey;
+	position: relative;
+	bottom: -20px;
+	width: 100%;
+	margin-top: 10%;
+}
+footer  .socialNetwork i
+{
+	font-size: 1.8em;
+}
+footer a
+{
+	color: black;
+	font-size: 0.8em;
+}
+footer a:hover
+{
+	color: white;
+	text-decoration: none;
+}
+.facebook
+{
+	color: #3b5998;
+}
+.twitter
+{
+	color: #00acee;
+}
+.instagram
+{
+	color: #E1306C;
+}
+
+/* -------------------------- SECTIONS -------------------------*/
+.mainTitleSection
+{
+	padding : 20px 0 20px 0;
+	text-align: center;
+	font-family: 'Mansalva', cursive;
+}
+
+.cadreSection
+{
+	background: whitesmoke;
+	border-radius: 20px;
+	height: 300px;
+	margin: 10px 0 10px 0;
+}
+.titleSection
+{
+	padding : 5px 0 5px 0;
+	font-family: 'Mansalva', cursive;
+}
+.extractSection
+{
+	font-size : 0.8em;
+}
+.btnSection
+{
+	position: absolute;
+	bottom: 10px;
+	width: 100%;
+	text-align: center;
+}
+
+
+/* -------------------------- List Programs -------------------------*/
+
+.cadreTitle
+{
+	margin : 20px 0 0 0;
+	border-top-right-radius : 20px;
+	border-top-left-radius : 20px;
+	background: lightblue;
+}
+.backSection a , .backListProgram a
+{
+	margin-top: 5px;
+	border-radius: 20px;
+	color : lightblue;
+}
+.titreSection, .titreProgram
+{
+	text-align: center;
+	font-style: italic;
+	color: whitesmoke;
+	padding-bottom: 10px;
+	font-family: 'Mansalva', cursive;
+
+}
+.accessCategory
+{
+	text-align: left;
+	font-style: italic;
+	color: whitesmoke;
+	font-weight: 900;
+	font-size: 0.8em;		
+}
+.accessCategory a
+{
+	text-decoration: none;
+	color: grey;
+}
+.accessCategory a:hover
+{
+	text-decoration: none;
+	color: whitesmoke;
+}
+.content,.contentSection
+{
+	padding: 30px 0 30px 0;
+	background: aliceblue;
+	border-bottom-right-radius: 20px;
+	border-bottom-left-radius: 20px;
+	border: 3px outset whitesmoke;
+}
+.cadreProgram
+{
+	background:whitesmoke;
+	border-radius: 20px;
+	margin-top: 20px;
+	height: 300px;
+}
+
+.titleProgram
+{
+	padding-top: 10px;
+	font-family: 'Mansalva', cursive;
+}
+.extractProgram
+{
+	font-size : 0.8em;
+}
+.linkPgm
+{
+	position: absolute;
+	bottom: 10px;
+	width: 100%;
+}
+.linkProgram
+{
+	text-align: right;
+}
+.linkProgram a
+{
+	border-radius: 20px;
+}
+
+/* -------------------------- Program -------------------------*/
+
+.contentProgram
+{
+	padding: 20px 0 20px 0;
+}
+.contentProgram h4
+{
+	font-family: 'Mansalva', cursive;
+	text-decoration: underline;
+	font-style: italic;
+	padding-bottom: 10px;
+}
+
+#asideProgram
+{
+	border:3px inset white;
+	border-radius: 20px;
+	background:cadetblue;
+	color: white;
+	padding: 10px;
+	position: sticky;
+	top: 200px;
+
+}
+#asideProgram a
+{
+	text-decoration: none;
+	color: white;
+
+}
+#asideProgram h6
+{
+	text-align: center;
+	font-weight: 700;
+	font-style: italic;
+	color: whitesmoke;
+}
+.formComment
+{
+	background: aliceblue;
+	border-radius: 20px;
+	border: 1px outset white;
+	margin: 10px 0 10px 0;
+	padding: 25px 0 25px 0;
+	text-align: center;
+}
+#formComment
+{
+	display: none;
+}
+.noLogin
+{
+	color: #c40404;
+}
+.cadreComment
+{
+	background: whitesmoke;
+	border-radius: 20px;
+	padding: 0 0 10px 0;
+}
+.titleComment
+{
+	text-align: center;
+	font-family: 'Mansalva', cursive;
+	padding: 15px 0 15px 0;
+}
+.headerComment
+{
+	background: silver;
+	border-top-left-radius: 20px;
+	border-top-right-radius: 20px;
+	height: 40px;
+	padding: 5px 0 5px 0;
+
+}
+.pseudoComment a
+{
+	text-decoration: none;
+	color: whitesmoke;
+	font-weight: 600;
+}
+.pseudoComment a:hover
+{
+	text-decoration: none;
+	color: black;
+}
+.dateComment
+{
+	font-size: 0.7em;
+	padding: 5px 0 0 0;
+}
+.btnComment a
+{
+	font-size: 0.6em;
+}
+.contentComment
+{
+	border-bottom-right-radius: 20px;
+	border-bottom-left-radius: 20px;
+	border:2px solid silver;
+	padding: 5px 0 5px 0;
+	margin-bottom: 20px;
+}
+/* -------------------------- Login -------------------------*/
+
+.cadreLogin
+{
+	border:1px outset white;
+	border-radius: 20px;
+	background: whitesmoke;
+	padding: 75px;
+	margin: 100px 0 50px 0;
+	text-align: center;
+}
+.cadreLogin form
+{
+	margin: 20px 0 20px 0;
+}
+
+.cadreLogin p
+{
+	font-size: 0.8em;
+}
