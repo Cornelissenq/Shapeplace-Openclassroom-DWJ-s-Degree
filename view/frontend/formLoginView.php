@@ -2,8 +2,6 @@
 
 $title = 'Identification';
 
-session_start();
-
 ob_start();
 
 ?>

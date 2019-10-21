@@ -1,8 +1,6 @@
 <?php
 $title = $section['name'] ;
 
-session_start();
-
 ob_start();
 
 ?>
@@ -10,8 +8,8 @@ ob_start();
 <div class="row">
 	<div class="col-lg-12 cadreTitle">
 		<div class="row">
-			<div class="col-lg-3 backSection">
-				<a href="index.php?action=section" class="btn btn-light"><i class="fas fa-arrow-circle-left"></i></a>
+			<div class="col-lg-3 ">
+				<a href="index.php?action=section" class="btn btn-light backSection"><i class="fas fa-arrow-circle-left"></i></a>
 			</div>
 		</div>
 		<div class='row'>

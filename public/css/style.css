@@ -15,7 +15,12 @@
 	color: grey;
 	text-decoration: none;
 }
-
+.avatarMenu
+{
+	width: 40px;
+	height: 40px;
+	border-radius: 20px;
+}
 .login
 {
 	text-align: right;
@@ -337,4 +342,151 @@ footer a:hover
 .cadreLogin p
 {
 	font-size: 0.8em;
+}
+
+/* -------------------------- UserProfil -------------------------*/
+
+.userProfilHeader
+{
+	background: darkslategrey;
+	border-top-left-radius: 20px;
+	border-top-right-radius: 20px;
+	padding: 10px 0 30px 0;
+	margin-top: 50px;
+}
+
+.userProfilHeader h3
+{
+	text-align: center;
+	color: whitesmoke;
+	font-style: italic;
+}
+
+.userProfil
+{
+	border-bottom-left-radius: 20px;
+	border-bottom-right-radius: 20px;
+	background : ghostwhite;
+	padding: 30px 0 30px 0;
+}
+
+.profilAvatar
+{
+	text-align: center;
+}
+
+.userProfil img
+{
+	border-radius: 20px;
+	width: 150px;
+	height: 150px;
+	border: 2px outset darkslategrey;
+}
+
+.contentProfil
+{
+	border: 2px outset darkslategrey;
+	border-radius: 20px;
+	background: whitesmoke;
+	padding: 20px 0 20px 0;
+
+}
+.contentProfil h4
+{
+	text-align: center;
+	margin-bottom: 20px;
+	font-family: 'Mansalva', cursive;
+}
+
+.contentProfil p
+{
+	padding: 5px 0 5px 0;
+	text-align: center;	
+}
+
+.infoProfil
+{
+	font-style: italic;
+}
+
+.commentUserProfil
+{
+	border-radius: 20px;
+	border: 2px outset darkslategrey;
+	background: whitesmoke;
+	padding: 10px;
+	margin : 50px 0 50px 0;
+}
+.headerCommentUserProfil
+{
+	text-align: center;
+	font-style: italic;
+	border-bottom: 1px solid darkslategrey;
+}
+.contentCommentUserProfil
+{
+	padding: 20px 0 20px 0;
+}
+.contentCommentUserProfil a
+{
+	text-decoration: none;
+	color: darkslategrey;
+}
+
+.contentCommentUserProfil a:hover
+{
+	text-decoration: none;
+	color: black;
+}
+
+/* -------------------------- EditUserProfil -------------------------*/
+
+.editUser
+{
+	border-radius: 20px;
+	background:lightgrey;
+	padding: 20px 0px 60px 0;
+	margin-top: 50px;
+}
+.editUser .backProfile
+{
+	text-decoration: none;
+	color: whitesmoke;
+	background: cadetblue;
+	border-radius: 20px;
+	padding: 5px;
+}
+.editUser h3
+{
+	text-align: center;
+	padding: 10px 0 50px 0;
+	font-family: 'Mansalva', cursive;
+}
+.editUser img
+{
+	width: 150px;
+	height: 150px;
+	border: 2px ridge lightgrey;
+	border-radius: 20px;
+}
+
+#editAvatar
+{
+	margin-bottom: 30px;
+}
+
+.editUser button,.editUser a
+{
+	margin-top : 10px;
+	margin-bottom: 10px;
+}
+
+
+#editPassword,#editInsta,#editMail,#editCity
+{
+	display: none;
+	border-radius: 20px;
+	background: darkgrey;
+	color: black;
+	margin: 10px 0 10px 0;
 }

@@ -1,6 +1,7 @@
 <?php 
 
 require_once ('model/UserManager.php');
+require_once ('model/CommentManager.php');
 
 Class UserController
 {
@@ -26,12 +27,12 @@ Class UserController
 	
 		if ($result)
 		{
-			session_start();
 
 			if ($_POST['stayOnline'])
 			{
 				setcookie("id_user", $result['id'], time() + (86400 * 365));
 				setcookie("pseudo", $result['pseudo'], time() + (86400 * 365));
+				setcookie("avatar", $result['avatar'], time() + (86400 * 365));
 				setcookie("role", $result['role'], time() + (86400 * 365));
 			}
 			
@@ -40,6 +41,7 @@ Class UserController
 
 			$_SESSION['id_user'] = $result['id'];
 			$_SESSION['pseudo'] = $result['pseudo'];
+			$_SESSION['avatar'] = $result['avatar'];
 			$_SESSION['role'] = $result['role'];
 
 			header('Location: index.php');
@@ -59,9 +61,9 @@ Class UserController
 		{
 			setcookie("id_user", "",time()-3600);
 			setcookie("pseudo", "",time()-3600);
+			setcookie("avatar", "",time()-3600);
 			setcookie("role", "",time()-3600);	
 		}
-		session_start();
 		$_SESSION = array();
 		session_destroy();
 		
@@ -105,7 +107,6 @@ Class UserController
 					}
 					else
 					{
-						session_start();
 						$_SESSION['error'] = 'Veuillez saisir deux fois le même mot de passse.';
 
 						header('refresh:0');
@@ -114,7 +115,6 @@ Class UserController
 				}
 				else
 				{
-				session_start();
 				$_SESSION['error'] = 'L\'adresse mail est déja utilisé.';
 
 				header('refresh:0');
@@ -123,7 +123,6 @@ Class UserController
 			}
 			else
 			{
-				session_start();
 				$_SESSION['error'] = 'L\'adresse mail n\'est pas valide.';
 
 				header('refresh:0');
@@ -131,10 +130,122 @@ Class UserController
 		}
 		else
 		{
-			session_start();
 			$_SESSION['error'] = 'Le nom d\'utilisateur est déja utilisé.';
 
 			header('refresh:0');
 		}
 	}
+	public function showProfil($idUser)
+	{
+		$userManager = new Cornelissen\Shapeplace\Model\UserManager();
+		$commentManager = new Cornelissen\Shapeplace\Model\CommentManager();
+
+		$user = $userManager->getInfoUser($idUser);
+		$comments = $commentManager->getCommentsUser($idUser);
+
+		require('view/frontend/userProfilView.php');
+	}
+
+	public function editProfil($idUser)
+	{
+		$userManager = new Cornelissen\Shapeplace\Model\UserManager();
+
+		$user = $userManager->getInfoUser($idUser);
+
+		require('view/frontend/editUserProfilView.php');
+	}
+
+	public function editAvatar($avatarName,$idUser)
+	{
+		$userManager = new Cornelissen\Shapeplace\Model\UserManager();
+
+		$avatar = $userManager->editAvatar($avatarName,$idUser);
+
+		header('refresh: 0 '. $_SERVER["HTTP_REFERER"]);
+	}
+
+	public function editPw($pseudo,$pw,$newPw,$newPw2)
+	{
+		$userManager = new Cornelissen\Shapeplace\Model\UserManager();
+
+		$result = $userManager->login($pseudo,$pw);
+
+		if($result)
+		{
+			if ($newPw == $newPw2)
+			{
+				$editPw = $userManager->editPw($newPw,$pseudo);
+
+				$_SESSION['success'] = 'Le nouveau mot de passe est bien pris en compte.';
+				header('Location: ' .$_SERVER["HTTP_REFERER"]);
+			}
+			else
+			{
+				$_SESSION['error'] = 'Vos nouveaux mots de passe sont différents.';
+				header('refresh: 0 '. $_SERVER["HTTP_REFERER"]);
+			}
+		}
+		else
+		{
+			$_SESSION['error'] = 'L\'ancien mot de passe n\'est pas valable.';
+			header('Location: ' .$_SERVER["HTTP_REFERER"]);
+		}
+
+	}
+
+	public function editMail($mail,$mail2,$idUser)
+	{
+		$userManager = new Cornelissen\Shapeplace\Model\UserManager();
+
+		if($mail == $mail2)
+		{
+			if (preg_match("#^[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$#", $mail))
+			{
+				$userManager->editMail($mail,$idUser);
+
+				$_SESSION['success'] = 'L\'adresse mail a bien été modifié.';
+				header('Location: ' .$_SERVER["HTTP_REFERER"]);
+			}
+			else
+			{
+				$_SESSION['error'] = 'Merci de saisir une adresse mail valide';
+				header('Location: ' .$_SERVER["HTTP_REFERER"]);
+			}
+		}
+		else
+		{
+			$_SESSION['error'] = 'Merci de saisir deux fois la même adresse.';
+			header('Location: ' .$_SERVER["HTTP_REFERER"]);
+
+		}
+	}
+
+	public function editInsta($insta,$idUser)
+	{
+		$userManager = new Cornelissen\Shapeplace\Model\UserManager();
+
+		if(preg_match("#^https://www\.instagram\.com/[a-z].{3}#",$insta))
+		{
+			$insta = $userManager->editInsta($insta,$idUser);
+
+			$_SESSION['success'] = 'Le lien Instagram est pris en compte.';
+			header('Location: ' .$_SERVER["HTTP_REFERER"]);
+		}
+		else
+		{
+			$_SESSION['error'] = 'Veuillez saisir un lien Instagram valide.';
+			header('Location: ' .$_SERVER["HTTP_REFERER"]);
+		}
+	}
+
+	public function editCity($city,$idUser)
+	{
+		$userManager = new Cornelissen\Shapeplace\Model\UserManager();
+
+		$city = $userManager->editCity($city,$idUser);
+
+		$_SESSION['success'] = 'Le changement de ville est pris en compte.';
+		header('Location: ' .$_SERVER["HTTP_REFERER"]);
+	}
+
 }

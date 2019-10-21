@@ -52,15 +52,14 @@ Class CommentManager extends Manager
 		return $comments;
 	}
 
-	public function getComment($idComment)
+	public function getCommentsUser($idComment)
 	{
 		$db = $this->dbConnect();
 
-		$req = $db->prepare('SELECT * FROM comments where id = ?');
-		$req->execute(array($idComment));
-		$comment = $req->fetch();
+		$comments = $db->prepare('SELECT * FROM comments where id_user = ? ORDER BY date_creation DESC LIMIT 0,5');
+		$comments->execute(array($idComment));
 
-		return $comment;
+		return $comments;
 	}
 
 	/*  --------------------- Add comment --------------------- */

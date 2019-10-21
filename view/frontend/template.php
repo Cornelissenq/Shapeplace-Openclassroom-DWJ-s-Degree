@@ -4,6 +4,7 @@ if (isset($_COOKIE['id_user']) && !empty($_COOKIE['id_user']))
 {
 	$_SESSION['id_user'] = $_COOKIE['id_user'];
 	$_SESSION['pseudo'] = $_COOKIE['pseudo'];
+	$_SESSION['avatar'] = $_COOKIE['avatar'];
 	$_SESSION['role'] = $_COOKIE['role'];
 }
 ?>
@@ -38,9 +39,9 @@ if (isset($_COOKIE['id_user']) && !empty($_COOKIE['id_user']))
 						<?php if (isset($_SESSION['id_user']))
 							  {
 						?>  <div class="dropdown">
-  								<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?= $_SESSION['pseudo'] ?></button>
+  								<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="<?= $_SESSION['avatar'] ?>" alt="<?= $_SESSION['pseudo'] ?>" class="avatarMenu"/></button>
  								<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    								<a class="dropdown-item" href="#">Mon profil</a>
+    								<a class="dropdown-item" href="index.php?action=userProfil&amp;id=<?=$_SESSION['id_user'] ?>">Mon profil</a>
     								<a class="dropdown-item" href="index.php?action=logout">Me deconnecter</a>
   								</div>
 							</div>
@@ -114,5 +115,6 @@ if (isset($_COOKIE['id_user']) && !empty($_COOKIE['id_user']))
 		<script src="bootstrap/js/bootstrap.js"></script>
 		<script src="public/js/commentForm.js"></script>
 		<script src="public/js/sessionStorage.js"></script>
+		<script src="public/js/editProfilUser.js"></script>
 	</body>
 </html>

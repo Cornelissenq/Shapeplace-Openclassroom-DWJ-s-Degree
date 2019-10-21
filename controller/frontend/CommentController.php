@@ -23,7 +23,7 @@ Class CommentController
 
 		$add = $commentManager->addComment($idProgram,$idUser,$pseudo,$comment);
 
-		session_start();
+		
 		$_SESSION['success'] = 'Le commentaire est bien ajouté';
 
 		header('Refresh: 0 ' . $_SERVER["HTTP_REFERER"]);
@@ -35,7 +35,7 @@ Class CommentController
 
 		$add = $commentManager->addComment('0',$idArea,$idUser,$pseudo,$comment);
 
-		session_start();
+		
 		$_SESSION['success'] = 'L\'avis est bien ajouté';
 
 		header('Refresh: 0 ' . $_SERVER["HTTP_REFERER"]);
@@ -50,7 +50,7 @@ Class CommentController
 
 		$edited = $commentManager->editComment($comment,$note,$idComment);
 
-		session_start();
+		
 		$_SESSION['success'] = 'L\'avis est modifié.';
 
 		header('Location:..');/* Rediriger sur la page du spott*/
@@ -63,7 +63,7 @@ Class CommentController
 
 		$edited = $commentManager->editCommentProgram($comment,$idComment);
 
-		session_start();
+		
 		$_SESSION['success'] = 'Le commentaire est modifié.';
 
 		header('Refresh: 0 ' . $_SERVER["HTTP_REFERER"]);
@@ -77,7 +77,7 @@ Class CommentController
 
 		$report = $commentManager->reportComment($idComment);
 
-		session_start();
+		
 		$_SESSION['success'] = 'Le commentaire est signalé.';
 
 		header('Refresh: 0 ' . $_SERVER["HTTP_REFERER"]);
@@ -91,7 +91,7 @@ Class CommentController
 
 		$delete = $commentManager->deleteComment($idComment);
 
-		session_start();
+		
 		$_SESSION['success'] = 'Le commentaire est bien supprimé';
 
 		header('Refresh: 0 ' . $_SERVER["HTTP_REFERER"]);

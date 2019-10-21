@@ -2,8 +2,6 @@
 
 $title = 'Inscription';
 
-session_start();
-
 ob_start();
 
 ?>

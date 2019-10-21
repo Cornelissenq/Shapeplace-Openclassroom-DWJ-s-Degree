@@ -2,8 +2,6 @@
 
 $title = $program['name'];
 
-session_start();
-
 ob_start();
 
 ?>
@@ -231,7 +229,7 @@ ob_start();
 			?>
 				<div class="row">
 					<div class="offset-lg-1 col-lg-10">
-						<div class="row headerComment">
+						<div class="row headerComment" id="<?php $comment['id'] ?>">
 							<div class="col-lg-4 pseudoComment">
 								<a href="index.php?action=profil&amp;id=<?=$comment['id_user']?>"><?=$comment['pseudo']?></a>
 							</div>

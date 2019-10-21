@@ -1,8 +1,6 @@
 <?php
 $title = 'Les sections';
 
-session_start();
-
 ob_start();
 
 ?>

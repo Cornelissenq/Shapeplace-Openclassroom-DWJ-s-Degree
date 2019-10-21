@@ -16,6 +16,8 @@ $adminCommentController = new AdminCommentController;
 $adminProgramController = new AdminProgramController;
 $adminSectionController = new AdminSectionController;
 
+session_start();
+
 try
 {
 	if(isset($_GET['action']))  
@@ -26,7 +28,7 @@ try
 			case 'home':
 				# code...
 				break;
-
+	/*  --------------------- User Action's --------------------- */
 			case 'register':
 				if (isset($_POST['pseudo']) && isset($_POST['pw']) && isset($_POST['pw2']) && isset($_POST['name']) && isset($_POST['surname']) && isset($_POST['mail']) && isset($_POST['date_birth']) && isset($_POST['city']))
 				{
@@ -65,6 +67,76 @@ try
 				$userController->logout();
 				break;
 
+			case 'userProfil':
+				if(isset($_GET['id']))
+				{
+					$userController->showProfil($_GET['id']);
+				}
+				break;
+
+			case 'editProfil':
+				if (isset($_SESSION['id_user']))
+				{
+					$userController->editProfil($_SESSION['id_user']);
+				}
+				break;
+
+			case 'editAvatar':
+				if (isset($_FILES['avatar']) AND $_FILES['avatar']['error'] == 0)
+				{
+				    if ($_FILES['avatar']['size'] <= 2100000)
+				    {
+				                
+				        $infoFile = pathinfo($_FILES['avatar']['name']);
+		                $extensionUpload = $infoFile['extension'];
+		                $extensionsAllowed = array('jpg', 'jpeg', 'png');
+
+		                $file = $_SESSION['id_user']. '.' .$extensionUpload;
+		                if (in_array($extensionUpload, $extensionsAllowed))
+		                {
+	                        move_uploaded_file($_FILES['avatar']['tmp_name'], 'public/images/user/' . basename($file));
+	                        
+	                        $path = 'public/images/user/' .$file;
+
+	                        $userController->editAvatar($path,$_SESSION['id_user']);
+		                }
+			        }
+				}
+
+				break;
+
+			case 'editPw':
+				if (isset($_POST['oldPw']) && isset($_POST['newPw']) && isset($_POST['newPw2']))
+				{
+					$testPw = $userController->editPw($_SESSION['pseudo'],$_POST['oldPw'],$_POST['newPw'],$_POST['newPw2']);
+				}
+
+				break;
+
+			case 'editMail':
+				if(isset($_POST['mail']) && isset($_POST['mail2']))
+				{
+					$userController->editMail($_POST['mail'],$_POST['mail2'],$_SESSION['id_user']);
+				}
+
+				break;
+
+			case 'editInsta':
+				if (isset($_POST['insta']))
+				{
+					$editInsta = $userController->editInsta($_POST['insta'],$_SESSION['id_user']);
+				}
+				break;
+
+			case 'editCity':
+				if (isset($_POST['city']))
+				{
+					$editInsta = $userController->editCity($_POST['city'],$_SESSION['id_user']);
+				}
+				break;
+
+	/*  --------------------- Program Action's --------------------- */
+
 			case 'section':
 				$programController->getSections();
 				break;
@@ -99,12 +171,14 @@ try
 				}
 				break;
 
+	/*  --------------------- Comment Action's --------------------- */
+
 			case 'addCommentP':
 				if (isset($_GET['id']) && $_GET['id'] > 0)
 				{
 					if (!empty($_POST['commentProgram']))
 					{
-						$commentController->addCommentProgram($_GET['id'],$_POST['id_user'],$_POST['pseudo'],htmlspecialchars($_POST['commentProgram']));
+						$commentController->addCommentProgram($_GET['id'],$_SESSION['id_user'],$_SESSION['pseudo'],htmlspecialchars($_POST['commentProgram']));
 					}
 				}
 				else
