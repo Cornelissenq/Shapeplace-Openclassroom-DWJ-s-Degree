@@ -4,6 +4,10 @@
 	display: flex;
     width: 100%;
 }
+.menu
+{
+	justify-content: space-around;
+}
 .menu a,.login a
 {
 	padding-right: 5%;
@@ -38,6 +42,7 @@
 body
 {
 	background: url('../images/light_toast.png');
+	font-family: arial;
 }
 #sessionStorage
 {
@@ -104,38 +109,139 @@ footer a:hover
 	color: #E1306C;
 }
 
-/* -------------------------- SECTIONS -------------------------*/
+/* -------------------------- LIST SECTIONS AND PROGRAMS -------------------------*/
 .mainTitleSection
 {
+	margin: 50px 0 50px 0;
 	padding : 20px 0 20px 0;
 	text-align: center;
 	font-family: 'Mansalva', cursive;
 }
 
-.cadreSection
+.imgSection,.imgProgram
 {
-	background: whitesmoke;
-	border-radius: 20px;
-	height: 300px;
-	margin: 10px 0 10px 0;
+	background: white;
+	border-top-left-radius: 20px;
+	border-top-right-radius: 20px;
+	margin: 20px 0 0 0;
 }
-.titleSection
+.imgSection img,.imgProgram img
+{
+	width: 100%;
+	height: 150px;
+}
+.titleSection,.titleProgram
 {
 	padding : 5px 0 5px 0;
 	font-family: 'Mansalva', cursive;
 }
-.extractSection
+			
+.extractSection,.extractProgram
 {
 	font-size : 0.8em;
 }
-.btnSection
+.btnSection,.linkPgm
 {
 	position: absolute;
 	bottom: 10px;
 	width: 100%;
 	text-align: center;
 }
-
+.blockSection,.blockProgram
+{
+	padding: 10px 0 10px 0;
+	height: 350px;
+	border: 3px lightgrey outset;
+	border-top-right-radius: 60px;
+	border-bottom-left-radius: 20px;
+	border-bottom-right-radius: 20px;
+}
+.whiteBg
+{
+	border-bottom-left-radius: 20px;
+	border-bottom-right-radius: 20px;
+	background: white;
+}
+.section1,.program1
+{
+	background: #006699;
+}
+.section2,.program2
+{
+	background: #0099cc;
+}
+.section3,.program3
+{
+	background: #0066cc;
+}
+.section4,.program4
+{
+	background: #0033cc;
+}
+.section5,.program5
+{
+	background: #009999;
+}
+.section6,.program6
+{
+	background: #33cccc;
+}
+.section7,.program7
+{
+	background: #00ccff;
+}
+.section8,.program8
+{
+	background: #0099ff;
+}
+.section9,.program9
+{
+	background: #0066ff;
+}
+.section10,.program10
+{
+	background: #3366ff;
+}
+.section11,.program11
+{
+	background: #3333cc;
+}
+.section12,.program12
+{
+	background: #00cc99;
+}
+.section13,.program13
+{
+	background: #00ffcc;
+}
+.section14,.program14
+{
+	background: #00ffcc;
+}
+.section15,.program15
+{
+	background: #3399ff;
+}
+.section16,.program16
+{
+	background: #6699ff;
+}
+.section17,.program17
+{
+	background: #6666ff;
+}
+.section18,.program18
+{
+	background: #6600ff;
+}
+.section19,.program19
+{
+	background: #00ff99;
+}
+.section20,.program20
+{
+	background: #66ffcc;
+}
 
 /* -------------------------- List Programs -------------------------*/
 
@@ -186,37 +292,6 @@ footer a:hover
 	border-bottom-right-radius: 20px;
 	border-bottom-left-radius: 20px;
 	border: 3px outset whitesmoke;
-}
-.cadreProgram
-{
-	background:whitesmoke;
-	border-radius: 20px;
-	margin-top: 20px;
-	height: 300px;
-}
-
-.titleProgram
-{
-	padding-top: 10px;
-	font-family: 'Mansalva', cursive;
-}
-.extractProgram
-{
-	font-size : 0.8em;
-}
-.linkPgm
-{
-	position: absolute;
-	bottom: 10px;
-	width: 100%;
-}
-.linkProgram
-{
-	text-align: right;
-}
-.linkProgram a
-{
-	border-radius: 20px;
 }
 
 /* -------------------------- Program -------------------------*/
@@ -427,6 +502,11 @@ footer a:hover
 {
 	padding: 20px 0 20px 0;
 }
+.lastCommentProfil
+{
+	border-bottom: 1px dashed lightgrey;
+	padding-bottom : 5px;
+}
 .contentCommentUserProfil a
 {
 	text-decoration: none;
@@ -489,4 +569,18 @@ footer a:hover
 	background: darkgrey;
 	color: black;
 	margin: 10px 0 10px 0;
+}
+
+/* -------------------------- Map -------------------------*/
+
+#map
+{
+	margin-top: 50px;
+	width: 100%;
+	height: 600px;
+	z-index: 9999;
+}
+#formMap
+{
+	z-index: 10000;
 }

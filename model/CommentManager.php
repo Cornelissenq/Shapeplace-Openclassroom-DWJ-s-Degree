@@ -64,12 +64,12 @@ Class CommentManager extends Manager
 
 	/*  --------------------- Add comment --------------------- */
 
-	public function addComment($idProgram,$idUser,$pseudo,$comment)
+	public function addComment($idProgram,$idSection,$idUser,$pseudo,$comment)
 	{
 		$db = $this->dbConnect();
 
-		$req = $db->prepare('INSERT INTO comments(id_program,id_user,pseudo,comment,report) VALUES(?, ?, ?, ?,"0")');
-		$addedComment = $req->execute(array($idProgram,$idUser,$pseudo,$comment));
+		$req = $db->prepare('INSERT INTO comments(id_program,id_section,id_user,pseudo,comment,report) VALUES(?, ?, ?, ?, ?,"0")');
+		$addedComment = $req->execute(array($idProgram,$idSection,$idUser,$pseudo,$comment));
 	}
 	
 	/*  --------------------- Edit comment --------------------- */

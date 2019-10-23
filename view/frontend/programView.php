@@ -132,7 +132,7 @@ ob_start();
 				<?php if (isset($_SESSION['id_user']))
 				{	
 				?>
-					<form action="index.php?action=addCommentP&amp;id=<?=$program['id']?>" method="post">
+					<form action="index.php?action=addCommentP&amp;id=<?=$program['id']?>&amp;idsection=<?=$section['id']?>" method="post">
 			        	<fieldset class="form-group">
 			        		<div class="row">
 			        			<legend class="col-form-label col-sm-2 pt-0">Commentaire</legend>
@@ -181,7 +181,7 @@ ob_start();
 			?>
 				<div class="row">
 					<div class="offset-lg-1 col-lg-10">
-						<div class="row headerComment">
+						<div class="row headerComment" id="<?php $comment['id'] ?>">
 							<div class="offset-lg-1 col-lg-3 pseudoComment">
 								<a href="index.php?action=profil&amp;id=<?=$comment['id_user']?>"><?=$comment['pseudo']?></a>
 							</div>

@@ -19,6 +19,11 @@ if (isset($_COOKIE['id_user']) && !empty($_COOKIE['id_user']))
         <link rel="icon" type="image/png" href="public/images/icone.png" />
         <link href="https://fonts.googleapis.com/css?family=Mansalva&display=swap" rel="stylesheet">
         <script src="https://kit.fontawesome.com/a204d33b50.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.css" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.js"></script>
+        <script src="https://www.mapquestapi.com/sdk/leaflet/v2.2/mq-map.js?key=myM1G6Q4D8yFlzD4AG07TLWWZQUP5ljI"></script>
+		<script src="https://www.mapquestapi.com/sdk/leaflet/v2.2/mq-geocoding.js?key=myM1G6Q4D8yFlzD4AG07TLWWZQUP5ljI"></script>
+
 	</head>
 
 	<body>
@@ -28,14 +33,14 @@ if (isset($_COOKIE['id_user']) && !empty($_COOKIE['id_user']))
 					<div class="col-lg-2 logo">
 						<img src="public/images/logo.png" alt="logo shapeplace"/>
 					</div>
-					<div class="offset-lg-3 col-lg-5 menu">
+					<div class="offset-lg-3 col-lg-4 menu">
 						<div class="row">
-							<a href="" class="col-lg-4">Accueil</a>
-							<a href="index.php?action=section" class="col-lg-4">Programmes</a>
-							<a href="" class="col-lg-4">Rejoins nous</a>
+							<a href="index.php?action=home">Accueil</a>
+							<a href="index.php?action=section" >Programmes</a>
+							<a href="">Rejoins nous</a>
 						</div>
 					</div>
-					<div class="col-lg-2 login">
+					<div class="col-lg-3 login">
 						<?php if (isset($_SESSION['id_user']))
 							  {
 						?>  <div class="dropdown">

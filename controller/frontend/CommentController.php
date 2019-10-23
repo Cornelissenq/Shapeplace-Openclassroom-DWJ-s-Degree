@@ -17,11 +17,11 @@ Class CommentController
 	/*  --------------------- Add comment --------------------- */
 
 
-	public function addCommentProgram($idProgram,$idUser,$pseudo,$comment)
+	public function addCommentProgram($idProgram,$idSection,$idUser,$pseudo,$comment)
 	{
 		$commentManager = new Cornelissen\Shapeplace\Model\CommentManager();
 
-		$add = $commentManager->addComment($idProgram,$idUser,$pseudo,$comment);
+		$add = $commentManager->addComment($idProgram,$idSection,$idUser,$pseudo,$comment);
 
 		
 		$_SESSION['success'] = 'Le commentaire est bien ajouté';

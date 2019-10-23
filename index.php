@@ -3,6 +3,8 @@
 require('controller/frontend/CommentController.php');
 require('controller/frontend/ProgramController.php');
 require('controller/frontend/UserController.php');
+require('controller/frontend/AreaController.php');
+require('controller/frontend/HomeController.php');
 
 require('controller/backend/AdminCommentController.php');
 require('controller/backend/AdminProgramController.php');
@@ -11,6 +13,8 @@ require('controller/backend/AdminSectionController.php');
 $commentController = new CommentController;
 $programController = new ProgramController;
 $userController = new UserController;
+$areaController = new AreaController;
+$homeController = new homeController;
 
 $adminCommentController = new AdminCommentController;
 $adminProgramController = new AdminProgramController;
@@ -26,7 +30,7 @@ try
 
 		switch ($action) {
 			case 'home':
-				# code...
+				$homeController->home();
 				break;
 	/*  --------------------- User Action's --------------------- */
 			case 'register':
@@ -174,11 +178,11 @@ try
 	/*  --------------------- Comment Action's --------------------- */
 
 			case 'addCommentP':
-				if (isset($_GET['id']) && $_GET['id'] > 0)
+				if (isset($_GET['id']) && $_GET['id'] > 0 && isset($_GET['idsection']) && $_GET['idsection'] > 0)
 				{
 					if (!empty($_POST['commentProgram']))
 					{
-						$commentController->addCommentProgram($_GET['id'],$_SESSION['id_user'],$_SESSION['pseudo'],htmlspecialchars($_POST['commentProgram']));
+						$commentController->addCommentProgram($_GET['id'],$_GET['idsection'],$_SESSION['id_user'],$_SESSION['pseudo'],htmlspecialchars($_POST['commentProgram']));
 					}
 				}
 				else
@@ -215,6 +219,13 @@ try
 				# code...
 				break;
 
+	/*  --------------------- Map --------------------- */
+			case 'map':
+				if(isset($_POST['address']))
+				{
+					$areaController->setMap($_POST['address']);
+				}
+				break;
 			
 			default:
 				
