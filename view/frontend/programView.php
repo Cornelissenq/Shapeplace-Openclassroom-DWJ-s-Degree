@@ -182,27 +182,27 @@ ob_start();
 				<div class="row">
 					<div class="offset-lg-1 col-lg-10">
 						<div class="row headerComment" id="<?php $comment['id'] ?>">
-							<div class="offset-lg-1 col-lg-3 pseudoComment">
+							<div class="offset-lg-1 col-lg-4 pseudoComment">
 								<a href="index.php?action=profil&amp;id=<?=$comment['id_user']?>"><?=$comment['pseudo']?></a>
 							</div>
 							<div class="offset-lg-2 col-lg-3 dateComment">
 								<?php
-								if (isset($comment['date_modification']))
+								if (isset($comment['date_modification_fr']))
 								{
 								?>
-									<p> Modifié le <?=$comment['date_modification']?></p>
+									<p> Modifié le <?=$comment['date_modification_fr']?></p>
 								<?php
 								}
 								else
 								{
 								?>
-									<p> Écrit le <?=$comment['date_creation']?></p>
+									<p> Écrit le <?=$comment['date_creation_fr']?></p>
 								<?php
 								}
 								?>
 							</div>
-							<div class="offset-lg-1 col-lg-2 btnComment">
-								<a href="index.php?action=deleteCommentP&amp;id=<?=$comment['id']?>" class="btn btn-outline-danger" onclick="return confirm('Voulez-vous supprimer ce commentaire ?');"><i class="fas fa-exclamation-triangle"></i> Supprimer</a>
+							<div class="col-lg-2 btnComment">
+								<a href="index.php?action=deleteCommentP&amp;id=<?=$comment['id']?>" class="btn btn-outline-danger" onclick="return confirm('Voulez-vous supprimer ce commentaire ?');"><i class="far fa-trash-alt"></i></i> Supprimer</a>
 							</div>
 					
 						</div>
@@ -230,26 +230,26 @@ ob_start();
 				<div class="row">
 					<div class="offset-lg-1 col-lg-10">
 						<div class="row headerComment" id="<?php $comment['id'] ?>">
-							<div class="col-lg-4 pseudoComment">
+							<div class="offset-lg-1 col-lg-4 pseudoComment">
 								<a href="index.php?action=profil&amp;id=<?=$comment['id_user']?>"><?=$comment['pseudo']?></a>
 							</div>
 							<div class="offset-lg-2 col-lg-3 dateComment">
 								<?php
-									if (isset($comment['date_modification']))
-									{
-									?>
-										<p> Modifié le <?=$comment['date_modification']?></p>
-									<?php
-									}
-									else
-									{
-									?>
-										<p> Écrit le <?=$comment['date_creation']?></p>
-									<?php
-									}
-									?>
+								if (isset($comment['date_modification_fr']))
+								{
+								?>
+									<p> Modifié le <?=$comment['date_modification_fr']?></p>
+								<?php
+								}
+								else
+								{
+								?>
+									<p> Écrit le <?=$comment['date_creation_fr']?></p>
+								<?php
+								}
+								?>
 							</div>
-							<div class="offset-lg-1 col-lg-2 btnComment">
+							<div class="col-lg-2 btnComment">
 								<a href="index.php?action=report&amp;id=<?=$comment['id']?>" class="btn btn-outline-danger" onclick="return confirm('Voulez-vous signaler ce commentaire ?');"><i class="fas fa-exclamation-triangle"></i> Signaler</a>
 							</div>
 					

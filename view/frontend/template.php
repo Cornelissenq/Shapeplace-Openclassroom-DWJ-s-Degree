@@ -117,6 +117,7 @@ if (isset($_COOKIE['id_user']) && !empty($_COOKIE['id_user']))
 		</footer>
 
 		<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+		<script src="https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster.js"></script>
 		<script src="bootstrap/js/bootstrap.js"></script>
 		<script src="public/js/commentForm.js"></script>
 		<script src="public/js/sessionStorage.js"></script>

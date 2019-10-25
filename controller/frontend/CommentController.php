@@ -5,15 +5,6 @@ require_once ('model/CommentManager.php');
 Class CommentController
 {
 
-	/*  --------------------- Show comments --------------------- */
-/* A placer dans le controller Area
-	public function getCommentsArea($idArea)
-	{
-		$commentManager = new Cornelissen\Shapeplace\Model\CommentManager();
-
-		$comments = $commentManager->getCommentsArea($idArea);
-	}
-*/
 	/*  --------------------- Add comment --------------------- */
 
 
@@ -29,33 +20,7 @@ Class CommentController
 		header('Refresh: 0 ' . $_SERVER["HTTP_REFERER"]);
 	}
 
-	public function addCommentArea($idArea,$idUser,$pseudo,$comment,$note)
-	{
-		$commentManager = new Cornelissen\Shapeplace\Model\CommentManager();
-
-		$add = $commentManager->addComment('0',$idArea,$idUser,$pseudo,$comment);
-
-		
-		$_SESSION['success'] = 'L\'avis est bien ajouté';
-
-		header('Refresh: 0 ' . $_SERVER["HTTP_REFERER"]);
-	}
-
 	/*  --------------------- Edit comment --------------------- */
-
-
-	public function editCommentArea($comment,$note,$idComment)
-	{
-		$commentManager = new Cornelissen\Shapeplace\Model\CommentManager();
-
-		$edited = $commentManager->editComment($comment,$note,$idComment);
-
-		
-		$_SESSION['success'] = 'L\'avis est modifié.';
-
-		header('Location:..');/* Rediriger sur la page du spott*/
-	}
-
 
 	public function editCommentProgram($comment,$idComment)
 	{

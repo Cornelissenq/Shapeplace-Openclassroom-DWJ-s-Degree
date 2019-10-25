@@ -4,6 +4,7 @@ require('controller/frontend/CommentController.php');
 require('controller/frontend/ProgramController.php');
 require('controller/frontend/UserController.php');
 require('controller/frontend/AreaController.php');
+require('controller/frontend/NoteController.php');
 require('controller/frontend/HomeController.php');
 
 require('controller/backend/AdminCommentController.php');
@@ -14,7 +15,8 @@ $commentController = new CommentController;
 $programController = new ProgramController;
 $userController = new UserController;
 $areaController = new AreaController;
-$homeController = new homeController;
+$noteController = new NoteController;
+$homeController = new HomeController;
 
 $adminCommentController = new AdminCommentController;
 $adminProgramController = new AdminProgramController;
@@ -220,23 +222,58 @@ try
 				break;
 
 	/*  --------------------- Map --------------------- */
+
 			case 'map':
-				if(isset($_POST['address']))
+				if(isset($_POST['search']))
 				{
-					$areaController->setMap($_POST['address']);
+					$areaController->setMap($_POST['search']);
+				}
+				elseif (isset($_GET['search']))
+				{
+					$areaController->setMap($_GET['search']);
 				}
 				break;
 			
-			default:
-				
+			case 'addArea':
+				if (isset($_POST['name']) && isset($_POST['content']) && isset($_POST['city']) && isset($_POST['category']))
+				{
+					$areaController->addArea(htmlspecialchars($_POST['name']), $_POST['lat'], $_POST['lng'], htmlspecialchars($_POST['content']), htmlspecialchars($_POST['city']), $_POST['category']);
+				}
+				else
+				{
+					$areaController->formAddArea($_POST['lat'],$_POST['lng'],$_POST['search']);
+				}
 				break;
 
+			case 'area':
+				if(isset($_GET['id']) && isset($_GET['search']))
+				{
+					$areaController->showArea($_GET['id'],$_GET['search']);
+				}
+				else
+				{
+
+				}
+				break;
+
+			case 'addNote':
+				if (isset($_GET['id']) && $_GET['id'] > 0)
+				{
+					$noteController->addNote($_GET['id'],$_SESSION['id_user'],$_SESSION['pseudo'],$_POST['noteArea'],htmlspecialchars($_POST['content']));
+				}
+				break;
+
+			case 'deleteNote':
+				if (isset($_GET['id']) && $_GET['id'] > 0)
+				{
+					$noteController->deleteNote($_GET['id']);
+				}
 		}
 
 	}
 	else
 	{
-		$programController->getSections();
+		$homeController->home();
 	}
 	
 }

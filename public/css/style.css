@@ -349,19 +349,19 @@ footer a:hover
 {
 	color: #c40404;
 }
-.cadreComment
+.cadreComment,.cadreNote
 {
 	background: whitesmoke;
 	border-radius: 20px;
 	padding: 0 0 10px 0;
 }
-.titleComment
+.titleComment,.titleNote
 {
 	text-align: center;
 	font-family: 'Mansalva', cursive;
 	padding: 15px 0 15px 0;
 }
-.headerComment
+.headerComment,.headerNote
 {
 	background: silver;
 	border-top-left-radius: 20px;
@@ -370,27 +370,27 @@ footer a:hover
 	padding: 5px 0 5px 0;
 
 }
-.pseudoComment a
+.pseudoComment a,.pseudoNote a
 {
 	text-decoration: none;
 	color: whitesmoke;
 	font-weight: 600;
 }
-.pseudoComment a:hover
+.pseudoComment a:hover,.pseudoNote a:hover
 {
 	text-decoration: none;
 	color: black;
 }
-.dateComment
+.dateComment,.dateNote
 {
-	font-size: 0.7em;
+	font-size: 0.6em;
 	padding: 5px 0 0 0;
 }
-.btnComment a
+.btnComment a,.btnNote a
 {
 	font-size: 0.6em;
 }
-.contentComment
+.contentComment, .contentNote
 {
 	border-bottom-right-radius: 20px;
 	border-bottom-left-radius: 20px;
@@ -578,9 +578,148 @@ footer a:hover
 	margin-top: 50px;
 	width: 100%;
 	height: 600px;
-	z-index: 9999;
+	border: 3px dashed lightgray;
+	border-radius: 20px;
 }
 #formMap
 {
-	z-index: 10000;
+	position: absolute;
+	z-index: 1999;
+	top: 17.8%;
+	left: 17.0%;
+	width: 34%;
+}
+.formMap
+{
+	
+	border-radius: 20px;
+	text-align: center;
+}
+.formMap label
+{
+	font-family: arial black;
+	font-style: italic;
+}
+.formMap input
+{
+	width: 85%;
+	margin-left: 10px;
+	border-top-left-radius: 20px;
+	border-bottom-left-radius: 20px;
+}
+.formMap button
+{
+	border-top-right-radius: 20px;
+	border-bottom-right-radius: 20px;
+}
+
+#areaAddBtn
+{
+	position: absolute;
+	bottom: 2px;
+	left: 0px;
+	z-index: 1999;
+	padding: 7px;
+	background: whitesmoke;
+	color: darkslategrey;
+	border:1px solid #00aaaa;
+	border-bottom-left-radius: 20px;
+	border-top-right-radius: 20px;
+	font-family: arial;
+}
+
+#areaInfo
+{
+	display: none;
+}
+
+/* -------------------------- formAddArea -------------------------*/
+#formAdd,#areaView
+{
+	background:
+	white;
+	padding: 10px 0 50px 0;
+	margin-top: 50px;
+	border-radius: 20px;
+	border : 2px solid lightgrey;
+}
+
+#hArea
+{
+	text-align: center;
+	font-family: arial;
+	padding: 0px 0 20px 0;
+}
+#mymap
+{
+	height: 300px;
+	width: 400px;
+	margin-bottom: 30px;
+	border : 1px dashed lightgrey;
+	border-radius: 20px;
+}
+
+.formAddV
+{
+	border: 2px outset
+	lightgray;
+	border-radius: 20px;
+	padding: 20px;
+	text-align: center;
+}
+
+/* -------------------------- areaView -------------------------*/
+
+.categoryArea
+{
+	font-style: italic;
+}
+
+#textArea
+{
+	padding: 20px 0 20px 0;
+}
+
+#textArea h6
+{
+	text-decoration: underline;
+	font-size: 1.1em;
+}
+
+#contentArea
+{
+	background: whitesmoke;
+	padding: 10px;
+	border: 1px solid
+	lightgray;
+	border-radius: 20px;
+	margin-top: 10px;
+}
+.starNote img
+{
+	width: 100%;
+}
+
+/* -------------------------- Home -------------------------*/
+
+#oneHome
+{
+	background: no-repeat center/100% url('../images/larutadelsorigens_calistenia-wallpaper_796245.jpg');
+	height: 500px;
+	border-radius: 20px;
+	border: 5px black ridge;
+}
+#oneHome h3
+{
+	margin-top: 50px;
+	text-align: center;
+	font-weight: 900;
+	font-family: arial black;
+}
+#oneHome #formMapHome
+{
+	position: absolute;
+	bottom: 100px;
+	background: whitesmoke;
+	border: 1px solid lightgray;
 }

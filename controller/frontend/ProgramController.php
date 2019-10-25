@@ -2,6 +2,7 @@
 
 require_once ('model/ProgramManager.php');
 require_once ('model/SectionManager.php');
+require_once ('model/CommentManager.php');
 
 Class ProgramController
 {

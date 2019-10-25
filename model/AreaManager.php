@@ -22,16 +22,16 @@ Class AreaManager extends Manager
 		$req = $db->prepare('SELECT * FROM area WHERE id = ?');
 		$req->execute(array($idArea));
 
-		$place = $req->fetch();
+		$area = $req->fetch();
 
-		return $place;
+		return $area;
 	}
 
-	public function addPlace()
+	public function addPlace($name,$lat,$lng,$content,$city,$category)
 	{
 		$db = $this->dbConnect();
 
-		$insert = $db->prepare('INSERT INTO section() VALUES()');
-		$insert->execute(array());
+		$insert = $db->prepare('INSERT INTO area(name,lat,lng,content,city,id_category) VALUES(?, ?, ?, ?, ?, ?)');
+		$add = $insert->execute(array($name,$lat,$lng,$content,$city,$category));
 	}
 }

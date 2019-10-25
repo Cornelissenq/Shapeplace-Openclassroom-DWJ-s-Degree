@@ -13,7 +13,7 @@ Class CommentManager extends Manager
 	{
 		$db = $this->dbConnect();
 
-		$req = $db->prepare('SELECT *,DATE_FORMAT(date_creation, \'%d/%m/%Y à %Hh%imin\') AS date_creation_fr FROM comments WHERE id_program = ? AND report = "0" ORDER BY date_creation ASC ');
+		$req = $db->prepare('SELECT *,DATE_FORMAT(date_creation, \'%d/%m/%Y à %Hh%imin\') AS date_creation_fr,DATE_FORMAT(date_modification, \'%d/%m/%Y à %Hh%imin\') AS date_modification_fr FROM comments WHERE id_program = ? AND report = "0" ORDER BY date_creation ASC ');
 		$req->execute(array($idProgram));
 
 		return $req;
@@ -23,30 +23,8 @@ Class CommentManager extends Manager
 	{
 		$db = $this->dbConnect();
 
-		$req = $db->prepare('SELECT *,DATE_FORMAT(date_creation, \'%d/%m/%Y à %Hh%imin\') AS date_creation_fr FROM comments WHERE id_program = ? AND report = "1" ORDER BY date_creation ASC ');
+		$req = $db->prepare('SELECT *,DATE_FORMAT(date_creation, \'%d/%m/%Y à %Hh%imin\') AS date_creation_fr,DATE_FORMAT(date_modification, \'%d/%m/%Y à %Hh%imin\') AS date_modification_fr FROM comments WHERE id_program = ? AND report = "1" ORDER BY date_creation ASC ');
 		$req->execute(array($idProgram));
-		$comments = $req->fetch();
-
-		return $comments;
-	}
-
-	public function getCommentsArea($idArea)
-	{
-		$db = $this->dbConnect();
-
-		$req = $db->prepare('SELECT *,DATE_FORMAT(date_creation, \'%d/%m/%Y à %Hh%imin\') AS date_creation_fr FROM comments WHERE id_area = ? ORDER BY date_creation ASC ');
-		$req->execute(array($idArea));
-		$comments = $req->fetch();
-
-		return $comments;
-	}
-
-	public function getReportedsCommentsArea($idArea)
-	{
-		$db = $this->dbConnect();
-
-		$req = $db->prepare('SELECT *,DATE_FORMAT(date_creation, \'%d/%m/%Y à %Hh%imin\') AS date_creation_fr FROM comments WHERE id_area = ? AND report = "1" ORDER BY date_creation ASC ');
-		$req->execute(array($idArea));
 		$comments = $req->fetch();
 
 		return $comments;
@@ -73,14 +51,6 @@ Class CommentManager extends Manager
 	}
 	
 	/*  --------------------- Edit comment --------------------- */
-
-	public function editComment($comment,$note,$idComment)
-	{
-		$db = $this->dbConnect();
-
-		$req = $db->prepare('UPDATE comments SET comment = ?, note = ?, date_modification = ? WHERE id = ?');
-		$req->execute(array($comment,$note,NOW(),$idComment));
-	}
 
 		public function editCommentProgram($comment,$idComment)
 	{
