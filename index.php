@@ -168,7 +168,7 @@ try
 					}
 					else
 					{
-						/*error*/
+						
 					}
 				}
 				else
@@ -237,7 +237,7 @@ try
 			case 'addArea':
 				if (isset($_POST['name']) && isset($_POST['content']) && isset($_POST['city']) && isset($_POST['category']))
 				{
-					$areaController->addArea(htmlspecialchars($_POST['name']), $_POST['lat'], $_POST['lng'], htmlspecialchars($_POST['content']), htmlspecialchars($_POST['city']), $_POST['category']);
+					$areaController->addArea(htmlspecialchars($_POST['name']), htmlspecialchars($_POST['lat']), htmlspecialchars($_POST['lng']), htmlspecialchars($_POST['content']), htmlspecialchars($_POST['city']), $_POST['category']);
 				}
 				else
 				{
