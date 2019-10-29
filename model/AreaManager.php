@@ -34,4 +34,16 @@ Class AreaManager extends Manager
 		$insert = $db->prepare('INSERT INTO area(name,lat,lng,content,city,id_category) VALUES(?, ?, ?, ?, ?, ?)');
 		$add = $insert->execute(array($name,$lat,$lng,$content,$city,$category));
 	}
+
+	public function getCategory($idArea)
+	{
+		$db = $this->dbConnect();
+
+		$req = $db->prepare('SELECT *,t.type AS nom_category FROM area a LEFT JOIN tools t ON a.id_category = t.id_category AND id_area = ?');
+		$req->execute(array($idArea));
+
+		$category = $req->fetch();
+
+		return $category;
+	}
 }

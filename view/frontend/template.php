@@ -35,9 +35,12 @@ if (isset($_COOKIE['id_user']) && !empty($_COOKIE['id_user']))
 					</div>
 					<div class="offset-lg-3 col-lg-4 menu">
 						<div class="row">
-							<a href="index.php?action=home">Accueil</a>
-							<a href="index.php?action=section" >Programmes</a>
-							<a href="">Rejoins nous</a>
+							<div class="col-lg-6">
+								<a class="offset-lg-2 col-lg-8" href="index.php?action=home">Accueil</a>
+							</div>
+							<div class="col-lg-6">
+								<a class="offset-lg-2 col-lg-8" href="index.php?action=section" >Programmes</a>
+							</div>
 						</div>
 					</div>
 					<div class="col-lg-3 login">
@@ -90,9 +93,9 @@ if (isset($_COOKIE['id_user']) && !empty($_COOKIE['id_user']))
 		}
 		?>
 
-		<div class="container contenant">
-			<?= $content ?>
-		</div>
+
+		<?= $content ?>
+
 
 		<footer>
 			<div class="container">
