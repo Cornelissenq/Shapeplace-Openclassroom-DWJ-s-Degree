@@ -42,7 +42,7 @@ Class UserManager extends Manager
 	{
 		$db = $this->dbConnect();
 
-		$register = $db->prepare('INSERT INTO user(pseudo,pw,role,name,surname,email,date_birth,city,date_creation) VALUES (?, ?, "user", ?, ?, ?, ?, ?, NOW())');
+		$register = $db->prepare('INSERT INTO user(pseudo,pw,role,name,surname,email,date_birth,city,date_inscription) VALUES (?, ?, "user", ?, ?, ?, ?, ?, NOW())');
 		$register->execute(array($pseudo,sha1($pw),$name,$surname,$email,$date_birth,$city));
 	}
 
@@ -95,5 +95,41 @@ Class UserManager extends Manager
 		$req = $db->prepare('UPDATE user SET city = ? WHERE id = ?');
 		$req->execute(array($city,$idUser));
 	}
+
+	/*  ------------------------------------------ Backend ------------------------------------------ */
+
+	public function listUser()
+	{
+		$db = $this->dbConnect();
+
+		$list = $db->query('SELECT * FROM user ORDER BY date_inscription DESC');
+
+		return $list;
+	}
+
+	public function givePower($idUser)
+	{
+		$db = $this->dbConnect();
+
+		$req = $db->prepare('UPDATE user SET role = "admin" WHERE id = ?');
+		$req->execute(array($idUser));
+	}
+
+	public function remainPower($idUser)
+	{
+		$db = $this->dbConnect();
+
+		$req = $db->prepare('UPDATE user SET role = "user" WHERE id = ?');
+		$req->execute(array($idUser));
+	}
+
+	public function deleteUser($idUser)
+	{
+		$db = $this->dbConnect();
+
+		$delete = $db->prepare('DELETE FROM user WHERE id = ?');
+		$delete->execute(array($idUser));
+	}
+
 
 }

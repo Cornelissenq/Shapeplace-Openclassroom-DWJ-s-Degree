@@ -4,23 +4,32 @@ require_once ('model/SectionManager.php');
 
 Class AdminSectionController
 {
+	public function tableSection()
+	{
+		$sectionManager = new Cornelissen\Shapeplace\Model\SectionManager();
+
+
+		$list = $sectionManager->getSections();
+
+		require('view/backend/tableSectionView.php');
+	}
 
 	/*  --------------------- add section --------------------- */
 
 	public function addSection()
 	{
-		require('view/backend/..');
+		require('view/backend/addSectionView.php');
 	}
 
-	public function addedSection($nameSection,$extractSection)
+	public function addedSection($nameSection,$extractSection,$contentSection)
 	{
 		$sectionManager = new Cornelissen\Shapeplace\Model\SectionManager();
 
-		$add = $sectionManager->addSection($nameSection,$extractSection);
+		$add = $sectionManager->addSection($nameSection,$extractSection,$contentSection);
 
 		$_SESSION['success'] = 'La section est ajoutée.';
 
-		header('Location:..');
+		header('Location: index.php?action=adminSection');
 	}
 
 	/*  --------------------- edit section --------------------- */
@@ -29,20 +38,20 @@ Class AdminSectionController
 	{
 		$sectionManager = new Cornelissen\Shapeplace\Model\SectionManager();
 
-		$edit = $sectionManager->getSection($idSection);
+		$section = $sectionManager->getSection($idSection);
 
-		require('view/backend/..');
+		require('view/backend/editSectionView.php');
 	}
 
-	public function editedSection($nameSection,$extractSection,$idSection)
+	public function editedSection($nameSection,$extractSection,$contentSection,$idSection)
 	{
 		$sectionManager = new Cornelissen\Shapeplace\Model\SectionManager();
 
-		$edited = $sectionManager->editSection($nameSection,$extractSection,$idSection);
+		$edited = $sectionManager->editSection($nameSection,$extractSection,$contentSection,$idSection);
 
 		$_SESSION['success'] = 'La section est modifiée';
 
-		header('Location:..');
+		header('Location: index.php?action=adminSection');
 	}
 
 	/*  --------------------- delete section --------------------- */
@@ -55,6 +64,6 @@ Class AdminSectionController
 
 		$_SESSION['success'] = 'La section est supprimée';
 
-		header('Location:..');
+		header('Location: index.php?action=adminSection');
 	}
 }

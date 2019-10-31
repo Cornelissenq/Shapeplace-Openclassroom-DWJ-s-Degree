@@ -9,6 +9,14 @@ Class ProgramManager extends Manager
 
 	/*  --------------------- show program --------------------- */
 
+	public function getAllPrograms()
+	{
+		$db = $this->dbConnect();
+
+		$list = $db->query('SELECT * FROM program ORDER BY ID DESC');	
+
+		return $list;
+	}
 	public function getPrograms($idSection)  
 	{
 		$db = $this->dbConnect();
@@ -33,22 +41,22 @@ Class ProgramManager extends Manager
 
 	/*  --------------------- add program --------------------- */
 
-	public function addProgram($idSection,$nameProgram,$extractProgram,$descriptionProgram,$goodPoint,$badPoint,$programProgram)  
+	public function addProgram($nameProgram,$idSection,$extract,$description,$goodPoint,$badPoint,$program)  
 	{
 		$db = $this->dbConnect();
 
-		$req = $db->prepare('INSERT INTO program(id_section,name,extract,description,good_point,bad_point,program,date_added) VALUES (?, ?, ?, ?, ?, ?, ?, ?)');
-		$addedprogram = $req->execute(array($idSection,$nameProgram,$extractProgram,$descriptionProgram,$goodPoint,$badPoint,$programProgram, NOW()));
+		$req = $db->prepare('INSERT INTO program(name,id_section,extract,description,good_point,bad_point,program) VALUES (?, ?, ?, ?, ?, ?, ?)');
+		$addedprogram = $req->execute(array($nameProgram,$idSection,$extract,$description,$goodPoint,$badPoint,$program));
 	}
 
 	/*  --------------------- edit program --------------------- */
 
-	public function editProgram($nameProgram,$extractProgram,$descriptionProgram,$goodPoint,$badPoint,$programProgram,$idSection)
+	public function editProgram($name,$extract,$description,$goodPoint,$badPoint,$program,$idProgram)
 	{
 		$db = $this->dbConnect();
 
 		$req = $db->prepare('UPDATE program SET name = ?,extract = ?, description = ?,good_point = ?,bad_point = ?,program = ? WHERE id = ?');
-		$req->execute(array($nameProgram,$extractProgram,$descriptionProgram,$goodPoint,$badPoint,$programProgram,$idSection));
+		$req->execute(array($name,$extract,$description,$goodPoint,$badPoint,$program,$idProgram));
 	}
 
 	/*  --------------------- delete program --------------------- */

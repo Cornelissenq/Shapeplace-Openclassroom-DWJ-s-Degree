@@ -10,7 +10,7 @@ Class AreaManager extends Manager
 	{
 		$db = $this->dbConnect();
 
-		$places = $db->query('SELECT * FROM area');
+		$places = $db->query('SELECT * FROM area ORDER BY id DESC');
 
 		return $places;
 	}
@@ -35,6 +35,22 @@ Class AreaManager extends Manager
 		$add = $insert->execute(array($name,$lat,$lng,$content,$city,$category));
 	}
 
+	public function editArea($name,$description,$city,$idCategory,$idArea)
+	{
+		$db = $this->dbConnect();
+
+		$edit = $db->prepare('UPDATE area SET name = ?, content = ?, city = ?, id_category = ? WHERE id = ?');
+		$edit->execute(array($name,$description,$city,$idCategory,$idArea));
+	}
+
+	public function deleteArea($idArea)
+	{
+		$db = $this->dbConnect();
+
+		$delete = $db->prepare('DELETE FROM area WHERE id = ?');
+		$delete->execute(array($idArea));
+	}
+
 	public function getCategory($idArea)
 	{
 		$db = $this->dbConnect();
@@ -46,4 +62,5 @@ Class AreaManager extends Manager
 
 		return $category;
 	}
+
 }

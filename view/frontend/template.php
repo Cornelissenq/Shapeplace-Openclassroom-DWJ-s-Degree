@@ -31,15 +31,15 @@ if (isset($_COOKIE['id_user']) && !empty($_COOKIE['id_user']))
 			<div class="navbar navbar-default menulogo">
 				<div class="container">
 					<div class="col-lg-2 logo">
-						<img src="public/images/logo.png" alt="logo shapeplace"/>
+						<a href="index.php?action=home"><img src="public/images/logo.png" alt="logo shapeplace"/></a>
 					</div>
-					<div class="offset-lg-3 col-lg-4 menu">
+					<div class="offset-lg-2 col-lg-5 menu">
 						<div class="row">
 							<div class="col-lg-6">
-								<a class="offset-lg-2 col-lg-8" href="index.php?action=home">Accueil</a>
+								<a class="offset-lg-1 col-lg-10 btn btn-outline-light" href="index.php?action=home">Accueil</a>
 							</div>
 							<div class="col-lg-6">
-								<a class="offset-lg-2 col-lg-8" href="index.php?action=section" >Programmes</a>
+								<a class="offset-lg-1 col-lg-10 btn btn-outline-light" href="index.php?action=section" >Programmes</a>
 							</div>
 						</div>
 					</div>
@@ -101,7 +101,20 @@ if (isset($_COOKIE['id_user']) && !empty($_COOKIE['id_user']))
 			<div class="container">
 				<div class="row">
 					<div class="col-lg-4">
-						<a href=""> Mentions Légales </a>
+						<p><a href=""> Mentions Légales </a></p>
+
+						<?php
+						if(isset($_SESSION['id_user']))
+						{
+							if($_SESSION['role'] == "admin" OR $_SESSION['role'] == "superAdmin")
+							{
+							?>
+								<p><a href="index.php?action=admin">Administration</a>
+							<?php
+							}
+						}
+						?>
+
 					</div>
 					<div class="col-lg-4 socialNetwork">
 						<h6>Nos réseaux sociaux</h6>

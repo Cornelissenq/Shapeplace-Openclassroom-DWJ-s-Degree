@@ -70,7 +70,14 @@ Class UserController
 		session_start();
 		$_SESSION['success'] = 'Vous êtes bien déconnecté.';
 		
-		header('Refresh: 0.2 ' . $_SERVER["HTTP_REFERER"]);
+		if (isset($_SERVER["HTTP_REFERER"]))
+		{
+			header('Refresh: 0 ' . $_SERVER["HTTP_REFERER"]);
+		}
+		else
+		{
+			header('Location: index.php?action=home');
+		}
 	}
 
 	public function registerForm()
@@ -161,7 +168,14 @@ Class UserController
 
 		$avatar = $userManager->editAvatar($avatarName,$idUser);
 
-		header('refresh: 0 '. $_SERVER["HTTP_REFERER"]);
+		if (isset($_SERVER["HTTP_REFERER"]))
+		{
+			header('Refresh: 0 ' . $_SERVER["HTTP_REFERER"]);
+		}
+		else
+		{
+			header('Location: index.php?action=home');
+		}
 	}
 
 	public function editPw($pseudo,$pw,$newPw,$newPw2)
@@ -182,13 +196,27 @@ Class UserController
 			else
 			{
 				$_SESSION['error'] = 'Vos nouveaux mots de passe sont différents.';
-				header('refresh: 0 '. $_SERVER["HTTP_REFERER"]);
+				if (isset($_SERVER["HTTP_REFERER"]))
+				{
+				header('Refresh: 0 ' . $_SERVER["HTTP_REFERER"]);
+				}
+				else
+				{
+					header('Location: index.php?action=home');
+				}
 			}
 		}
 		else
 		{
 			$_SESSION['error'] = 'L\'ancien mot de passe n\'est pas valable.';
-			header('Location: ' .$_SERVER["HTTP_REFERER"]);
+			if (isset($_SERVER["HTTP_REFERER"]))
+			{
+				header('Refresh: 0 ' . $_SERVER["HTTP_REFERER"]);
+			}
+			else
+			{
+				header('Location: index.php?action=home');
+			}
 		}
 
 	}
@@ -204,18 +232,39 @@ Class UserController
 				$userManager->editMail($mail,$idUser);
 
 				$_SESSION['success'] = 'L\'adresse mail a bien été modifié.';
-				header('Location: ' .$_SERVER["HTTP_REFERER"]);
+				if (isset($_SERVER["HTTP_REFERER"]))
+				{
+					header('Refresh: 0 ' . $_SERVER["HTTP_REFERER"]);
+				}
+				else
+				{
+					header('Location: index.php?action=home');
+				}
 			}
 			else
 			{
 				$_SESSION['error'] = 'Merci de saisir une adresse mail valide';
-				header('Location: ' .$_SERVER["HTTP_REFERER"]);
+				if (isset($_SERVER["HTTP_REFERER"]))
+				{
+					header('Refresh: 0 ' . $_SERVER["HTTP_REFERER"]);
+				}
+				else
+				{
+					header('Location: index.php?action=home');
+				}
 			}
 		}
 		else
 		{
 			$_SESSION['error'] = 'Merci de saisir deux fois la même adresse.';
-			header('Location: ' .$_SERVER["HTTP_REFERER"]);
+			if (isset($_SERVER["HTTP_REFERER"]))
+			{
+				header('Refresh: 0 ' . $_SERVER["HTTP_REFERER"]);
+			}
+			else
+			{
+				header('Location: index.php?action=home');
+			}
 
 		}
 	}
@@ -229,12 +278,26 @@ Class UserController
 			$insta = $userManager->editInsta($insta,$idUser);
 
 			$_SESSION['success'] = 'Le lien Instagram est pris en compte.';
-			header('Location: ' .$_SERVER["HTTP_REFERER"]);
+			if (isset($_SERVER["HTTP_REFERER"]))
+			{
+				header('Refresh: 0 ' . $_SERVER["HTTP_REFERER"]);
+			}
+			else
+			{
+				header('Location: index.php?action=home');
+			}
 		}
 		else
 		{
 			$_SESSION['error'] = 'Veuillez saisir un lien Instagram valide.';
-			header('Location: ' .$_SERVER["HTTP_REFERER"]);
+			if (isset($_SERVER["HTTP_REFERER"]))
+			{
+				header('Refresh: 0 ' . $_SERVER["HTTP_REFERER"]);
+			}
+			else
+			{
+				header('Location: index.php?action=home');
+			}
 		}
 	}
 
@@ -245,7 +308,14 @@ Class UserController
 		$city = $userManager->editCity($city,$idUser);
 
 		$_SESSION['success'] = 'Le changement de ville est pris en compte.';
-		header('Location: ' .$_SERVER["HTTP_REFERER"]);
+		if (isset($_SERVER["HTTP_REFERER"]))
+		{
+			header('Refresh: 0 ' . $_SERVER["HTTP_REFERER"]);
+		}
+		else
+		{
+			header('Location: index.php?action=home');
+		}
 	}
 
 }

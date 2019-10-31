@@ -39,80 +39,59 @@ ob_start();
 				<div class="col-lg-9">
 					<div class="row">
 						<div class="offset-lg-1 col-lg-10">
-						<?php if (isset($program['description']))
-						{
-						?>
+							
 							<div class="contentProgram">
 								<h4 id="description"><i class="fas fa-bullseye"></i> La description : </h4>
 								<p><?= nl2br($program['description']) ?></p>
 							</div>
-						<?php
-						}
-							
-						if (isset($program['good_point']))
-						{
-						?>
-							<div class="contentProgram">
-								<h4 id="goodPoint"><i class="fas fa-bullseye"></i> Les bon points : </h4>
-								<?= nl2br($program['good_point']) ?>
-							</div>
-						<?php
-						}
-							
-						if (isset($program['bad_point']))
-						{
-						?>
-							<div class="contentProgram">
-								<h4 id="badPoint"><i class="fas fa-bullseye"></i> Les mauvais points : </h4>
-								<?= nl2br($program['bad_point']) ?>
-							</div>
-						<?php
-						}
-							
-						if (isset($program['program']))
-						{
-						?>
+							<?php	
+							if (isset($program['good_point']) && $program['good_point'] != '')
+							{
+							?>
+								<div class="contentProgram">
+									<h4 id="goodPoint"><i class="fas fa-bullseye"></i> Les bon points : </h4>
+									<?= nl2br($program['good_point']) ?>
+								</div>
+							<?php
+							}
+								
+							if (isset($program['bad_point']) && $program['bad_point'] != '')
+							{
+							?>
+								<div class="contentProgram">
+									<h4 id="badPoint"><i class="fas fa-bullseye"></i> Les mauvais points : </h4>
+									<?= nl2br($program['bad_point']) ?>
+								</div>
+							<?php
+							}
+							?>
 							<div class="contentProgram">
 								<h4 id="program"><i class="fas fa-bullseye"></i> Le programme : </h4>
 								<?= nl2br($program['program']) ?>
 							</div>
-						<?php
-						}
-						?>
 						</div>
 					</div>
 				</div>
 				<div class="col-lg-3 ">
 					<nav id="asideProgram">
 						<h6>Accéder à la rubrique :</h6>
-						<?php if (isset($program['description']))
-						{
-						?>
-							<p><i class="fas fa-angle-right"></i><a href="#description"> La description </a></p>
+						<p><i class="fas fa-angle-right"></i><a href="#description"> La description </a></p>
 						<?php
-						}
-							
-						if (isset($program['good_point']))
+						if (isset($program['good_point']) && $program['good_point'] != '')
 						{
 						?>
 							<p><i class="fas fa-angle-right"></i><a href="#goodPoint"> Les bon points </a></p>
 						<?php
 						}
 							
-						if (isset($program['bad_point']))
+						if (isset($program['bad_point']) && $program['bad_point'] != '')
 						{
 						?>
 							<p><i class="fas fa-angle-right"></i><a href="#badPoint"> Les mauvais points </a></p>
 						<?php
 						}
-							
-						if (isset($program['program']))
-						{
 						?>
-							<p><i class="fas fa-angle-right"></i><a href="#program"> Le programme </a></p>
-						<?php
-						}
-						?>
+						<p><i class="fas fa-angle-right"></i><a href="#program"> Le programme </a></p>
 					</nav>
 					
 				</div>
@@ -140,7 +119,7 @@ ob_start();
 				        				<div class="form-group">
 				        					<input type="hidden" name="pseudo" value="<?=$_SESSION['pseudo']?>" />
 				        					<input type="hidden" name="id_user" value="<?=$_SESSION['id_user']?>" />
-				        					<textarea class="form-control" name="commentProgram" id="commentProgram" rows="3"></textarea>
+				        					<textarea class="form-control" name="commentProgram" id="commentProgram" rows="3" required="required"></textarea>
 				        				</div>
 				        			</div>
 				        		</div>
@@ -168,7 +147,7 @@ ob_start();
 	</div>
 
 	<div class="row">
-		<div class="offset-lg-1 col-lg-10 cadreComment">
+		<div class="col-lg-12 cadreComment">
 			<div class="titleComment">
 				<h5> Commentaires : </h5>
 			</div>

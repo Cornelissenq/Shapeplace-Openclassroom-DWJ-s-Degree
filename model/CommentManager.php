@@ -19,16 +19,25 @@ Class CommentManager extends Manager
 		return $req;
 	}
 
-	public function getReportedsCommentsProgram($idArea)
+	public function getReportedsCommentsProgram()
 	{
 		$db = $this->dbConnect();
 
-		$req = $db->prepare('SELECT *,DATE_FORMAT(date_creation, \'%d/%m/%Y à %Hh%imin\') AS date_creation_fr,DATE_FORMAT(date_modification, \'%d/%m/%Y à %Hh%imin\') AS date_modification_fr FROM comments WHERE id_program = ? AND report = "1" ORDER BY date_creation ASC ');
-		$req->execute(array($idProgram));
-		$comments = $req->fetch();
+		$comments = $db->query('SELECT *,DATE_FORMAT(date_creation, \'%d/%m/%Y à %Hh%imin\') AS date_creation_fr,DATE_FORMAT(date_modification, \'%d/%m/%Y à %Hh%imin\') AS date_modification_fr FROM comments WHERE  report = "1" ORDER BY date_creation ASC ');
+		
 
 		return $comments;
 	}
+
+	public function getComments()
+	{
+		$db = $this->dbConnect();
+
+		$comments = $db->query('SELECT *,DATE_FORMAT(date_creation, \'%d/%m/%Y à %Hh%imin\') AS date_creation_fr,DATE_FORMAT(date_modification, \'%d/%m/%Y à %Hh%imin\') AS date_modification_fr FROM comments WHERE  report = "0" ORDER BY date_creation DESC ');
+
+		return $comments;
+	}
+
 
 	public function getCommentsUser($idComment)
 	{
@@ -81,6 +90,16 @@ Class CommentManager extends Manager
 		$req->execute(array($idComment));
 	}
 
+	public function countReportedComments()
+	{
+		$db = $this->dbConnect();
+
+		$req = $db->query('SELECT COUNT(*) AS nbr FROM comments WHERE report = "1"');
+		$count = $req->fetch();
+
+		return $count;
+	}
+
 	/*  --------------------- Validate comment --------------------- */
 
 	public function validateComment($idComment)
@@ -90,4 +109,5 @@ Class CommentManager extends Manager
 		$req = $db->prepare('UPDATE comments SET report = "0" WHERE id = ?');
 		$req->execute(array($idComment));
 	}
+
 }

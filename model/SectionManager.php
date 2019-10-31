@@ -31,22 +31,22 @@ Class SectionManager extends Manager
 
 	/*  --------------------- add section --------------------- */
 
-	public function addSection($nameSection,$extractSection)
+	public function addSection($nameSection,$extractSection,$contentSection)
 	{
 		$db = $this->dbConnect();
 
-		$req = $db->prepare('INSERT INTO section(name,extract) VALUES(?, ?)');
-		$req->execute(array($nameSection,$extractSection));
+		$req = $db->prepare('INSERT INTO section(name,extract,content) VALUES(?, ?, ?)');
+		$req->execute(array($nameSection,$extractSection,$contentSection));
 	}
 
 	/*  --------------------- edit section --------------------- */
 
-	public function editSection($nameSection,$extractSection,$idSection)
+	public function editSection($nameSection,$extractSection,$contentSection,$idSection)
 	{
 		$db = $this->dbConnect();
 
-		$req = $db->prepare('UPDATE section SET name = ?, extract = ? WHERE id = ?');
-		$req->execute(array($nameSection,$extractSection,$idSection));
+		$req = $db->prepare('UPDATE section SET name = ?, extract = ?, content = ? WHERE id = ?');
+		$edit = $req->execute(array($nameSection,$extractSection,$contentSection,$idSection));
 	}
 
 	/*  --------------------- delete section --------------------- */

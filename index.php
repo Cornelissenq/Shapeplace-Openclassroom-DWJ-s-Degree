@@ -7,9 +7,12 @@ require('controller/frontend/AreaController.php');
 require('controller/frontend/NoteController.php');
 require('controller/frontend/HomeController.php');
 
+require('controller/backend/BackendController.php');
 require('controller/backend/AdminCommentController.php');
 require('controller/backend/AdminProgramController.php');
 require('controller/backend/AdminSectionController.php');
+require('controller/backend/AdminUserController.php');
+require('controller/backend/AdminAreaController.php');
 
 $commentController = new CommentController;
 $programController = new ProgramController;
@@ -21,6 +24,8 @@ $homeController = new HomeController;
 $adminCommentController = new AdminCommentController;
 $adminProgramController = new AdminProgramController;
 $adminSectionController = new AdminSectionController;
+$adminUserController = new AdminUserController;
+$adminAreaController = new AdminAreaController;
 
 session_start();
 
@@ -78,12 +83,20 @@ try
 				{
 					$userController->showProfil($_GET['id']);
 				}
+				else
+				{
+					$homeController->error();
+				}
 				break;
 
 			case 'editProfil':
 				if (isset($_SESSION['id_user']))
 				{
 					$userController->editProfil($_SESSION['id_user']);
+				}
+				else
+				{
+					$homeController->error();
 				}
 				break;
 
@@ -108,6 +121,10 @@ try
 		                }
 			        }
 				}
+				else
+				{
+					$homeController->error();
+				}
 
 				break;
 
@@ -115,6 +132,10 @@ try
 				if (isset($_POST['oldPw']) && isset($_POST['newPw']) && isset($_POST['newPw2']))
 				{
 					$testPw = $userController->editPw($_SESSION['pseudo'],$_POST['oldPw'],$_POST['newPw'],$_POST['newPw2']);
+				}
+				else
+				{
+					$homeController->error();
 				}
 
 				break;
@@ -124,7 +145,10 @@ try
 				{
 					$userController->editMail($_POST['mail'],$_POST['mail2'],$_SESSION['id_user']);
 				}
-
+				else
+				{
+					$homeController->error();
+				}
 				break;
 
 			case 'editInsta':
@@ -132,12 +156,20 @@ try
 				{
 					$editInsta = $userController->editInsta($_POST['insta'],$_SESSION['id_user']);
 				}
+				else
+				{
+					$homeController->error();
+				}
 				break;
 
 			case 'editCity':
 				if (isset($_POST['city']))
 				{
 					$editInsta = $userController->editCity($_POST['city'],$_SESSION['id_user']);
+				}
+				else
+				{
+					$homeController->error();
 				}
 				break;
 
@@ -154,7 +186,7 @@ try
 				}
 				else
 				{
-					/*error*/
+					$homeController->error();
 				}
 				
 				break;
@@ -168,12 +200,12 @@ try
 					}
 					else
 					{
-						
+						$homeController->error();
 					}
 				}
 				else
 				{
-					/*error*/
+					$homeController->error();
 				}
 				break;
 
@@ -189,13 +221,17 @@ try
 				}
 				else
 				{
-				
+					$homeController->error();
 				}
 				break;
 			case 'deleteCommentP':
 				if (isset($_GET['id']) && $_GET['id'] > 0)
 				{
 					$commentController->deleteComment($_GET['id']);
+				}
+				else
+				{
+					$homeController->error();
 				}
 				break;
 
@@ -207,12 +243,20 @@ try
 						$commentController->editCommentProgram($_POST['commentEdit'],$_GET['id']);
 					}
 				}
+				else
+				{
+					$homeController->error();
+				}
 				break;
 
 			case 'report':
 				if (isset($_GET['id']) && $_GET['id'] > 0)
 				{
 					$commentController->reportComment($_GET['id']);
+				}
+				else
+				{
+					$homeController->error();
 				}
 				break;
 
@@ -231,6 +275,10 @@ try
 				elseif (isset($_GET['search']))
 				{
 					$areaController->setMap($_GET['search']);
+				}
+				else
+				{
+					$homeController->error();
 				}
 				break;
 			
@@ -252,7 +300,7 @@ try
 				}
 				else
 				{
-
+					$homeController->error();
 				}
 				break;
 
@@ -268,6 +316,245 @@ try
 				{
 					$noteController->deleteNote($_GET['id']);
 				}
+				else
+				{
+					$homeController->error();
+				}
+				break;
+	/*  ------------------------------------------ Backend ------------------------------------------ */
+
+			case 'admin':
+				$backendController = new BackendController;
+
+				$backendController->panel();
+				break;
+
+	/*  --------------------- AdminUser --------------------- */
+
+			case 'adminUser':
+				$backendController = new BackendController;
+
+				$adminUserController->tableUser();
+				break;
+
+			case 'givePower':
+				$backendController = new BackendController;
+
+				if (isset($_GET['id']) && $_GET['id'] > 0)
+				{
+					$adminUserController->givePower($_GET['id']);
+				}
+				else
+				{
+					$homeController->error();
+				}
+				break;
+
+			case 'remainPower':
+				$backendController = new BackendController;
+
+				if (isset($_GET['id']) && $_GET['id'] > 0)
+				{
+					$adminUserController->remainPower($_GET['id']);
+				}
+				else
+				{
+					$homeController->error();
+				}
+				break;
+
+			case 'deleteUser':
+				$backendController = new BackendController;
+
+				if (isset($_GET['id']) && $_GET['id'] > 0)
+				{
+					$adminUserController->deleteUser($_GET['id']);
+				}
+				else
+				{
+					$homeController->error();
+				}
+				break;
+	/*  --------------------- AdminSection --------------------- */
+			case 'adminSection':
+				$backendController = new BackendController;
+
+				$adminSectionController->tableSection();
+				break;
+
+			case 'addSection':
+				$backendController = new BackendController;
+				if (isset($_POST['name']) && isset($_POST['extract']) && isset($_POST['content']))
+				{
+					$adminSectionController->addedSection($_POST['name'],$_POST['extract'],$_POST['content']);
+				}
+				else
+				{
+					$adminSectionController->addSection();
+				}
+				break;
+
+			case 'editSection':
+				$backendController = new BackendController;
+				if (isset($_GET['id']) && $_GET['id'] > 0)
+				{
+					if (isset($_POST['name']) && isset($_POST['extract']) && isset($_POST['content']))
+					{
+						$adminSectionController->editedSection($_POST['name'],$_POST['extract'],$_POST['content'],$_GET['id']);
+					}
+					else
+					{
+						$adminSectionController->editSection($_GET['id']);
+					}
+				}
+				else
+				{
+					$homeController->error();
+				}	
+				break;
+
+			case 'deleteSection':
+				$backendController = new BackendController;
+				if (isset($_GET['id']) && $_GET['id'] > 0)
+				{
+					$adminSectionController->deleteSection($_GET['id']);
+				}
+				else
+				{
+					$homeController->error();
+				}
+				break;
+
+	/*  --------------------- AdminProgram --------------------- */
+			case 'adminProgram':
+				$backendController = new BackendController;
+				$adminProgramController->tableProgram();
+				break;
+
+			case 'addProgram':
+				$backendController = new BackendController;
+				if (isset($_POST['name']) && isset($_POST['category']) && isset($_POST['extract']) && isset($_POST['description'])&& isset($_POST['program']))
+				{
+					$adminProgramController->addedProgram($_POST['name'],$_POST['category'],$_POST['extract'],$_POST['description'],$_POST['good_point'],$_POST['bad_point'],$_POST['program']);
+				}
+				else
+				{
+					$adminProgramController->addProgram();
+				}
+				break;
+
+			case 'editProgram':
+				$backendController = new BackendController;
+				if (isset($_GET['id']) && $_GET['id'] > 0)
+				{
+					if (isset($_POST['name']) && isset($_POST['extract']) && isset($_POST['description'])&& isset($_POST['program']))
+					{
+						$adminProgramController->editedProgram($_POST['name'],$_POST['extract'],$_POST['description'],$_POST['good_point'],$_POST['bad_point'],$_POST['program'],$_GET['id']);
+					}
+					else
+					{
+						$adminProgramController->editProgram($_GET['id']);
+					}
+				}
+				else
+				{
+					$homeController->error();
+				}
+					
+				break;
+
+			case 'deleteProgram':
+				$backendController = new BackendController;
+				if (isset($_GET['id']) && $_GET['id'] > 0)
+				{
+					$adminProgramController->deleteProgram($_GET['id']);
+				}
+				else
+				{
+					$homeController->error();
+				}
+				break;
+	/*  --------------------- AdminComment --------------------- */
+			case 'adminComment':
+				$backendController = new BackendController;
+				$adminCommentController->tableComment();
+				break;
+
+			case 'adminReportComment':
+				$backendController = new BackendController;
+				$adminCommentController->tableReportComment();
+				break;
+
+			case 'validateComment':
+				$backendController = new BackendController;
+				if (isset($_GET['id']) && $_GET['id'] > 0)
+				{
+					$adminCommentController->validateComment($_GET['id']);
+				}
+				else
+				{
+					$homeController->error();
+				}
+				break;
+
+			case 'deleteComment':
+				$backendController = new BackendController;
+				if (isset($_GET['id']) && $_GET['id'] > 0)
+				{
+					$adminCommentController->deleteComment($_GET['id']);
+				}
+				else
+				{
+					$homeController->error();
+				}
+				break;
+/*  --------------------- AdminArea --------------------- */
+			case 'adminSpot':
+				$backendController = new BackendController;
+				$adminAreaController->tableArea();
+
+				break;
+
+			case 'editSpot':
+				$backendController = new BackendController;
+				if (isset($_GET['id']) && $_GET['id'] > 0)
+				{
+					if(isset($_POST['name']) && isset($_POST['content']) && isset($_POST['city']) && isset($_POST['id_category']))
+					{
+						$adminAreaController->editedArea($_POST['name'],$_POST['content'],$_POST['city'],$_POST['id_category'],$_GET['id']);
+					}
+					else
+					{
+						$adminAreaController->editArea($_GET['id']);
+					}
+				}
+				else
+				{
+					$homeController->error();
+				}
+
+				break;
+
+			case 'deleteSpot':
+				$backendController = new BackendController;
+				if (isset($_GET['id']) && $_GET['id'] > 0)
+				{
+					$adminAreaController->deleteArea($_GET['id']);
+				}
+				else
+				{
+					$homeController->error();
+				}
+
+				break;
+
+/*  --------------------- AdminNote --------------------- */
+			case 'adminNotes':
+				$backendController = new BackendController;
+				$adminNoteController->tableNotes();
+
+				break;
+
 		}
 
 	}

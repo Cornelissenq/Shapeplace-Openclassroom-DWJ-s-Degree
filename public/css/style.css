@@ -13,7 +13,7 @@
 	padding-right: 5%;
 	text-decoration: none;
     color: black;
-    font-family: arial;
+    font-family: "Arial Black";
 }
 .menu a:hover, .login a:hover
 {
@@ -70,11 +70,6 @@ body
 {
 	border : 0px;	
 	font-size: 1.2em;
-}
-.row
-{
-	margin-left: 0px;
-	margin-right: 0px;
 }
 
 /* -------------------------- FOOTER -------------------------*/
@@ -826,3 +821,137 @@ footer a:hover
 {
 	background: no-repeat left/100% url(../images/bgSection.jpg);
 }
+
+/* -------------------------- Error -------------------------*/
+
+.error
+{
+	border : 3px outset lightgrey;
+	border-radius: 20px;
+	background: whitesmoke;
+	margin-top: 30px;
+}
+.error h4
+{
+	padding-top: 30px;
+	padding-bottom: 30px;
+	text-align: center;
+}
+.error img
+{
+	border-radius: 20px;
+	border: 3px dashed lightgrey;
+	width: 300px;
+	margin-bottom: 20px;
+}
+
+.errorBtn
+{
+	text-align: right;
+	margin-bottom: 20px;
+}
+/* ---------------------------------------------------- Backend ------------------------------------------------------*/
+
+/* -------------------------- Template -------------------------*/
+
+#viewBackend
+{
+	padding: 0;
+	margin: 0;
+}
+#navB
+{
+	background: darkslategrey;
+	padding: 0px 0 155px 0;
+}
+#navB img
+{
+	padding: 50px 0 50px 0;
+	width: 95%;
+}
+#navB p
+{
+	padding-bottom: 30px;
+	font-weight: 900;
+	font-size: 1.2em;
+}
+#navB ul
+{
+	list-style-type: none;
+}
+#navB li
+{
+	margin-bottom: 20px;
+	margin-top: 20px;
+}
+#navB a
+{
+	color: white;
+	text-decoration: none;
+}
+#navB a:hover
+{
+	text-decoration: none;
+	color: lightgray;
+}
+
+
+/* -------------------------- Panel -------------------------*/
+#panel
+{
+	padding-left: 0;
+	padding-right: 0;
+}
+#panel h4
+{
+	padding-top: 50px;
+	padding-bottom: 30px;
+	font-family: 'Arial';
+	text-align: center;
+}
+#panel p
+{
+	padding-bottom: 10px;
+	text-align: center;
+}
+
+/* -------------------------- Table admin -------------------------*/
+#panel table
+{
+	margin-bottom: 30px;
+	text-align: center;
+}
+.imgTableUser img
+{
+	width: 40px;
+	text-align: center;
+	border-radius: 10px;
+}
+.leftAlign
+{
+	text-align: left;
+}
+.addBtn
+{
+	margin-bottom: 20px;
+}
+.bulleNum
+{
+	border-top-left-radius: 25px;
+	border-top-right-radius: 25px;
+	border-bottom-left-radius: 25px;
+	border-bottom-right-radius: 25px;
+	border: 1px outset lightgrey;
+	padding: 5px 10px 5px 10px;
+	background: darkslategray;
+	color: white;
+}
+.bulleNum:hover
+{
+	background: black;
+	color: white;
+	text-decoration: none;
+}
+
+/* -------------------------- Form admin -------------------------*/
+

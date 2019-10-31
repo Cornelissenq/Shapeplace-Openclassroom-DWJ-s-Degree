@@ -17,7 +17,14 @@ Class CommentController
 		
 		$_SESSION['success'] = 'Le commentaire est bien ajouté';
 
-		header('Refresh: 0 ' . $_SERVER["HTTP_REFERER"]);
+		if (isset($_SERVER["HTTP_REFERER"]))
+		{
+			header('Refresh: 0 ' . $_SERVER["HTTP_REFERER"]);
+		}
+		else
+		{
+			header('Location: index.php?action=home');
+		}
 	}
 
 	/*  --------------------- Edit comment --------------------- */
@@ -31,7 +38,14 @@ Class CommentController
 		
 		$_SESSION['success'] = 'Le commentaire est modifié.';
 
-		header('Refresh: 0 ' . $_SERVER["HTTP_REFERER"]);
+		if (isset($_SERVER["HTTP_REFERER"]))
+		{
+			header('Refresh: 0 ' . $_SERVER["HTTP_REFERER"]);
+		}
+		else
+		{
+			header('Location: index.php?action=home');
+		}
 	}
 
 	/*  --------------------- Report comment --------------------- */
@@ -45,7 +59,15 @@ Class CommentController
 		
 		$_SESSION['success'] = 'Le commentaire est signalé.';
 
-		header('Refresh: 0 ' . $_SERVER["HTTP_REFERER"]);
+		if (isset($_SERVER["HTTP_REFERER"]))
+		{
+			header('Refresh: 0 ' . $_SERVER["HTTP_REFERER"]);
+		}
+		else
+		{
+			header('Location: index.php?action=home');
+		}
+		
 	}
 
 	/*  --------------------- Delete comment --------------------- */
@@ -59,7 +81,14 @@ Class CommentController
 		
 		$_SESSION['success'] = 'Le commentaire est bien supprimé';
 
-		header('Refresh: 0 ' . $_SERVER["HTTP_REFERER"]);
+		if (isset($_SERVER["HTTP_REFERER"]))
+		{
+			header('Refresh: 0 ' . $_SERVER["HTTP_REFERER"]);
+		}
+		else
+		{
+			header('Location: index.php?action=home');
+		}
 	}
 
 

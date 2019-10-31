@@ -4,24 +4,33 @@ require_once ('model/ProgramManager.php');
 
 Class AdminProgramController
 {
+	public function tableProgram()
+	{
+		$programManager = new Cornelissen\Shapeplace\Model\ProgramManager();
+
+
+		$list = $programManager->getAllPrograms();
+
+		require('view/backend/tableProgramView.php');
+	}
 	/*  --------------------- add program --------------------- */
 
 	public function addProgram()
 	{
 
-		require('view/backend/..');
+		require('view/backend/addProgramView.php');
 
 	}
 
-		public function addedProgram($idSection,$nameProgram,$extractProgram,$contentProgram)
+	public function addedProgram($nameProgram,$idSection,$extract,$description,$goodPoint,$badPoint,$program)
 	{
 		$programManager = new Cornelissen\Shapeplace\Model\ProgramManager();
 
-		$added = $programManager->addProgram($idSection,$nameProgram,$extractProgram,$contentProgram);
+		$added = $programManager->addProgram($nameProgram,$idSection,$extract,$description,$goodPoint,$badPoint,$program);
 
 		$_SESSION['success'] = 'Le programme est ajouté';
 
-		header('Location: ..');
+		header('Location: index.php?action=adminProgram');
 		
 	}
 
@@ -31,20 +40,20 @@ Class AdminProgramController
 	{
 		$programManager = new Cornelissen\Shapeplace\Model\ProgramManager();
 
-		$edit = $programManager->getProgram($idProgram);
+		$program = $programManager->getProgram($idProgram);
 
-		require('view/backend/..');
+		require('view/backend/editProgramView.php');
 	}
 
-		public function editedProgram($nameProgram,$extractProgram,$contentProgram,$idProgram)
+		public function editedProgram($name,$extract,$description,$goodPoint,$badPoint,$program,$idProgram)
 	{
 		$programManager = new Cornelissen\Shapeplace\Model\ProgramManager();
 
-		$edited = $programManager->editProgram($nameProgram,$extractProgram,$contentProgram,$idProgram);
+		$edited = $programManager->editProgram($name,$extract,$description,$goodPoint,$badPoint,$program,$idProgram);
 
 		$_SESSION['success'] = 'Le programme est modifié';
 
-		header('Location: ..');		
+		header('Location: index.php?action=adminProgram');		
 
 	}
 
@@ -58,6 +67,6 @@ Class AdminProgramController
 
 		$_SESSION['success'] = 'Le programme est supprimé';
 
-		header('Location: ..');
+		header('Location: index.php?action=adminProgram');
 	}
 }
