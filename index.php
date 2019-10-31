@@ -13,6 +13,7 @@ require('controller/backend/AdminProgramController.php');
 require('controller/backend/AdminSectionController.php');
 require('controller/backend/AdminUserController.php');
 require('controller/backend/AdminAreaController.php');
+require('controller/backend/AdminNoteController.php');
 
 $commentController = new CommentController;
 $programController = new ProgramController;
@@ -26,6 +27,7 @@ $adminProgramController = new AdminProgramController;
 $adminSectionController = new AdminSectionController;
 $adminUserController = new AdminUserController;
 $adminAreaController = new AdminAreaController;
+$adminNoteController = new AdminNoteController;
 
 session_start();
 
@@ -552,6 +554,18 @@ try
 			case 'adminNotes':
 				$backendController = new BackendController;
 				$adminNoteController->tableNotes();
+
+				break;
+			case 'deleteNotes':
+				$backendController = new BackendController;
+				if (isset($_GET['id']) && $_GET['id'] > 0)
+				{
+					$adminNoteController->deleteNotes($_GET['id']);
+				}
+				else
+				{
+					$homeController->error();
+				}			
 
 				break;
 

@@ -714,8 +714,8 @@ footer a:hover
 }
 .star
 {
-    height: 15px;
-    width: 70px;
+    height: 10px;
+    width: 60px;
     margin: 6px 5px 0 10px;
     position: relative;
     content: '';
@@ -726,7 +726,7 @@ footer a:hover
 	width: 100%;
 	background: url(../images/note/starNote.png) no-repeat center center;
     background-size: auto;
-	background-size: 100% auto;
+	background-size: 100% 100%;
 	content: '';
 	z-index: 4;
 	display: inline-block;
@@ -735,6 +735,7 @@ footer a:hover
 	top: 0;
 	left: 0;
 }
+
 .starNote
 {
 	background-color: rgba(255,255,51,0.8);
