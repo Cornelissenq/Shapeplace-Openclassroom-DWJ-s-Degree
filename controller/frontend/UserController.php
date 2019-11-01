@@ -162,20 +162,46 @@ Class UserController
 		require('view/frontend/editUserProfilView.php');
 	}
 
-	public function editAvatar($avatarName,$idUser)
+	public function editAvatar($avatar,$idUser)
 	{
 		$userManager = new Cornelissen\Shapeplace\Model\UserManager();
 
-		$avatar = $userManager->editAvatar($avatarName,$idUser);
-
-		if (isset($_SERVER["HTTP_REFERER"]))
+		if ($_FILES['avatar']['size'] <= 2100000)
 		{
-			header('Refresh: 0 ' . $_SERVER["HTTP_REFERER"]);
+				                
+			$infoFile = pathinfo($avatar['name']);
+			$extensionUpload = $infoFile['extension'];
+			$extensionsAllowed = array('jpg', 'jpeg', 'png');
+
+			$file = $_SESSION['id_user']. '.' .$extensionUpload;
+			if (in_array($extensionUpload, $extensionsAllowed))
+			{
+		        move_uploaded_file($avatar['tmp_name'], 'public/images/user/' . basename($file));                 
+		        $avatarName = 'public/images/user/' .$file;
+		        $userManager->editAvatar($avatarName,$idUser);
+		        if (isset($_SERVER["HTTP_REFERER"]))
+				{
+					header('Refresh: 0 ' . $_SERVER["HTTP_REFERER"]);
+				}
+				else
+				{
+					header('Location: index.php?action=home');
+				}
+			}
+			else
+			{
+				$_SESSION['error'] = 'L\'image doit être au format ".jpg/.jpeg/.png".';
+				header('Location: index.php?action=editProfil');
+			}
 		}
 		else
 		{
-			header('Location: index.php?action=home');
+			$_SESSION['error'] = 'L\'image doit faire moins de 2Mo.';
+			header('Location: index.php?action=editProfil');
 		}
+
+
+				
 	}
 
 	public function editPw($pseudo,$pw,$newPw,$newPw2)

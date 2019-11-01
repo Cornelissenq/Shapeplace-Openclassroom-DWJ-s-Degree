@@ -1,4 +1,4 @@
-<?php  
+<?php   
 
 namespace Cornelissen\Shapeplace\Model;
 
@@ -19,7 +19,7 @@ Class AreaManager extends Manager
 	{
 		$db = $this->dbConnect();
 
-		$req = $db->prepare('SELECT * FROM area WHERE id = ?');
+		$req = $db->prepare('SELECT *,tools.type AS type FROM area LEFT JOIN tools ON (area.id_category = tools.id) WHERE area.id = ? ');
 		$req->execute(array($idArea));
 
 		$area = $req->fetch();
@@ -49,18 +49,6 @@ Class AreaManager extends Manager
 
 		$delete = $db->prepare('DELETE FROM area WHERE id = ?');
 		$delete->execute(array($idArea));
-	}
-
-	public function getCategory($idArea)
-	{
-		$db = $this->dbConnect();
-
-		$req = $db->prepare('SELECT *,t.type AS nom_category FROM area a LEFT JOIN tools t ON a.id_category = t.id_category AND id_area = ?');
-		$req->execute(array($idArea));
-
-		$category = $req->fetch();
-
-		return $category;
 	}
 
 }

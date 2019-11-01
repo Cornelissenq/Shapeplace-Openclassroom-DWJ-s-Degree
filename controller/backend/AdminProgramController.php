@@ -1,6 +1,8 @@
 <?php 
 
 require_once ('model/ProgramManager.php');
+require_once ('model/SectionManager.php');
+
 
 Class AdminProgramController
 {
@@ -17,8 +19,12 @@ Class AdminProgramController
 
 	public function addProgram()
 	{
+		$sectionManager = new Cornelissen\Shapeplace\Model\SectionManager();
 
-		require('view/backend/addProgramView.php');
+		$categoryList = $sectionManager->getSections();
+
+
+		require('view/backend/addeditProgramView.php');
 
 	}
 

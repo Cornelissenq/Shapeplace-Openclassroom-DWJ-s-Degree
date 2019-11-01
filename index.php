@@ -105,23 +105,7 @@ try
 			case 'editAvatar':
 				if (isset($_FILES['avatar']) AND $_FILES['avatar']['error'] == 0)
 				{
-				    if ($_FILES['avatar']['size'] <= 2100000)
-				    {
-				                
-				        $infoFile = pathinfo($_FILES['avatar']['name']);
-		                $extensionUpload = $infoFile['extension'];
-		                $extensionsAllowed = array('jpg', 'jpeg', 'png');
-
-		                $file = $_SESSION['id_user']. '.' .$extensionUpload;
-		                if (in_array($extensionUpload, $extensionsAllowed))
-		                {
-	                        move_uploaded_file($_FILES['avatar']['tmp_name'], 'public/images/user/' . basename($file));
-	                        
-	                        $path = 'public/images/user/' .$file;
-
-	                        $userController->editAvatar($path,$_SESSION['id_user']);
-		                }
-			        }
+					$userController->editAvatar($_FILES['avatar'],$_SESSION['id_user']);
 				}
 				else
 				{
