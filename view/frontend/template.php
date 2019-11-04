@@ -63,6 +63,28 @@ if (isset($_COOKIE['id_user']) && !empty($_COOKIE['id_user']))
 			</div>
 		</header>
 		<?php
+		if (isset($_COOKIE['RGPD']) OR isset($_COOKIE['NORGPD'])) 
+		{
+
+		}
+		else
+		{
+		?>
+			<div class="row">
+				<div id="sessionStorage" class="col-lg-12 gray">    	
+					<p class="offset-lg-1 col-lg-7">
+						En poursuivant votre navigation sur ce site, vous acceptez l’utilisation de Cookies pour vous proposer la sauvegarde d'identification.
+					</p>
+					<div class="col-lg-4">
+						<div class="row">
+							<a href="index.php?action=RGPD" class="btn btn-secondary offset-lg-2 col-lg-4">Accepter</a>
+							<a href="index.php?action=NORGPD" class="btn btn-secondary offset-lg-2 col-lg-4">Refuser</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		<?php
+		}
 		if (isset($_SESSION['success']))  {
 		?>
 			<div class="row">

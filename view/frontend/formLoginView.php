@@ -23,12 +23,29 @@ ob_start();
 	    					</div>
 	  					</div>
 	  					<div class="form-group ">
-	   						<div class="form-check">
-	      						<input class="form-check-input" type="checkbox" id="stayOnline" name="stayOnline">
-	      						<label class="form-check-label" for="stayOnline">Rester connecté(e)</label>
-	    					</div>
+	  						<?php
+	  						if (isset($_COOKIE['RGPD']))
+	  						{
+	  						?>
+	  							<div class="form-check">
+		      						<input class="form-check-input" type="checkbox" id="stayOnline" name="stayOnline">
+		      						<label class="form-check-label" for="stayOnline">Rester connecté(e)</label>
+		    					</div>
+		    				<?php
+	  						}
+	  						else
+	  						{
+	  						?>
+	  							<div class="form-check">
+		      						<input class="form-check-input" type="checkbox" id="stayOnline" name="stayOnline" disabled>
+		      						<label class="form-check-label" for="stayOnline">Rester connecté(e)</label>
+		    					</div>
+		   					<?php
+		   					}
+		   					?>	
 						</div>
 						<button type="submit" class="btn btn-outline-secondary">S'identifier</button>
+	  						
 					</form>
 
 					<div>

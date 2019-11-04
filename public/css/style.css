@@ -66,6 +66,11 @@ body
 {
 	background: seagreen;
 }
+.gray
+{
+	background: darkslategray;
+	color: white;
+}
 #sessionStorage button
 {
 	border : 0px;	
@@ -399,6 +404,10 @@ footer a:hover
 	border:2px solid silver;
 	padding: 5px 0 5px 0;
 	margin-bottom: 20px;
+}
+.imgComment
+{
+	height: 40px;
 }
 /* -------------------------- Login -------------------------*/
 

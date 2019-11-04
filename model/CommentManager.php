@@ -13,7 +13,7 @@ Class CommentManager extends Manager
 	{
 		$db = $this->dbConnect();
 
-		$req = $db->prepare('SELECT *,DATE_FORMAT(date_creation, \'%d/%m/%Y à %Hh%imin\') AS date_creation_fr,DATE_FORMAT(date_modification, \'%d/%m/%Y à %Hh%imin\') AS date_modification_fr FROM comments WHERE id_program = ? AND report = "0" ORDER BY date_creation ASC ');
+		$req = $db->prepare('SELECT *,user.pseudo AS pseudo,user.avatar AS avatar,DATE_FORMAT(comments.date_creation, \'%d/%m/%Y à %Hh%imin\') AS date_creation_fr,DATE_FORMAT(comments.date_modification, \'%d/%m/%Y à %Hh%imin\') AS date_modification_fr FROM comments LEFT JOIN user ON (comments.id_user = user.id) WHERE comments.id_program = ? AND report = "0" ORDER BY date_creation ASC ');
 		$req->execute(array($idProgram));
 
 		return $req;

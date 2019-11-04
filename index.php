@@ -41,6 +41,12 @@ try
 			case 'home':
 				$homeController->home();
 				break;
+			case 'RGPD':
+				$homeController->RGPD();
+				break;
+			case 'NORGPD':
+				$homeController->NORGPD();
+				break;
 	/*  --------------------- User Action's --------------------- */
 			case 'register':
 				if (isset($_POST['pseudo']) && isset($_POST['pw']) && isset($_POST['pw2']) && isset($_POST['name']) && isset($_POST['surname']) && isset($_POST['mail']) && isset($_POST['date_birth']) && isset($_POST['city']))

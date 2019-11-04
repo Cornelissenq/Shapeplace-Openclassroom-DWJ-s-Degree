@@ -162,7 +162,7 @@ ob_start();
 						<div class="offset-lg-1 col-lg-10">
 							<div class="row headerComment" id="<?php $comment['id'] ?>">
 								<div class="offset-lg-1 col-lg-4 pseudoComment">
-									<a href="index.php?action=profil&amp;id=<?=$comment['id_user']?>"><?=$comment['pseudo']?></a>
+									<a href="index.php?action=userProfil&amp;id=<?=$comment['id_user']?>" target="_blank"><?=$comment['pseudo']?></a>
 								</div>
 								<div class="offset-lg-2 col-lg-3 dateComment">
 									<?php
@@ -186,7 +186,8 @@ ob_start();
 						
 							</div>
 							<div class="row contentComment">
-								<div class="offset-lg-1 col-lg-10">
+								<a href="index.php?action=userProfil&amp;id=<?=$comment['id_user']?>" class="col-lg-1" target="_blank"><img src="<?=$comment['avatar']?>" alt="<?=$comment['pseudo']?>" class="imgComment"></a>
+								<div class="offset-lg-1 col-lg-9">
 									<form action="index.php?action=editCommentP&amp;id=<?=$comment['id']?>" method="post">
 										<div class="form-group">
 											<textarea name="commentEdit" id="commentEdit" class="form-control" rows="3"><?= $comment['comment'] ?></textarea>
@@ -210,7 +211,7 @@ ob_start();
 						<div class="offset-lg-1 col-lg-10">
 							<div class="row headerComment" id="<?php $comment['id'] ?>">
 								<div class="offset-lg-1 col-lg-4 pseudoComment">
-									<a href="index.php?action=profil&amp;id=<?=$comment['id_user']?>"><?=$comment['pseudo']?></a>
+									<a href="index.php?action=userProfil&amp;id=<?=$comment['id_user']?>" target="_blank"><?=$comment['pseudo']?></a>
 								</div>
 								<div class="offset-lg-2 col-lg-3 dateComment">
 									<?php
@@ -234,7 +235,8 @@ ob_start();
 						
 							</div>
 							<div class="row contentComment">
-								<div class="offset-lg-1 col-lg-10">
+								<a href="index.php?action=userProfil&amp;id=<?=$comment['id_user']?>" class="col-lg-1" target="_blank"><img src="<?=$comment['avatar']?>" alt="<?=$comment['pseudo']?>" class="imgComment"></a>
+								<div class="offset-lg-1 col-lg-9">
 									<p><?= $comment['comment'] ?></p>
 								</div>
 							</div>
