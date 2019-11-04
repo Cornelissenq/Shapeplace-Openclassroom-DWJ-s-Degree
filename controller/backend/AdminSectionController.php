@@ -18,14 +18,41 @@ Class AdminSectionController
 
 	public function addSection()
 	{
-		require('view/backend/addSectionView.php');
+		require('view/backend/addEditSectionView.php');
 	}
 
-	public function addedSection($nameSection,$extractSection,$contentSection)
+	public function addedSection($nameSection,$extractSection,$contentSection,$img)
 	{
 		$sectionManager = new Cornelissen\Shapeplace\Model\SectionManager();
 
-		$add = $sectionManager->addSection($nameSection,$extractSection,$contentSection);
+		if ($img['size'] <= 2100000)
+		{
+				                
+			$infoFile = pathinfo($img['name']);
+			$extensionUpload = $infoFile['extension'];
+			$extensionsAllowed = array('jpg', 'jpeg', 'png');
+
+			$file = $nameSection. '.' .$extensionUpload;
+			if (in_array($extensionUpload, $extensionsAllowed))
+			{
+		        move_uploaded_file($img['tmp_name'], 'public/images/section/' . basename($file));                 
+		        $imgName = 'public/images/section/' .$file;
+		        $add = $sectionManager->addSection($nameSection,$extractSection,$contentSection,$imgName);
+
+		        $_SESSION['success'] = 'La section est modifiée.';
+				header('Location: index.php?action=adminSection');
+			}
+			else
+			{
+				$_SESSION['error'] = 'L\'image doit être au format ".jpg/.jpeg/.png".';
+				header('Location: index.php?action=addProgram');
+			}
+		}
+		else
+		{
+			$_SESSION['error'] = 'L\'image doit faire moins de 2Mo.';
+			header('Location: index.php?action=addProgram');
+		}
 
 		$_SESSION['success'] = 'La section est ajoutée.';
 
@@ -38,9 +65,10 @@ Class AdminSectionController
 	{
 		$sectionManager = new Cornelissen\Shapeplace\Model\SectionManager();
 
+		$edit = 'edit';		
 		$section = $sectionManager->getSection($idSection);
 
-		require('view/backend/editSectionView.php');
+		require('view/backend/addEditSectionView.php');
 	}
 
 	public function editedSection($nameSection,$extractSection,$contentSection,$idSection)
@@ -52,6 +80,41 @@ Class AdminSectionController
 		$_SESSION['success'] = 'La section est modifiée';
 
 		header('Location: index.php?action=adminSection');
+	}
+
+	public function editedSectionwAvatar($nameSection,$extractSection,$contentSection,$idSection,$img)
+	{
+		$sectionManager = new Cornelissen\Shapeplace\Model\SectionManager();
+
+		if ($img['size'] <= 2100000)
+		{
+				                
+			$infoFile = pathinfo($img['name']);
+			$extensionUpload = $infoFile['extension'];
+			$extensionsAllowed = array('jpg', 'jpeg', 'png');
+
+			$file = $nameSection. '.' .$extensionUpload;
+			if (in_array($extensionUpload, $extensionsAllowed))
+			{
+		        move_uploaded_file($img['tmp_name'], 'public/images/section/' . basename($file));                 
+		        $imgName = 'public/images/section/' .$file;
+		        $edited = $sectionManager->editSection($nameSection,$extractSection,$contentSection,$idSection);
+		        $avatar = $sectionManager->editAvatar($imgName,$idSection);
+
+		        $_SESSION['success'] = 'La section est modifiée.';
+				header('Location: index.php?action=adminSection');
+			}
+			else
+			{
+				$_SESSION['error'] = 'L\'image doit être au format ".jpg/.jpeg/.png".';
+				header('Location: index.php?action=addProgram');
+			}
+		}
+		else
+		{
+			$_SESSION['error'] = 'L\'image doit faire moins de 2Mo.';
+			header('Location: index.php?action=addProgram');
+		}
 	}
 
 	/*  --------------------- delete section --------------------- */

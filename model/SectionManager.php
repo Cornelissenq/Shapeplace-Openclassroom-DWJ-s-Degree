@@ -31,12 +31,12 @@ Class SectionManager extends Manager
 
 	/*  --------------------- add section --------------------- */
 
-	public function addSection($nameSection,$extractSection,$contentSection)
+	public function addSection($nameSection,$extractSection,$contentSection,$imgName)
 	{
 		$db = $this->dbConnect();
 
-		$req = $db->prepare('INSERT INTO section(name,extract,content) VALUES(?, ?, ?)');
-		$req->execute(array($nameSection,$extractSection,$contentSection));
+		$req = $db->prepare('INSERT INTO section(name,extract,content,img) VALUES(?, ?, ?, ?)');
+		$req->execute(array($nameSection,$extractSection,$contentSection,$imgName));
 	}
 
 	/*  --------------------- edit section --------------------- */
@@ -47,6 +47,14 @@ Class SectionManager extends Manager
 
 		$req = $db->prepare('UPDATE section SET name = ?, extract = ?, content = ? WHERE id = ?');
 		$edit = $req->execute(array($nameSection,$extractSection,$contentSection,$idSection));
+	}
+
+	public function editAvatar($imgName,$idSection)
+	{
+		$db = $this->dbConnect();
+
+		$req = $db->prepare('UPDATE section SET img = ? WHERE id = ?');
+		$req->execute(array($imgName,$idSection));
 	}
 
 	/*  --------------------- delete section --------------------- */

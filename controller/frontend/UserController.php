@@ -166,7 +166,7 @@ Class UserController
 	{
 		$userManager = new Cornelissen\Shapeplace\Model\UserManager();
 
-		if ($_FILES['avatar']['size'] <= 2100000)
+		if ($avatar['size'] <= 2100000)
 		{
 				                
 			$infoFile = pathinfo($avatar['name']);

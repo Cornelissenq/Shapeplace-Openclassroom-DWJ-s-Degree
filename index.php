@@ -307,6 +307,13 @@ try
 					$homeController->error();
 				}
 				break;
+
+	/*  --------------------- Join us --------------------- */
+
+			case 'joinUs':
+				$homeController->
+				break;
+
 	/*  ------------------------------------------ Backend ------------------------------------------ */
 
 			case 'admin':
@@ -370,9 +377,9 @@ try
 
 			case 'addSection':
 				$backendController = new BackendController;
-				if (isset($_POST['name']) && isset($_POST['extract']) && isset($_POST['content']))
+				if (isset($_POST['name']) && isset($_POST['extract']) && isset($_POST['content']) && isset($_FILES['image']) && $_FILES['image']['error'] == 0)
 				{
-					$adminSectionController->addedSection($_POST['name'],$_POST['extract'],$_POST['content']);
+					$adminSectionController->addedSection($_POST['name'],$_POST['extract'],$_POST['content'],$_FILES['image'],$_FILES['image']);
 				}
 				else
 				{
@@ -384,7 +391,11 @@ try
 				$backendController = new BackendController;
 				if (isset($_GET['id']) && $_GET['id'] > 0)
 				{
-					if (isset($_POST['name']) && isset($_POST['extract']) && isset($_POST['content']))
+					if (isset($_POST['name']) && isset($_POST['extract']) && isset($_POST['content']) && isset($_FILES['image']) && $_FILES['image']['error'] == 0)
+					{
+						$adminSectionController->editedSectionwAvatar($_POST['name'],$_POST['extract'],$_POST['content'],$_GET['id'],$_FILES['image']);
+					}
+					elseif (isset($_POST['name']) && isset($_POST['extract']) && isset($_POST['content'])) 
 					{
 						$adminSectionController->editedSection($_POST['name'],$_POST['extract'],$_POST['content'],$_GET['id']);
 					}
@@ -419,9 +430,9 @@ try
 
 			case 'addProgram':
 				$backendController = new BackendController;
-				if (isset($_POST['name']) && isset($_POST['category']) && isset($_POST['extract']) && isset($_POST['description'])&& isset($_POST['program']))
+				if (isset($_POST['name']) && isset($_POST['category']) && isset($_POST['extract']) && isset($_POST['description'])&& isset($_POST['program']) && isset($_FILES['image']))
 				{
-					$adminProgramController->addedProgram($_POST['name'],$_POST['category'],$_POST['extract'],$_POST['description'],$_POST['good_point'],$_POST['bad_point'],$_POST['program']);
+					$adminProgramController->addedProgram($_POST['name'],$_POST['category'],$_POST['extract'],$_POST['description'],$_POST['good_point'],$_POST['bad_point'],$_POST['program'],$_FILES['image']);
 				}
 				else
 				{
@@ -433,7 +444,11 @@ try
 				$backendController = new BackendController;
 				if (isset($_GET['id']) && $_GET['id'] > 0)
 				{
-					if (isset($_POST['name']) && isset($_POST['extract']) && isset($_POST['description'])&& isset($_POST['program']))
+					if (isset($_POST['name']) && isset($_POST['extract']) && isset($_POST['description'])&& isset($_POST['program']) && isset($_FILES['image']) && $_FILES['image']['error'] == 0)
+					{
+						$adminProgramController->editedProgramwAvatar($_POST['name'],$_POST['extract'],$_POST['description'],$_POST['good_point'],$_POST['bad_point'],$_POST['program'],$_GET['id'],$_FILES['image']);
+					}
+					elseif (isset($_POST['name']) && isset($_POST['extract']) && isset($_POST['description'])&& isset($_POST['program']))
 					{
 						$adminProgramController->editedProgram($_POST['name'],$_POST['extract'],$_POST['description'],$_POST['good_point'],$_POST['bad_point'],$_POST['program'],$_GET['id']);
 					}

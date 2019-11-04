@@ -32,6 +32,7 @@ ob_start();
 
 	<div class="row">
 		<?php 
+		$id = 1;
 		while($program = $programs->fetch())
 		{
 		?>
@@ -44,7 +45,7 @@ ob_start();
 							</div>
 						</div>
 						<div class="row whiteBg">
-							<div class="col-lg-12 blockProgram program<?=$program['id']?>">
+							<div class="col-lg-12 blockProgram program<?=$id?>">
 								<div class="row">
 									<div class="offset-lg-1 col-lg-10">
 										<h5 class="titleProgram"><i class="fas fa-angle-right"></i> <?= $program['name'] ?> : </h5>
@@ -66,6 +67,7 @@ ob_start();
 				</div>
 			</div>
 		<?php
+		$id++;
 		}
 		?>
 	</div>

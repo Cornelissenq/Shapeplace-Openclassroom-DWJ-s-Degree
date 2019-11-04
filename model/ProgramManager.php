@@ -41,13 +41,14 @@ Class ProgramManager extends Manager
 
 	/*  --------------------- add program --------------------- */
 
-	public function addProgram($nameProgram,$idSection,$extract,$description,$goodPoint,$badPoint,$program)  
+	public function addProgram($nameProgram,$idSection,$extract,$description,$goodPoint,$badPoint,$program,$imgName)  
 	{
 		$db = $this->dbConnect();
 
-		$req = $db->prepare('INSERT INTO program(name,id_section,extract,description,good_point,bad_point,program) VALUES (?, ?, ?, ?, ?, ?, ?)');
-		$addedprogram = $req->execute(array($nameProgram,$idSection,$extract,$description,$goodPoint,$badPoint,$program));
+		$req = $db->prepare('INSERT INTO program(name,id_section,extract,description,good_point,bad_point,program,avatar) VALUES (?, ?, ?, ?, ?, ?, ?, ?)');
+		$addedprogram = $req->execute(array($nameProgram,$idSection,$extract,$description,$goodPoint,$badPoint,$program,$imgName));
 	}
+
 
 	/*  --------------------- edit program --------------------- */
 
@@ -55,10 +56,17 @@ Class ProgramManager extends Manager
 	{
 		$db = $this->dbConnect();
 
-		$req = $db->prepare('UPDATE program SET name = ?,extract = ?, description = ?,good_point = ?,bad_point = ?,program = ? WHERE id = ?');
+		$req = $db->prepare('UPDATE program SET name = ?,extract = ?, description = ?,good_point = ?,bad_point = ?,program = ?, avatar = ? WHERE id = ?');
 		$req->execute(array($name,$extract,$description,$goodPoint,$badPoint,$program,$idProgram));
 	}
 
+	public function editAvatar($avatar,$idProgram)
+	{
+		$db = $this->dbConnect();
+
+		$req = $db->prepare('UPDATE program SET avatar = ? WHERE id = ?');
+		$req->execute(array($avatar,$idProgram));
+	}
 	/*  --------------------- delete program --------------------- */
 
 	public function deleteProgram($idProgram)
