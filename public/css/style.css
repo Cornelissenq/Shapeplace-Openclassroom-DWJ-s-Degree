@@ -43,7 +43,7 @@
 body
 {
 	background: url('../images/light_toast.png');
-	font-family: arial;
+	font-family: 'Arial';
 }
 #sessionStorage
 {
@@ -830,6 +830,20 @@ footer a:hover
 .pictSection
 {
 	background: no-repeat left/100% url(../images/bgSection.jpg);
+}
+/* -------------------------- socialNetworkView -------------------------*/
+
+.cadreSocialNetwork
+{
+	background: whitesmoke;
+	border-radius: 20px;
+	padding: 50px 0 50px;
+	margin: 100px 0 100px 0;
+}
+.cadreSocialNetwork h4
+{
+	text-align: center;
+	padding-bottom: 30px;
 }
 
 /* -------------------------- Error -------------------------*/

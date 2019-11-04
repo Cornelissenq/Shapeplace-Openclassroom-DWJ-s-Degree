@@ -160,5 +160,6 @@ if (isset($_COOKIE['id_user']) && !empty($_COOKIE['id_user']))
 		<script src="public/js/commentForm.js"></script>
 		<script src="public/js/sessionStorage.js"></script>
 		<script src="public/js/editProfilUser.js"></script>
+		<script src="https://cdn.lightwidget.com/widgets/lightwidget.js"></script>
 	</body>
 </html>
