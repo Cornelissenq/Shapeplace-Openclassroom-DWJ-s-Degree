@@ -405,7 +405,7 @@ footer a:hover
 	padding: 5px 0 5px 0;
 	margin-bottom: 20px;
 }
-.imgComment
+.imgComment,.imgNote
 {
 	height: 40px;
 }
