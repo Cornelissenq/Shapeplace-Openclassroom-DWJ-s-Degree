@@ -1,0 +1,99 @@
+<?php 
+
+$title = 'Ajouter un lieu';
+
+ob_start();
+
+?>
+
+<div class="container contenant">
+	<div class="row">
+		<div class="col-lg-12" id="formAdd">
+			<div class="row">
+				<div class="col-lg-3">
+					<form action="index.php?action=map" method="post">
+						<input type="hidden" name="search" value="<?= $search ?>">
+						<button type="submit" class="btn btn-info"> Retour à la carte </button>
+					</form>
+				</div>
+			</div>
+			<div class="row">
+				<h4 class="offset-lg-3 col-lg-6" id="hArea">Ajouter un spot :</h4> 
+			</div>
+			
+			<div class="row">
+				<div class="offset-lg-1 col-lg-10">
+					<form action="index.php?action=addArea" class="formAddV" method="post">
+						<div class="row">
+							<div class="col-lg-12" id="mymap">
+								<script type="text/javascript">
+									var osmLayer = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', { 
+				       					attribution: '© OpenStreetMap contributors',
+				        				maxZoom: 19,
+				        				accessToken:'pk.eyJ1IjoiZmlzaDgxMTAwIiwiYSI6ImNqdzdxN2NnbDBuNDI0Ym80cnoxbzVicnIifQ.DTl4y65RoISbbNt1RtTzQg'
+				        			});
+				        			var mymap = L.map('mymap').setView([<?=$_POST['lat'] ?>,<?=$_POST['lng']?>], 15)
+				        			mymap.addLayer(osmLayer);
+				        			var markerAddIcon = L.icon
+									({
+										iconUrl: "public/images/marker/markerAdd.png",
+										iconSize: [50,50]
+									});
+				        			var markerAdd = L.marker([<?=$_POST['lat'] ?>,<?=$_POST['lng']?>], {icon:markerAddIcon}).addTo(mymap);
+								</script>
+							</div>
+						</div>
+						<input type="hidden" name="lat" value="<?= $_POST['lat'] ?>">
+						<input type="hidden" name="lng" value="<?= $_POST['lng'] ?>">
+
+						<div class="form-group row">
+							<label for="name" class="col-lg-3"> Nom du spot : </label>
+							<div class="col-lg-9">
+								<input type="text" id="name" name="name" class="form-control" required>
+							</div> 
+						</div>
+
+						
+						<div class="form-group row">
+							<label for="content" class="col-lg-3">Description du spot :</label>
+							<div class="col-lg-9">
+								<textarea id="content" name="content" class="form-control" rows="3" required></textarea>
+							</div>
+						</div>
+						<div class="form-group row">
+							<label for="city" class="col-lg-3">Ville :</label>
+							<div class="col-lg-9">
+								<input type="text" id="city" name="city" class="form-control" required>
+							</div>
+						</div>
+						
+						<fieldset class="form-group">
+			    			<div class="row"> 
+			      				<legend class="col-form-label col-lg-3">Catégorie :</legend>
+			      				<div class="col-lg-9">
+			      					<select class="form-control" id="category" name="category">
+				      					<?php
+				      					while($category = $listCategory->fetch())
+				      					{
+				      					?>
+									       	<option value="<?= $category['id'] ?>"><?= $category['type'] ?></option>
+									    <?php
+				      					}
+										?>
+									</select>
+							    </div>
+							</div>
+						</fieldset>
+						<button type="submit" class="btn btn-outline-info">Ajouter <i class="fas fa-plus-circle"></i></button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<?php
+
+$content=ob_get_clean();
+
+require('template.php');
