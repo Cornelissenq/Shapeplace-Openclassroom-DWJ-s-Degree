@@ -1,0 +1,142 @@
+/* -------------------------- Template -------------------------*/
+.containeur
+{
+	margin-top: 70px;
+}
+
+#navbarOrdi
+{
+	display: none;
+}
+#navbarMobile
+{
+	display: block;
+	position: fixed;
+	top: 0;
+	width: 100%;
+	z-index: 100000;
+}
+#navbarMobile h5,h6
+{
+	text-align: center;
+}
+#navbarMobile ul
+{
+	list-style-type: none;
+}
+#navbarMobile li
+{
+	padding-bottom: 10px;
+}
+#navbarMobile a
+{
+	text-decoration: none;
+	color: whitesmoke;
+}
+
+/* -------------------------- Home -------------------------*/
+
+#oneHome
+{
+	background: #659cff no-repeat bottom/100% url('../images/bgHome.png');
+}
+#oneHome #formMapHome
+{
+	border:0;
+	font-size: 0.8em;
+	bottom: -160px;
+}
+#oneHome #formMapHome input,#oneHome #formMapHome button
+{
+	font-size: 0.7em;
+}
+
+.homeSection, .homeJoin
+{
+	height: 400px;
+}
+.pictSection
+{
+	background: no-repeat right/110% url(../images/bgSection.jpg);
+}
+
+/* -------------------------- Section & listprogram -------------------------*/
+
+.blockSection,.blockProgram
+{
+	height: 250px;
+}
+
+/* -------------------------- program -------------------------*/
+
+#asideProgram
+{
+	display: none;
+}
+.pseudoComment,.pseudoNote
+{
+	font-size: 0.8em;
+}
+.dateComment,.dateNote
+{
+	font-size:0.6em;
+}
+
+/* -------------------------- map -------------------------*/
+
+#formMap
+{
+	width: 100%;
+}
+#formMap input,#formMap button
+{
+	font-size: 0.7em;
+}
+
+#map
+{
+	height: 400px;
+}
+
+#areaAddBtn
+{
+	font-size: 0.7em;
+}
+
+/* -------------------------- areaview -------------------------*/
+
+.buttonBack button, .categoryArea, #editBtn, .buttonBack a, #editAvatar input
+{
+	font-size: 0.7em;
+}
+
+#hArea
+{
+	font-size: 1.2em;
+	margin-top: 10px;
+}
+
+.starSpot
+{
+	padding: auto;
+}
+
+#textArea h6
+{
+	font-size: 1em;
+}
+#star
+{
+	width: 10%;
+}
+
+/* -------------------------- formArea -------------------------*/
+
+.formAddV
+{
+	border:0;
+}
+.profilAvatar
+{
+	margin-bottom: 10px;
+}
