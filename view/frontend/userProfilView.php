@@ -16,7 +16,7 @@ ob_start();
 				?>
 					<div class="row">
 						<div class="offset-lg-9 col-lg-3">
-							<a href="index.php?action=editProfil" class="btn btn-dark">Modifier mon profil</a>
+							<a href="index.php?action=editProfil" class="btn btn-dark" id="editBtn">Modifier mon profil</a>
 						</div>
 					</div>
 				<?php
@@ -41,20 +41,20 @@ ob_start();
 						<div class="offset-lg-1 col-lg-7 contentProfil">
 							<h4>Information :</h4>
 							<div class="row">
-								<p class="offset-lg-1 col-lg-5 infoProfil">Pseudo :</p>
-								<p class="col-lg-4"><?= $user['pseudo'] ?></p>
+								<p class="offset-1 col-4 offset-lg-1 col-lg-5 infoProfil">Pseudo :</p>
+								<p class="col-4 col-lg-4"><?= $user['pseudo'] ?></p>
 							</div>
 							<div class="row">
-								<p class="offset-lg-1 col-lg-5 infoProfil">Prénom :</p>
-								<p class="col-lg-4"><?= $user['name'] ?></p>
+								<p class="offset-1 col-4 offset-lg-1 col-lg-5 infoProfil">Prénom :</p>
+								<p class="col-4 col-lg-4"><?= $user['name'] ?></p>
 							</div>
 							<div class="row">
-								<p class="offset-lg-1 col-lg-5 infoProfil">Ville :</p>
-								<p class="col-lg-4"><?= $user['city'] ?></p>
+								<p class="offset-1 col-4 offset-lg-1 col-lg-5 infoProfil">Ville :</p>
+								<p class="col-4 col-lg-4"><?= $user['city'] ?></p>
 							</div>
 							<div class="row">
-								<p class="offset-lg-1 col-lg-5 infoProfil">Date de naissance :</p>
-								<p class=" col-lg-4"><?= $user['date_birth_fr'] ?></p>
+								<p class="offset-1 col-4 offset-lg-1 col-lg-5 infoProfil">Date de naissance :</p>
+								<p class="col-4 col-lg-4"><?= $user['date_birth_fr'] ?></p>
 							</div>
 							<?php
 							if (isset($user['instagram']))

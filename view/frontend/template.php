@@ -13,8 +13,10 @@ if (isset($_COOKIE['id_user']) && !empty($_COOKIE['id_user']))
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<meta name="description" content="Trouvez un spot de musculation près de chez vous ou bien un programme de musculation !" />
 		<title><?= $title ?> - ShapePlace</title>
 		<link href="public/css/style.css" rel="stylesheet" />
+		<link rel=" stylesheet" media="screen and (max-width: 768px)" href="public/css/responsive.css" />
         <link href="bootstrap/css/bootstrap.css" rel="stylesheet"/>
         <link rel="icon" type="image/png" href="public/images/icone.png" />
         <link href="https://fonts.googleapis.com/css?family=Mansalva&display=swap" rel="stylesheet">
@@ -28,7 +30,7 @@ if (isset($_COOKIE['id_user']) && !empty($_COOKIE['id_user']))
 
 	<body>
 		<header>
-			<div class="navbar navbar-default menulogo">
+			<div class="navbar navbar-default menulogo" id="navbarOrdi">
 				<div class="container">
 					<div class="col-lg-2 logo">
 						<a href="index.php?action=home"><img src="public/images/logo.png" alt="logo shapeplace"/></a>
@@ -44,22 +46,87 @@ if (isset($_COOKIE['id_user']) && !empty($_COOKIE['id_user']))
 						</div>
 					</div>
 					<div class="col-lg-3 login">
-						<?php if (isset($_SESSION['id_user']))
-							  {
-						?>  <div class="dropdown">
+						<?php 
+						if (isset($_SESSION['id_user']))
+						{
+						?>  
+							<div class="dropdown">
   								<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="<?= $_SESSION['avatar'] ?>" alt="<?= $_SESSION['pseudo'] ?>" class="avatarMenu"/></button>
- 								<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+ 								<div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id="dropDown">
     								<a class="dropdown-item" href="index.php?action=userProfil&amp;id=<?=$_SESSION['id_user'] ?>">Mon profil</a>
-    								<a class="dropdown-item" href="index.php?action=logout">Me deconnecter</a>
+    								<a class="dropdown-item" href="index.php?action=logout">Déconnexion</a>
+    								<?php
+									if($_SESSION['role'] == "admin" OR $_SESSION['role'] == "superAdmin")
+									{
+									?>
+										<a class="dropdown-item" href="index.php?action=admin">Administration</a>
+									<?php
+									}
+									?>
   								</div>
 							</div>
-						<?php }
-							  else
-							  {
-							  ?> <a href="index.php?action=login"><i class="fas fa-user"></i>	</a>
-						<?php } ?>
+						<?php 
+						}
+						else
+						{
+						?> 
+							<a href="index.php?action=login"><i class="fas fa-user"></i></a>
+						<?php 
+						} 
+						?>
 					</div>
 				</div>
+			</div>
+			<div class="pos-f-t" id="navbarMobile">	
+  				<nav class="row navbar navbar-dark bg-dark">
+
+	  					<div class="col-xs-2 logo">
+							<a href="index.php?action=home"><img src="public/images/logo.png" alt="logo shapeplace"/></a>
+						</div>
+						<div class="offset-xs-8 col-xs-1" id="navMobilebtn">
+		   					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+		      					<span class="navbar-toggler-icon"></span>
+		    				</button>
+		    			</div>
+  				</nav>
+  				<div class="collapse" id="navbarToggleExternalContent">
+   					<div class="bg-dark p-4">
+      					<h5 class="text-white h5">Menu</h5>
+      					<ul>
+      						<li><a href="index.php?action=home"><i class="fas fa-caret-right"></i> Accueil</a></li>
+      						<li><a href="index.php?action=section" ><i class="fas fa-caret-right"></i> Programmes</a></li>
+      					</ul>
+      					<?php
+      					if(isset($_SESSION['id_user']))
+      					{
+      					?>
+      						<h6 class="text-white"><?= $_SESSION['pseudo'] ?> :</h6>
+      						<ul>
+	      						<li><a href="index.php?action=userProfil&amp;id=<?=$_SESSION['id_user'] ?>"><i class="fas fa-caret-right"></i> Mon profil</a></li>
+	      						<?php
+      							if($_SESSION['role'] == "admin" OR $_SESSION['role'] == "superAdmin")
+      							{
+      							?>
+      								<li><a href="index.php?action=admin"><i class="fas fa-caret-right"></i> Administration</a></li>
+      							<?php
+      							}
+      							?>
+	    						<li><a href="index.php?action=logout"><i class="fas fa-caret-right"></i> Déconnexion</a></li>
+      						</ul>
+      					<?php
+      					}
+      					else
+      					{
+      					?>
+      						<ul>
+      							<li><a href="index.php?action=login"><i class="fas fa-caret-right"></i> S'identifier</a></li>
+      							<li><a href="index.php?action=register"><i class="fas fa-caret-right"></i> S'inscrire</a></li>
+      						</ul>
+      					<?php
+      					}
+      					?>
+    				</div>
+  				</div>
 			</div>
 		</header>
 		<?php
@@ -115,9 +182,9 @@ if (isset($_COOKIE['id_user']) && !empty($_COOKIE['id_user']))
 		}
 		?>
 
-
-		<?= $content ?>
-
+		<div class="containeur">
+			<?= $content ?>
+		</div>
 
 		<footer>
 			<div class="container">
@@ -143,7 +210,7 @@ if (isset($_COOKIE['id_user']) && !empty($_COOKIE['id_user']))
 						<div class='row'>
 							<a href='' class='col-lg-4 facebook'><i class="fab fa-facebook"></i></a>
 							<a href='' class='col-lg-4 twitter'><i class="fab fa-twitter"></i></a>
-							<a href='' class='col-lg-4 instagram'><i class="fab fa-instagram"></i></a>
+							<a href='https://www.instagram.com/shapeplace/' target='_blank' class='col-lg-4 instagram'><i class="fab fa-instagram"></i></a>
 						</div>
 					</div>
 					<div class="col-lg-4">

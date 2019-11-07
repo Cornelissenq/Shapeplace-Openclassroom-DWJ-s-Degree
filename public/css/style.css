@@ -13,7 +13,7 @@
 	padding-right: 5%;
 	text-decoration: none;
     color: black;
-    font-family: "Arial Black";
+    font-family: "Arial";
 }
 .menu a:hover, .login a:hover
 {
@@ -38,6 +38,22 @@
 	color: white;
 	font-size: 1.2em;
 	border:1px solid black;
+}
+#dropDown
+{
+	font-size: 0.8em;
+	background: url('../images/light_toast.png');
+	right: 0;
+	border-radius: 5px;
+}
+#dropDown a
+{
+	color: darkslategray;
+}
+
+#navbarMobile
+{
+	display: none;
 }
 /* -------------------------- BODY -------------------------*/
 body
@@ -596,9 +612,7 @@ footer a:hover
 {
 	position: absolute;
 	z-index: 1999;
-	top: 17.8%;
-	left: 17.0%;
-	width: 34%;
+	top: 70px;
 }
 .formMap
 {
@@ -756,7 +770,7 @@ footer a:hover
 
 #oneHome
 {
-	background: no-repeat right/100% url('../images/bgHome.png');
+	background: #659cff no-repeat right/100% url('../images/bgHome.png');
 	height: 500px;
 	border : 3px lightgrey outset;
 	position: relative;

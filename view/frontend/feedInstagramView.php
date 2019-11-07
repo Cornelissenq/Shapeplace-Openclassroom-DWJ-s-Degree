@@ -14,7 +14,7 @@ ob_start();
 		</div>
 		<div class="row">
 			<div class="offset-lg-1 col-lg-10">
-				<p>A l'aide de ton compte instagram partage ton évolution ou ta session avec le hashtag #shaplace et il sera affiché sur le site !</p>
+				<p>A l'aide de ton compte instagram partage ton évolution ou ta session avec le hashtag <strong>#shaplace</strong> et il sera affiché sur le site !</p>
 			</div>
 		</div>
 		<div class="row">

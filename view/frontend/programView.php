@@ -210,10 +210,10 @@ ob_start();
 					<div class="row">
 						<div class="offset-lg-1 col-lg-10">
 							<div class="row headerComment" id="<?php $comment['id'] ?>">
-								<div class="offset-lg-1 col-lg-4 pseudoComment">
+								<div class="col-2 offset-lg-1 col-lg-4 pseudoComment"> 
 									<a href="index.php?action=userProfil&amp;id=<?=$comment['id_user']?>" target="_blank"><?=$comment['pseudo']?></a>
 								</div>
-								<div class="offset-lg-2 col-lg-3 dateComment">
+								<div class="offset-1 col-5 offset-lg-2 col-lg-3 dateComment">
 									<?php
 									if (isset($comment['date_modification_fr']))
 									{
@@ -224,19 +224,19 @@ ob_start();
 									else
 									{
 									?>
-										<p> Écrit le <?=$comment['date_creation_fr']?></p>
+										<p> Écrit le <?=nl2br($comment['date_creation_fr'])?></p>
 									<?php
 									}
 									?>
 								</div>
-								<div class="col-lg-2 btnComment">
+								<div class="col-4 col-lg-2 btnComment">
 									<a href="index.php?action=report&amp;id=<?=$comment['id']?>" class="btn btn-outline-danger" onclick="return confirm('Voulez-vous signaler ce commentaire ?');"><i class="fas fa-exclamation-triangle"></i> Signaler</a>
 								</div>
 						
 							</div>
 							<div class="row contentComment">
-								<a href="index.php?action=userProfil&amp;id=<?=$comment['id_user']?>" class="col-lg-1" target="_blank"><img src="<?=$comment['avatar']?>" alt="<?=$comment['pseudo']?>" class="imgComment"></a>
-								<div class="offset-lg-1 col-lg-9">
+								<a href="index.php?action=userProfil&amp;id=<?=$comment['id_user']?>" class="col-1 col-lg-1" target="_blank"><img src="<?=$comment['avatar']?>" alt="<?=$comment['pseudo']?>" class="imgComment"></a>
+								<div class="offset-1 col-9 offset-lg-1 col-lg-9">
 									<p><?= $comment['comment'] ?></p>
 								</div>
 							</div>

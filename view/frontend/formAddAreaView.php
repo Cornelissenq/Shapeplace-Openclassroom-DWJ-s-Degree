@@ -8,10 +8,10 @@ ob_start();
 
 <div class="container contenant">
 	<div class="row">
-		<div class="col-lg-12" id="formAdd">
+		<div class="col-12 col-lg-12" id="formAdd">
 			<div class="row">
 				<div class="col-lg-3">
-					<form action="index.php?action=map" method="post">
+					<form action="index.php?action=map" method="post" class="buttonBack">
 						<input type="hidden" name="search" value="<?= $search ?>">
 						<button type="submit" class="btn btn-info"> Retour à la carte </button>
 					</form>
@@ -25,7 +25,7 @@ ob_start();
 				<div class="offset-lg-1 col-lg-10">
 					<form action="index.php?action=addArea" class="formAddV" method="post">
 						<div class="row">
-							<div class="col-lg-12" id="mymap">
+							<div class="offset-1 col-10 col-lg-12" id="mymap">
 								<script type="text/javascript">
 									var osmLayer = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', { 
 				       					attribution: '© OpenStreetMap contributors',

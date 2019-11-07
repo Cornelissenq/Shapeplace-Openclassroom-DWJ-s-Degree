@@ -8,8 +8,8 @@ ob_start();
 
 <div class="container contenant">
 	<div class="editUser">
-		<div class="row">
-			<a href="index.php?action=userProfil&amp;id=<?=$_SESSION['id_user']?>" class="offset-lg-1 backProfile"><i class="fas fa-arrow-circle-left"></i> Retourner a mon profil</a>
+		<div class="row buttonBack">
+			<a href="index.php?action=userProfil&amp;id=<?=$_SESSION['id_user']?>" class="offset-1 offset-lg-1 backProfile"><i class="fas fa-arrow-circle-left"></i> Retourner a mon profil</a>
 		</div>
 		<div class="row">
 			<div class="offset-lg-2 col-lg-8">
@@ -18,16 +18,16 @@ ob_start();
 					<h3 class="offset-lg-2 col-lg-8">Modifier mon profil :</h3>
 				</div>
 				<div class="row">
-					<div class="offset-lg-1 col-lg-3 avatar">
+					<div class="offset-3 offset-lg-1 col-lg-3 avatar">
 						<img src="<?= $user['avatar'] ?>" alt="Avatar de <?= $user['pseudo'] ?>"/>
 					</div>
-					<div class="offset-lg-2 col-lg-6" id="editAvatar">
+					<div class="offset-2 offset-lg-2 col-lg-6" id="editAvatar">
 						<form action="index.php?action=editAvatar" method="post" enctype="multipart/form-data">
 							<div class="form-group">
 								<label for="avatar">Modifier votre image de profil :</label>
 								<input type="file" name="avatar" id="avatar" class="form-control-file">
 							</div>
-							<button type="submit" class="btn btn-outline-primary">Envoyer le fichier</button>
+							<button type="submit" class="offset-2 btn btn-outline-primary">Envoyer le fichier</button>
 						</form>
 					</div>
 				</div>
@@ -63,7 +63,7 @@ ob_start();
 					else
 					{
 					?>
-						<button class="offset-lg-8 col-lg-5 btn btn-secondary" id="showAddInsta">Ajouter mon profil instagram</button>
+						<button class="offset-lg-8 col-lg-4 btn btn-secondary" id="showAddInsta">Mon profil instagram</button>
 					<?php
 					}
 					?>

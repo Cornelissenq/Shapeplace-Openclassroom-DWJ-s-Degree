@@ -51,4 +51,12 @@ Class AreaManager extends Manager
 		$delete->execute(array($idArea));
 	}
 
+	public function listCategory()
+	{
+		$db = $this->dbConnect();
+
+		$req = $db->query('SELECT * FROM tools');
+
+		return $req;
+	}
 }

@@ -10,24 +10,24 @@ ob_start();
 	<div class="row">
 		<div class="col-lg-12" id="areaView">
 			<div class="row">
-				<div class="col-lg-3 buttonBack">
+				<div class="col-5 col-lg-3 buttonBack">
 					<form action="index.php?action=map" method="post">
 						<input type="hidden" name="search" value="<?= $search ?>">
 						<button type="submit" class="btn btn-info"> Retour à la carte </button>
 					</form>
 				</div>
-				<div class="offset-lg-5 col-lg-4 categoryArea">
+				<div class="offset-2 col-5 offset-lg-2 col-lg-5 categoryArea">
 					<p>Catégorie : <?= $area['type'] ?></p>
 				</div>
 			</div>
 			<div class="row">
-				<div class="offset-lg-3 col-lg-6">
+				<div class="offset-2 col-8 offset-lg-3 col-lg-6">
 					
 					<h4 id="hArea"><?= $area['name'] ?></h4>
 				</div>
 			</div>
 			<div class="row">
-				<div class="offset-lg-3 col-lg-6" id="mymap">
+				<div class="offset-1 col-10 offset-lg-3 col-lg-6" id="mymap">
 					<script type="text/javascript">
 						var osmLayer = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', { 
 	       					attribution: '© OpenStreetMap contributors',
@@ -95,7 +95,7 @@ ob_start();
 					{
 					?>
 						<div class="row">
-							<div class="offset-lg-5 col-lg-2">
+							<div class="offset-3 col-6 offset-lg-5 col-lg-2">
 								<div class="starSpot">
 									<div class="starNote" style="width: calc( (<?= $avgNote['avg'] ?> * 100%) / 5 )"></div>
 								</div>
@@ -106,10 +106,10 @@ ob_start();
 					?>
 					
 					<div class="row">
-						<h6 class="col-lg-3">La description du spot :</h6>
+						<h6 class="offset-1 col-6 col-lg-3">La description du spot :</h6>
 					</div>
 					<div class="row">
-						<div class="offset-lg-2 col-lg-8" id="contentArea">
+						<div class="offset-1 col-10 offset-lg-2 col-lg-8" id="contentArea">
 							<p><?= nl2br($area['content']) ?></p>
 						</div>
 					</div>
@@ -207,14 +207,14 @@ ob_start();
 			?>
 				<div class="row">
 					<div class="offset-lg-1 col-lg-10">
-						<div class="row headerNote" id="<?php $note['id'] ?>">
+						<div class="row headerNote">
 							<div class="star" id="star">
 								<div class="starNote" style="width: calc( (<?= $note['note'] ?> * 100%) / 5 )"></div>
 							</div>
-							<div class="col-lg-4 pseudoNote">
+							<div class="col-3 col-lg-4 pseudoNote">
 								<a href="index.php?action=userProfil&amp;id=<?=$note['id_user']?>" target="_blank"><?=$note['pseudo']?></a>
 							</div>
-							<div class="offset-lg-1 col-lg-3 dateNote">
+							<div class="col-5 col-lg-3 dateNote">
 								<p> Écrit le <?=$note['date_creation_fr']?></p>
 							</div>
 							<?php
@@ -223,8 +223,8 @@ ob_start();
 								if ($_SESSION['id_user'] === $note['id_user'])
 								{
 								?>
-									<div class="col-lg-2 btnNote">
-										<a href="index.php?action=deleteNote&amp;id=<?=$note['id']?>" class="btn btn-outline-danger" onclick="return confirm('Voulez-vous supprimer votre avis ?');"><i class="far fa-trash-alt"></i> Supprimer</a>
+									<div class="col-1 col-lg-2 btnNote">
+										<a href="index.php?action=deleteNote&amp;id=<?=$note['id']?>" class="btn btn-outline-danger" onclick="return confirm('Voulez-vous supprimer votre avis ?');"><i class="far fa-trash-alt"></i></a>
 									</div>
 								<?php
 								}	
@@ -232,8 +232,8 @@ ob_start();
 							?>
 						</div>
 						<div class="row contentNote">
-							<a href="index.php?action=userProfil&amp;id=<?=$note['id_user']?>" target="_blank" class="col-lg-1"><img src="<?=$note['avatar']?>" alt="<?=$note['pseudo']?>" class="imgNote"></a>
-							<div class="offset-lg-1 col-lg-9">
+							<a href="index.php?action=userProfil&amp;id=<?=$note['id_user']?>" target="_blank" class="col-1 col-lg-1"><img src="<?=$note['avatar']?>" alt="<?=$note['pseudo']?>" class="imgNote"></a>
+							<div class="offset-1 col-9 offset-lg-1 col-lg-9">
 								<p><?= $note['content'] ?></p>
 							</div>
 						</div>
