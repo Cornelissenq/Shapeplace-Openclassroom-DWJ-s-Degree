@@ -11,7 +11,7 @@ Class UserController
 		{
 			$_SESSION['error'] = 'Vous êtes déja identifié.';
 
-			header('Location: index.php?action=home ');
+			header('Location: ../accueil/ ');
 		}
 		else
 		{
@@ -26,17 +26,7 @@ Class UserController
 
 	
 		if ($result)
-		{
-
-			if ($_POST['stayOnline'])
-			{
-				setcookie("id_user", $result['id'], time() + (86400 * 365));
-				setcookie("pseudo", $result['pseudo'], time() + (86400 * 365));
-				setcookie("avatar", $result['avatar'], time() + (86400 * 365));
-				setcookie("role", $result['role'], time() + (86400 * 365));
-			}
-			
-			
+		{			
 			$_SESSION['success'] = 'Vous êtes bien identifié.';
 
 			$_SESSION['id_user'] = $result['id'];
@@ -44,15 +34,44 @@ Class UserController
 			$_SESSION['avatar'] = $result['avatar'];
 			$_SESSION['role'] = $result['role'];
 
-			header('Location: index.php');
+			header('Location: ../accueil/');
 		}
 		else
 		{
-			session_start();
+
 			$_SESSION['error'] = 'Mauvais identifiants, merci de réitérer votre demande.';
 
-			header('Location: index.php?action=login');
+			header('refresh: 0');
 		}
+	}
+	public function loginwCookie($pseudo,$pw,$stayOnline)
+	{
+		$userManager = new Cornelissen\Shapeplace\Model\UserManager();
+
+		$result = $userManager->login($pseudo,$pw);
+
+		if($result)
+		{
+			setcookie("id_user", $result['id'], time() + (86400 * 365));
+			setcookie("pseudo", $result['pseudo'], time() + (86400 * 365));
+			setcookie("avatar", $result['avatar'], time() + (86400 * 365));
+			setcookie("role", $result['role'], time() + (86400 * 365));
+
+			$_SESSION['id_user'] = $result['id'];
+			$_SESSION['pseudo'] = $result['pseudo'];
+			$_SESSION['avatar'] = $result['avatar'];
+			$_SESSION['role'] = $result['role'];
+
+			$_SESSION['success'] = 'Vous êtes bien identifié.';
+
+			header('Location: ../accueil/');
+		}	
+		else
+		{
+			$_SESSION['error'] = 'Mauvais identifiants, merci de réitérer votre demande.';
+
+			header('refresh: 0');			
+		}		
 	}
 
 	public function logout()
@@ -76,7 +95,7 @@ Class UserController
 		}
 		else
 		{
-			header('Location: index.php?action=home');
+			header('Location: ../accueil/');
 		}
 	}
 
@@ -87,7 +106,7 @@ Class UserController
 			session_start();
 			$_SESSION['error'] = 'Vous êtes déja identifié.';
 
-			header('Location: index.php');
+			header('Location: ../accueil/');
 		}
 		else
 		{
@@ -185,19 +204,19 @@ Class UserController
 				}
 				else
 				{
-					header('Location: index.php?action=home');
+					header('Location: ../profil/'. $idUser .'-edit');
 				}
 			}
 			else
 			{
 				$_SESSION['error'] = 'L\'image doit être au format ".jpg/.jpeg/.png".';
-				header('Location: index.php?action=editProfil');
+				header('Location: ../profil/'. $idUser .'-edit');
 			}
 		}
 		else
 		{
 			$_SESSION['error'] = 'L\'image doit faire moins de 2Mo.';
-			header('Location: index.php?action=editProfil');
+			header('Location: ../profil/'. $idUser .'-edit');
 		}
 
 
@@ -264,7 +283,7 @@ Class UserController
 				}
 				else
 				{
-					header('Location: index.php?action=home');
+					header('Location: ../profil/'. $idUser);
 				}
 			}
 			else
@@ -276,7 +295,7 @@ Class UserController
 				}
 				else
 				{
-					header('Location: index.php?action=home');
+					header('Location: ../profil/'. $idUser .'-edit');
 				}
 			}
 		}
@@ -289,7 +308,7 @@ Class UserController
 			}
 			else
 			{
-				header('Location: index.php?action=home');
+				header('Location: ../profil/'. $idUser .'-edit');
 			}
 
 		}
@@ -310,7 +329,7 @@ Class UserController
 			}
 			else
 			{
-				header('Location: index.php?action=home');
+				header('Location: ../accueil/');
 			}
 		}
 		else
@@ -322,7 +341,7 @@ Class UserController
 			}
 			else
 			{
-				header('Location: index.php?action=home');
+				header('Location: ../profil/'. $idUser .'-edit');
 			}
 		}
 	}
@@ -340,7 +359,7 @@ Class UserController
 		}
 		else
 		{
-			header('Location: index.php?action=home');
+			header('Location: ../profil/'. $idUser);
 		}
 	}
 

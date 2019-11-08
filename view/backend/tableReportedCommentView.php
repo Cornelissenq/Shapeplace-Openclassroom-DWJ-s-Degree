@@ -12,7 +12,7 @@ ob_start();
 			<h4 class="offset-lg-4 col-lg-4">Gestion des commentaires signalés:</h4>
 		</div>
 		<div class="row">
-			<a href="index.php?action=adminComment" class="offset-lg-10 col-lg-2 btn btn-dark addBtn">Commentaires</a>
+			<a href="../adminComment/" class="offset-lg-10 col-lg-2 btn btn-dark addBtn">Commentaires</a>
 		</div>
 		<table class="table table-striped">
 			<thead class="thead-dark">
@@ -32,12 +32,12 @@ ob_start();
 				?>
 					<tr>
 						<th scope="row"><p><?= $comment['id'] ?></p></th>
-						<th scope="row"><a class="bulleNum" href="index.php?action=comment&amp;section=<?= $comment['id_section'] ?>&amp;id=<?= $comment['id_program'] ?>" target="_blank"> <?= $comment['id_program'] ?></a></th>
+						<th scope="row"><a class="bulleNum" href="../programme/<?= $comment['id_section'] ?>-<?= $comment['id_program'] ?>" target="_blank"> <?= $comment['id_program'] ?></a></th>
 						<th><?= $comment['pseudo'] ?></th>
 						<th class="leftAlign"><?= nl2br($comment['comment']) ?></th>	
-						<th><a href="index.php?action=validateComment&amp;id=<?= $comment['id'] ?>" class="btn btn-outline-success"><i class="fas fa-thumbs-up"></i></a></th>
+						<th><a href="../validateComment/<?= $comment['id'] ?>" class="btn btn-outline-success"><i class="fas fa-thumbs-up"></i></a></th>
 
-						<th><a href="index.php?action=deleteComment&amp;id=<?= $comment['id'] ?>" class="btn btn-outline-danger" onclick="return confirm('Voulez-vous supprimer le commentaire de <?= $comment['pseudo'] ?>?')"><i class="fas fa-trash-alt"></i></a></th>
+						<th><a href="../deleteAdminComment/<?= $comment['id'] ?>" class="btn btn-outline-danger" onclick="return confirm('Voulez-vous supprimer le commentaire de <?= $comment['pseudo'] ?>?')"><i class="fas fa-trash-alt"></i></a></th>
 
 					</tr>
 				<?php

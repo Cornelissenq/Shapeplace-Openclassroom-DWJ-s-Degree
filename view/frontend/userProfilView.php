@@ -16,7 +16,7 @@ ob_start();
 				?>
 					<div class="row">
 						<div class="offset-lg-9 col-lg-3">
-							<a href="index.php?action=editProfil" class="btn btn-dark" id="editBtn">Modifier mon profil</a>
+							<a href="<?=$_SESSION['id_user']?>-edit" class="btn btn-dark" id="editBtn">Modifier mon profil</a>
 						</div>
 					</div>
 				<?php
@@ -35,7 +35,7 @@ ob_start();
 				<div class="offset-lg-1 col-lg-10">
 					<div class="row">
 						<div class="col-lg-4 profilAvatar">
-							<img src="<?= $user['avatar'] ?>" alt="Photo de profil de <?php $user['pseudo'] ?>"/>
+							<img src="../<?= $user['avatar'] ?>" alt="Photo de profil de <?php $user['pseudo'] ?>"/>
 						</div>
 
 						<div class="offset-lg-1 col-lg-7 contentProfil">
@@ -84,7 +84,7 @@ ob_start();
 									?>
 										<div class="row">
 											<div class="col-lg-12 lastCommentProfil">
-												<a href="index.php?action=program&amp;id=<?= $comment['id_program'] ?>&amp;section=<?= $comment['id_section']?>#<?=$comment['id']?>" target="_blank"><?= $comment['comment'] ?></a>
+												<a href="../programme/<?= $comment['id_program'] ?>-<?= $comment['id_section']?>" target="_blank"><?= $comment['comment'] ?></a>
 											</div>
 										</div>
 									<?php	

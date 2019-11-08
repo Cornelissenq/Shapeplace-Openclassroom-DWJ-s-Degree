@@ -35,7 +35,7 @@ ob_start();
 								if($user['role'] != 'admin')
 								{
 								?>
-									<th><a href="index.php?action=givePower&amp;id=<?= $user['id'] ?>" class="btn btn-outline-success" onclick="return confirm('Voulez-vous promouvoir <?= $user['pseudo'] ?>?')";><i class="fas fa-user-plus"></i></a></th>
+									<th><a href="../donnerDroits/<?= $user['id'] ?>" class="btn btn-outline-success" onclick="return confirm('Voulez-vous promouvoir <?= $user['pseudo'] ?>?')";><i class="fas fa-user-plus"></i></a></th>
 								<?php
 								}
 								else
@@ -47,7 +47,7 @@ ob_start();
 								if($user['role'] != 'user')
 								{
 								?>
-									<th><a href="index.php?action=remainPower&amp;id=<?= $user['id'] ?>" class="btn btn-outline-warning" onclick="return confirm('Voulez-vous rétrograder <?= $user['pseudo'] ?>?')";><i class="fas fa-user-minus"></i></a></th>
+									<th><a href="../enleverDroits/<?= $user['id'] ?>" class="btn btn-outline-warning" onclick="return confirm('Voulez-vous rétrograder <?= $user['pseudo'] ?>?')";><i class="fas fa-user-minus"></i></a></th>
 								<?php
 								}
 								else
@@ -57,7 +57,7 @@ ob_start();
 								<?php
 								}
 								?>
-								<th><a href="index.php?action=deleteUser&amp;id=<?= $user['id'] ?>" class="btn btn-outline-danger" onclick="return confirm('Voulez-vous supprimer <?= $user['pseudo'] ?>?')"><i class="fas fa-trash-alt"></i></a></th>
+								<th><a href="../supprimerUtilisateur/<?= $user['id'] ?>" class="btn btn-outline-danger" onclick="return confirm('Voulez-vous supprimer <?= $user['pseudo'] ?>?')"><i class="fas fa-trash-alt"></i></a></th>
 							</tr>
 						<?php
 						}

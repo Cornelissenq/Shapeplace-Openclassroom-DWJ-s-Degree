@@ -9,6 +9,7 @@ Class AdminCommentController
 	{
 		$commentManager = new Cornelissen\Shapeplace\Model\CommentManager();
 
+		$count = $commentManager->countReportedComments();
 		$list = $commentManager->getComments();
 
 		require('view/backend/tableCommentView.php');
@@ -31,7 +32,7 @@ Class AdminCommentController
 
 		$_SESSION['success'] = 'Le commentaire est validé.';
 
-		header('Location: index.php?action=adminReportComment');
+		header('Location: ../adminReportedComment/');
 	}
 
 	public function deleteComment($idComment)
@@ -42,7 +43,7 @@ Class AdminCommentController
 
 		$_SESSION['success'] = 'Le commentaire est supprimé.';
 
-		header('Location: index.php?action=adminReportComment');
+		header('Location: ../adminReportedComment/');
 	}
 
 }

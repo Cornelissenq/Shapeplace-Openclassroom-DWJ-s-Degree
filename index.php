@@ -70,9 +70,9 @@ try
 				}
 				elseif (isset($_POST['pseudo']) && isset($_POST['pw']))
 				{
-					if (isset($_POST['stayOnline']))  
+					if (isset($_POST['stayLog']))  
 					{
-						$userController->login($_POST['pseudo'],$_POST['pw'],$_POST['stayOnline']);
+						$userController->loginwCookie($_POST['pseudo'],$_POST['pw'],$_POST['stayOnline']);
 					}
 					else
 					{
@@ -211,7 +211,7 @@ try
 				{
 					if (!empty($_POST['commentProgram']))
 					{
-						$commentController->addCommentProgram($_GET['id'],$_GET['idsection'],$_SESSION['id_user'],$_SESSION['pseudo'],htmlspecialchars($_POST['commentProgram']));
+						$commentController->addCommentProgram($_GET['id'],$_GET['idsection'],$_SESSION['id_user'],htmlspecialchars($_POST['commentProgram']));
 					}
 				}
 				else
@@ -233,10 +233,8 @@ try
 			case 'editCommentP':
 				if (isset($_GET['id']) && $_GET['id'] > 0)
 				{
-					if (!empty($_POST['commentEdit']))
-					{
-						$commentController->editCommentProgram($_POST['commentEdit'],$_GET['id']);
-					}
+					
+					$commentController->editCommentProgram($_POST['commentEdit'],$_GET['id']);
 				}
 				else
 				{
@@ -267,9 +265,9 @@ try
 				{
 					$areaController->setMap($_POST['search']);
 				}
-				elseif (isset($_GET['search']))
+				elseif(isset($_POST['lat']) && isset($_POST['lng']))
 				{
-					$areaController->setMap($_GET['search']);
+					$areaController->setMapwLatLng($_POST['lat'],$_POST['lng']);
 				}
 				else
 				{
@@ -284,14 +282,14 @@ try
 				}
 				else
 				{
-					$areaController->formAddArea($_POST['lat'],$_POST['lng'],$_POST['search']);
+					$areaController->formAddArea($_POST['lat'],$_POST['lng']);
 				}
 				break;
 
 			case 'area':
-				if(isset($_GET['id']) && isset($_GET['search']))
+				if(isset($_GET['id']))
 				{
-					$areaController->showArea($_GET['id'],$_GET['search']);
+					$areaController->showArea($_GET['id']);
 				}
 				else
 				{
@@ -302,7 +300,11 @@ try
 			case 'addNote':
 				if (isset($_GET['id']) && $_GET['id'] > 0)
 				{
-					$noteController->addNote($_GET['id'],$_SESSION['id_user'],$_SESSION['pseudo'],$_POST['noteArea'],htmlspecialchars($_POST['content']));
+					$noteController->addNote($_GET['id'],$_SESSION['id_user'],htmlspecialchars($_POST['noteArea']),htmlspecialchars($_POST['content']));
+				}
+				else
+				{
+					$homeController->error();
 				}
 				break;
 
@@ -576,13 +578,16 @@ try
 				}			
 
 				break;
+			default :
+				$homeController->home();
+				break;
 
 		}
 
 	}
 	else
 	{
-		$homeController->home();
+		$homeController->setHome();
 	}
 	
 }

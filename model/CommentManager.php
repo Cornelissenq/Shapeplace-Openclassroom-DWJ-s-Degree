@@ -13,7 +13,7 @@ Class CommentManager extends Manager
 	{
 		$db = $this->dbConnect();
 
-		$req = $db->prepare('SELECT *,user.pseudo AS pseudo,user.avatar AS avatar,DATE_FORMAT(comments.date_creation, \'%d/%m/%Y à %Hh%imin\') AS date_creation_fr,DATE_FORMAT(comments.date_modification, \'%d/%m/%Y à %Hh%imin\') AS date_modification_fr FROM comments LEFT JOIN user ON (comments.id_user = user.id) WHERE comments.id_program = ? AND report = "0" ORDER BY date_creation ASC ');
+		$req = $db->prepare('SELECT *,comments.id AS id,user.id AS id_user,user.pseudo AS pseudo,user.avatar AS avatar,DATE_FORMAT(comments.date_creation, \'%d/%m/%Y à %Hh%imin\') AS date_creation_fr,DATE_FORMAT(comments.date_modification, \'%d/%m/%Y à %Hh%imin\') AS date_modification_fr FROM comments LEFT JOIN user ON (comments.id_user = user.id) WHERE comments.id_program = ? AND report = "0" ORDER BY date_creation ASC ');
 		$req->execute(array($idProgram));
 
 		return $req;
@@ -23,7 +23,7 @@ Class CommentManager extends Manager
 	{
 		$db = $this->dbConnect();
 
-		$comments = $db->query('SELECT *,DATE_FORMAT(date_creation, \'%d/%m/%Y à %Hh%imin\') AS date_creation_fr,DATE_FORMAT(date_modification, \'%d/%m/%Y à %Hh%imin\') AS date_modification_fr FROM comments WHERE  report = "1" ORDER BY date_creation ASC ');
+		$comments = $db->query('SELECT *,comments.id AS id,user.id AS id_user,user.pseudo AS pseudo,user.avatar AS avatar,DATE_FORMAT(comments.date_creation, \'%d/%m/%Y à %Hh%imin\') AS date_creation_fr,DATE_FORMAT(comments.date_modification, \'%d/%m/%Y à %Hh%imin\') AS date_modification_fr FROM comments LEFT JOIN user ON (comments.id_user = user.id) WHERE report = "1" ORDER BY date_creation ASC ');
 		
 
 		return $comments;
@@ -33,7 +33,7 @@ Class CommentManager extends Manager
 	{
 		$db = $this->dbConnect();
 
-		$comments = $db->query('SELECT *,DATE_FORMAT(date_creation, \'%d/%m/%Y à %Hh%imin\') AS date_creation_fr,DATE_FORMAT(date_modification, \'%d/%m/%Y à %Hh%imin\') AS date_modification_fr FROM comments WHERE  report = "0" ORDER BY date_creation DESC ');
+		$comments = $db->query('SELECT *,comments.id AS id,user.id AS id_user,user.pseudo AS pseudo,user.avatar AS avatar,DATE_FORMAT(comments.date_creation, \'%d/%m/%Y à %Hh%imin\') AS date_creation_fr,DATE_FORMAT(comments.date_modification, \'%d/%m/%Y à %Hh%imin\') AS date_modification_fr FROM comments LEFT JOIN user ON (comments.id_user = user.id) WHERE report = "0" ORDER BY date_creation ASC ');
 
 		return $comments;
 	}
@@ -51,12 +51,12 @@ Class CommentManager extends Manager
 
 	/*  --------------------- Add comment --------------------- */
 
-	public function addComment($idProgram,$idSection,$idUser,$pseudo,$comment)
+	public function addComment($idProgram,$idSection,$idUser,$comment)
 	{
 		$db = $this->dbConnect();
 
-		$req = $db->prepare('INSERT INTO comments(id_program,id_section,id_user,pseudo,comment,report) VALUES(?, ?, ?, ?, ?,"0")');
-		$addedComment = $req->execute(array($idProgram,$idSection,$idUser,$pseudo,$comment));
+		$req = $db->prepare('INSERT INTO comments(id_program,id_section,id_user,comment,report) VALUES(?, ?, ?, ?,"0")');
+		$addedComment = $req->execute(array($idProgram,$idSection,$idUser,$comment));
 	}
 	
 	/*  --------------------- Edit comment --------------------- */
@@ -88,6 +88,7 @@ Class CommentManager extends Manager
 
 		$req = $db->prepare('UPDATE comments SET report = "1" WHERE id = ?');
 		$req->execute(array($idComment));
+		return $req;
 	}
 
 	public function countReportedComments()

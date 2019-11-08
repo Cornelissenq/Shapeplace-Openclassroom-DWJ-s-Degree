@@ -87,6 +87,10 @@ body
 	background: darkslategray;
 	color: white;
 }
+.center
+{
+	text-align: center;
+}
 #sessionStorage button
 {
 	border : 0px;	
@@ -172,7 +176,7 @@ footer a:hover
 .blockSection,.blockProgram
 {
 	padding: 10px 0 10px 0;
-	height: 350px;
+	height: 280px;
 	border: 3px lightgrey outset;
 	border-top-right-radius: 60px;
 	border-bottom-left-radius: 20px;
@@ -423,7 +427,7 @@ footer a:hover
 }
 .imgComment,.imgNote
 {
-	height: 40px;
+	height: 50px;
 }
 /* -------------------------- Login -------------------------*/
 
@@ -765,6 +769,10 @@ footer a:hover
 	height: 100%;
     z-index: 2;
 }
+.btnNote,.btnComment
+{
+	text-align: right;
+}
 
 /* -------------------------- Home -------------------------*/
 
@@ -993,3 +1001,7 @@ footer a:hover
 
 /* -------------------------- Form admin -------------------------*/
 
+.btnBack
+{
+	margin-top: 30px;
+}

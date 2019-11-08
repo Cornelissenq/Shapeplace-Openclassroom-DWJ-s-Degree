@@ -12,7 +12,7 @@ ob_start();
 	<div class="row">
 		<div class="offset-1 col-10 offset-lg-1 col-lg-6" >
 			<div class="offset-lg-1 col-lg-10  formMap" id="formMapHome">
-				<form action='index.php?action=map' method='post'>
+				<form action='../carte/' method='post'>
 					<label for="address">Entrez votre adresse pour trouver les spots de workout à proximité</label>
 					<div class="form-group row">
 						<input type="text" name="search" id="search" class="offset-1 col-8 col-lg-10 form-control" placeholder="Adresse, Ville CP">
@@ -39,7 +39,7 @@ ob_start();
 				<p class="offset-lg-1 col-lg-10">Varie tes scéances en utilisant nos divers programmes.</p>
 			</div>
 			<div class="row">
-				<a href="index.php?action=section" class="offset-6 col-5 offset-lg-7 col-lg-4 btn btn-dark"><i class="fas fa-plus-circle"></i>  Accéder</a>
+				<a href="../section/" class="offset-6 col-5 offset-lg-7 col-lg-4 btn btn-dark"><i class="fas fa-plus-circle"></i>  Accéder</a>
 			</div>
 			
 		</div>
@@ -54,7 +54,7 @@ ob_start();
 				<p class="offset-lg-1 col-lg-10">Rejoins-nous sur instagram et intéragit avec la communauté ShapePlace. N'hésite pas à partager ta progression !</p>
 			</div>
 			<div class="row">
-				<a href="index.php?action=feedInsta" class="offset-6 col-5 offset-lg-7 col-lg-4 btn btn-dark"><i class="fas fa-plus-circle"></i>  Accéder</a>
+				<a href="../rejoins-nous/" class="offset-6 col-5 offset-lg-7 col-lg-4 btn btn-dark"><i class="fas fa-plus-circle"></i>  Accéder</a>
 			</div>
 		</div>
 	</div>

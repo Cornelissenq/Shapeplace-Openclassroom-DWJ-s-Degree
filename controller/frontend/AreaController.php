@@ -15,33 +15,45 @@ Class AreaController
 		require('view/frontend/mapView.php');
 	}
 
-	public function formAddArea($lat,$lng,$search)
+	public function setMapwLatLng($lattitude,$longitude)
+	{
+		$areaManager = new Cornelissen\Shapeplace\Model\AreaManager();
+		
+		$lat = $lattitude;
+		$lng = $longitude;
+		$markers = $areaManager->getPlaces();
+		
+		require('view/frontend/mapView.php');
+	}
+
+	public function formAddArea($lattitude,$longitude)
 	{
 		$areaManager = new Cornelissen\Shapeplace\Model\AreaManager();
 
+		$lat = $lattitude;
+		$lng = $longitude;
 		$listCategory = $areaManager->listCategory();
 
 		require('view/frontend/formAddAreaView.php');
 	}
 
-	public function addArea($name,$lat,$lng,$content,$city,$category)
+	public function addArea($name,$lattitude,$longitude,$content,$city,$category)
 	{
 		$areaManager = new Cornelissen\Shapeplace\Model\AreaManager();
 
-		$addArea = $areaManager->addPlace($name,$lat,$lng,$content,$city,$category);
+		$addArea = $areaManager->addPlace($name,$lattitude,$longitude,$content,$city,$category);
 
 
 		$_SESSION['success'] = 'Merci, le lieu est ajouté';
 
-		header('Location: index.php?action=home');
+		$map = $this->setMapwLatLng($lattitude,$longitude);
  	}
 
- 	public function showArea($idArea,$search)
+ 	public function showArea($idArea)
  	{
  		$areaManager = new Cornelissen\Shapeplace\Model\AreaManager();
  		$noteManager = new Cornelissen\Shapeplace\Model\NoteManager();
 
- 		$location = $search;
  		$area = $areaManager->getPlace($idArea);
  		$notes = $noteManager->getNotes($idArea);
  		$avgNote = $noteManager->averageNote($idArea);

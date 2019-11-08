@@ -8,11 +8,11 @@ Class CommentController
 	/*  --------------------- Add comment --------------------- */
 
 
-	public function addCommentProgram($idProgram,$idSection,$idUser,$pseudo,$comment)
+	public function addCommentProgram($idProgram,$idSection,$idUser,$comment)
 	{
 		$commentManager = new Cornelissen\Shapeplace\Model\CommentManager();
 
-		$add = $commentManager->addComment($idProgram,$idSection,$idUser,$pseudo,$comment);
+		$add = $commentManager->addComment($idProgram,$idSection,$idUser,$comment);
 
 		
 		$_SESSION['success'] = 'Le commentaire est bien ajouté';
@@ -23,7 +23,7 @@ Class CommentController
 		}
 		else
 		{
-			header('Location: index.php?action=home');
+			header('Location: ../programme/'. $idProgram .'-'. $idSection);
 		}
 	}
 
@@ -32,20 +32,38 @@ Class CommentController
 	public function editCommentProgram($comment,$idComment)
 	{
 		$commentManager = new Cornelissen\Shapeplace\Model\CommentManager();
-
-		$edited = $commentManager->editCommentProgram($comment,$idComment);
-
 		
-		$_SESSION['success'] = 'Le commentaire est modifié.';
-
-		if (isset($_SERVER["HTTP_REFERER"]))
+		if (!empty($_POST['commentEdit']))
 		{
-			header('Refresh: 0 ' . $_SERVER["HTTP_REFERER"]);
+			$edited = $commentManager->editCommentProgram($comment,$idComment);
+
+			$_SESSION['success'] = 'Le commentaire est modifié.';
+
+			if (isset($_SERVER["HTTP_REFERER"]))
+			{
+				header('Refresh: 0 ' . $_SERVER["HTTP_REFERER"]);
+			}
+			else
+			{
+				header('Location: ../accueil/');
+			}
 		}
 		else
 		{
-			header('Location: index.php?action=home');
+			$_SESSION['error'] = 'Le commentaire n\'est pas rempli.';
+
+			if (isset($_SERVER["HTTP_REFERER"]))
+			{
+				header('Refresh: 0 ' . $_SERVER["HTTP_REFERER"]);
+			}
+			else
+			{
+				header('Location: ../accueil/');
+			}
 		}
+
+		
+		
 	}
 
 	/*  --------------------- Report comment --------------------- */
@@ -56,6 +74,7 @@ Class CommentController
 
 		$report = $commentManager->reportComment($idComment);
 
+
 		
 		$_SESSION['success'] = 'Le commentaire est signalé.';
 
@@ -65,7 +84,7 @@ Class CommentController
 		}
 		else
 		{
-			header('Location: index.php?action=home');
+			header('Location: ../accueil/');
 		}
 		
 	}
@@ -87,7 +106,7 @@ Class CommentController
 		}
 		else
 		{
-			header('Location: index.php?action=home');
+			header('Location: ../accueil/');
 		}
 	}
 

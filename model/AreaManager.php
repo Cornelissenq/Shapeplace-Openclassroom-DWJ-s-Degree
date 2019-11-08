@@ -27,12 +27,12 @@ Class AreaManager extends Manager
 		return $area;
 	}
 
-	public function addPlace($name,$lat,$lng,$content,$city,$category)
+	public function addPlace($name,$lattitude,$longitude,$content,$city,$category)
 	{
 		$db = $this->dbConnect();
 
 		$insert = $db->prepare('INSERT INTO area(name,lat,lng,content,city,id_category) VALUES(?, ?, ?, ?, ?, ?)');
-		$add = $insert->execute(array($name,$lat,$lng,$content,$city,$category));
+		$add = $insert->execute(array($name,$lattitude,$longitude,$content,$city,$category));
 	}
 
 	public function editArea($name,$description,$city,$idCategory,$idArea)
@@ -55,8 +55,8 @@ Class AreaManager extends Manager
 	{
 		$db = $this->dbConnect();
 
-		$req = $db->query('SELECT * FROM tools');
+		$listCategory = $db->query('SELECT * FROM tools');
 
-		return $req;
+		return $listCategory;
 	}
 }

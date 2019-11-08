@@ -56,7 +56,7 @@ Class ProgramManager extends Manager
 	{
 		$db = $this->dbConnect();
 
-		$req = $db->prepare('UPDATE program SET name = ?,extract = ?, description = ?,good_point = ?,bad_point = ?,program = ?, avatar = ? WHERE id = ?');
+		$req = $db->prepare('UPDATE program SET name = ?,extract = ?, description = ?,good_point = ?,bad_point = ?,program = ? WHERE id = ?');
 		$req->execute(array($name,$extract,$description,$goodPoint,$badPoint,$program,$idProgram));
 	}
 

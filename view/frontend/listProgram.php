@@ -9,7 +9,7 @@ ob_start();
 		<div class="col-lg-12 cadreTitle">
 			<div class="row">
 				<div class="col-lg-3 backListProgram">
-					<a href="index.php?action=section" class="btn btn-light backSection"><i class="fas fa-arrow-circle-left"></i></a>
+					<a href="../section/" class="btn btn-light backSection"><i class="fas fa-arrow-circle-left"></i></a>
 				</div>
 			</div>
 			<div class='row'>
@@ -38,10 +38,10 @@ ob_start();
 		?>
 			<div class="col-lg-4">
 				<div class="row">
-					<div class="offset-lg-2 col-lg-8 cadreProgram">
+					<div class="offset-2 col-8 offset-lg-0 col-lg-12 cadreProgram">
 						<div class="row">
 							<div class="col-lg-12 imgProgram">
-								<a href="index.php?action=program&amp;id=<?=$program['id']?>&amp;section=<?=$program['id_section']?>"><img src="<?= $program['avatar']?>" alt="<?= $program['name'] ?>"/></a>
+								<a href="../programme/<?=$program['id']?>-<?=$program['id_section']?>"><img src="../<?= $program['avatar']?>" alt="<?= $program['name'] ?>"/></a>
 							</div>
 						</div>
 						<div class="row whiteBg">
@@ -58,7 +58,7 @@ ob_start();
 								</div>
 								<div class="row linkPgm">
 									<div class="offset-lg-4 col-lg-7 ">
-										<a href="index.php?action=program&amp;id=<?=$program['id']?>&amp;section=<?=$program['id_section']?>" class="btn btn-info "><i class="fas fa-plus-circle"> Accéder</i></a>
+										<a href="../programme/<?=$program['id']?>-<?=$program['id_section']?>" class="btn btn-info "><i class="fas fa-plus-circle"> Accéder</i></a>
 									</div>
 								</div>
 							</div>

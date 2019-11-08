@@ -17,10 +17,10 @@ ob_start();
 		?>
 			<div class="col-lg-4 Section">
 				<div class="row">
-					<div class="offset-lg-2 col-lg-8 cadreSection">
+					<div class="offset-1 col-10 offset-lg-0 col-lg-12 cadreSection">
 						<div class="row ">
 							<div class="col-lg-12 imgSection">
-								<a href="index.php?action=list&amp;id=<?=$section['id']?>"><img src="<?= $section['img']?>" alt="<?= $section['name'] ?>"</></a>
+								<a href="../section/<?=$section['id']?>"><img src="../<?= $section['img']?>" alt="<?= $section['name'] ?>"</></a>
 							</div>
 						</div>
 						<div class="row whiteBg">
@@ -37,7 +37,7 @@ ob_start();
 								</div>
 								<div class="row btnSection">
 									<div class="offset-lg-6 col-lg-5">
-										<a href="index.php?action=list&amp;id=<?=$section['id']?>" class="btn btn-info">Accéder</a>
+										<a href="../section/<?=$section['id']?>" class="btn btn-info">Accéder</a>
 									</div>
 								</div>
 							</div>

@@ -11,12 +11,13 @@ ob_start();
 		<div class="col-lg-12" id="areaView">
 			<div class="row">
 				<div class="col-5 col-lg-3 buttonBack">
-					<form action="index.php?action=map" method="post">
-						<input type="hidden" name="search" value="<?= $search ?>">
+					<form action="../carte/" method="post">
+						<input type="hidden" name="lat" value="<?= $area['lat'] ?>">
+						<input type="hidden" name="lng" value="<?= $area['lng'] ?>">
 						<button type="submit" class="btn btn-info"> Retour à la carte </button>
 					</form>
 				</div>
-				<div class="offset-2 col-5 offset-lg-2 col-lg-5 categoryArea">
+				<div class="offset-2 col-5 offset-lg-2 col-lg-7 categoryArea">
 					<p>Catégorie : <?= $area['type'] ?></p>
 				</div>
 			</div>
@@ -29,13 +30,10 @@ ob_start();
 			<div class="row">
 				<div class="offset-1 col-10 offset-lg-3 col-lg-6" id="mymap">
 					<script type="text/javascript">
-						var osmLayer = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', { 
-	       					attribution: '© OpenStreetMap contributors',
-	        				maxZoom: 19,
-	        				accessToken:'pk.eyJ1IjoiZmlzaDgxMTAwIiwiYSI6ImNqdzdxN2NnbDBuNDI0Ym80cnoxbzVicnIifQ.DTl4y65RoISbbNt1RtTzQg'
-	        			});
-	        			var mymap = L.map('mymap').setView([<?=$area['lat'] ?>,<?=$area['lng']?>], 15)
-	        				mymap.addLayer(osmLayer);
+						var mymap = L.map('mymap', {
+				  				layers: MQ.mapLayer()
+						});
+	        			mymap.setView([<?=$area['lat'] ?>,<?=$area['lng']?>], 15)
 
 	        			<?php
 	        			if ($area['id_category'] === "1")
@@ -43,7 +41,7 @@ ob_start();
 	        			?>
 	        				var markerIcon = L.icon
 							({
-								iconUrl: "public/images/marker/1.png",
+								iconUrl: "../public/images/marker/1.png",
 								iconSize: [50,50]
 							});
 	        				var marker = L.marker([<?=$area['lat'] ?>,<?=$area['lng']?>], {icon:markerIcon}).addTo(mymap);
@@ -54,7 +52,7 @@ ob_start();
 	        			?>
 	        				var markerIcon = L.icon
 							({
-								iconUrl: "public/images/marker/2.png",
+								iconUrl: "../public/images/marker/2.png",
 								iconSize: [50,50]
 							});
 	        				var marker = L.marker([<?=$area['lat'] ?>,<?=$area['lng']?>], {icon:markerIcon}).addTo(mymap);
@@ -65,7 +63,7 @@ ob_start();
 	        			?>
 	        				var markerIcon = L.icon
 							({
-								iconUrl: "public/images/marker/3.png",
+								iconUrl: "../public/images/marker/3.png",
 								iconSize: [50,50]
 							});
 	        				var marker = L.marker([<?=$area['lat'] ?>,<?=$area['lng']?>], {icon:markerIcon}).addTo(mymap);
@@ -76,7 +74,7 @@ ob_start();
 	        			?>
 	        				var markerIcon = L.icon
 							({
-								iconUrl: "public/images/marker/4.png",
+								iconUrl: "../public/images/marker/4.png",
 								iconSize: [50,50]
 							});
 	        				var marker = L.marker([<?=$area['lat'] ?>,<?=$area['lng']?>], {icon:markerIcon}).addTo(mymap);
@@ -121,7 +119,7 @@ ob_start();
 	</div>
 
 	<div class="row">
-		<div class="offset-lg-2 col-lg-8 formComment">
+		<div class="col-lg-12 formComment">
 			<div class="row">
 				<div class="offset-lg-4 col-lg-4">
 					<button type="button" id="enableFormComment" class="btn btn-info">Ajouter un avis</button>
@@ -132,7 +130,7 @@ ob_start();
 					<?php if (isset($_SESSION['id_user']))
 					{	
 					?>
-						<form action="index.php?action=addNote&amp;id=<?=$area['id']?>" method="post">
+						<form action="../ajouterNote/<?=$area['id']?>" method="post">
 							<fieldset class="form-group">
 	    						<div class="row">
 	      							<legend class="col-form-label col-sm-2 pt-0">Note</legend>
@@ -184,7 +182,7 @@ ob_start();
 						<p class="noLogin">Vous devez vous identifier afin de pouvoir publier un avis.</p>
 						<div class="row">
 							<div class="offset-lg-4 col-lg-4">
-								<a href="index.php?action=login" class="btn btn-outline-danger"> Identification </a>
+								<a href="../login/" class="btn btn-outline-danger"> Identification </a>
 							</div>
 						</div>
 						
@@ -201,18 +199,18 @@ ob_start();
 			<div class="titleNote">
 				<h5> Avis : </h5>
 			</div>
-			<?php 
+			<?php 	
 			while($note = $notes->fetch())
 			{
 			?>
 				<div class="row">
-					<div class="offset-lg-1 col-lg-10">
+					<div class="offset-1 col-10 offset-lg-0 col-lg-12">
 						<div class="row headerNote">
 							<div class="star" id="star">
 								<div class="starNote" style="width: calc( (<?= $note['note'] ?> * 100%) / 5 )"></div>
 							</div>
 							<div class="col-3 col-lg-4 pseudoNote">
-								<a href="index.php?action=userProfil&amp;id=<?=$note['id_user']?>" target="_blank"><?=$note['pseudo']?></a>
+								<a href="../profil/<?=$note['id_user']?>" target="_blank"><?=$note['pseudo']?></a>
 							</div>
 							<div class="col-5 col-lg-3 dateNote">
 								<p> Écrit le <?=$note['date_creation_fr']?></p>
@@ -223,8 +221,8 @@ ob_start();
 								if ($_SESSION['id_user'] === $note['id_user'])
 								{
 								?>
-									<div class="col-1 col-lg-2 btnNote">
-										<a href="index.php?action=deleteNote&amp;id=<?=$note['id']?>" class="btn btn-outline-danger" onclick="return confirm('Voulez-vous supprimer votre avis ?');"><i class="far fa-trash-alt"></i></a>
+									<div class="col-1 offset-lg-2 col-lg-2 btnNote">
+										<a href="../supprimerNote/<?=$note['id']?>" class="btn btn-outline-danger" onclick="return confirm('Voulez-vous supprimer votre avis ?');"><i class="far fa-trash-alt"></i></a>
 									</div>
 								<?php
 								}	
@@ -232,9 +230,9 @@ ob_start();
 							?>
 						</div>
 						<div class="row contentNote">
-							<a href="index.php?action=userProfil&amp;id=<?=$note['id_user']?>" target="_blank" class="col-1 col-lg-1"><img src="<?=$note['avatar']?>" alt="<?=$note['pseudo']?>" class="imgNote"></a>
+							<a href="../profil/<?=$note['id_user']?>" target="_blank" class="col-1 col-lg-1"><img src="../<?=$note['avatar']?>" alt="<?=$note['pseudo']?>" class="imgNote"></a>
 							<div class="offset-1 col-9 offset-lg-1 col-lg-9">
-								<p><?= $note['content'] ?></p>
+								<p><?= nl2br($note['content']) ?></p>
 							</div>
 						</div>
 					</div>

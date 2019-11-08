@@ -30,16 +30,23 @@ Class AdminAreaController
 		$edit = $areaManager->editArea($name,$description,$city,$idCategory,$idArea);
 
 		$_SESSION['success'] = 'Le spot est modifié';
-		header('Location: index.php?action=adminSpot');
+		header('Location: ../adminSpot/');
 	}
 
 	public function deleteArea($idArea)
 	{
 		$areaManager = new Cornelissen\Shapeplace\Model\AreaManager();
 
-		$delete = $areaManager->deleteArea($idArea);
+		if ($_SESSION['role'] == 'superAdmin')
+		{
+			$delete = $areaManager->deleteArea($idArea);
+			$_SESSION['success'] = 'Le spot est supprimé';
+		}
+		else
+		{
+			$_SESSION['error'] = 'Vous n\'avez pas les droits nécessaires';
+		}
 
-		$_SESSION['success'] = 'Le spot est supprimé';
-		header('Location: index.php?action=adminSpot');
+		header('Location: ../adminSpot/');
 	}
 }

@@ -11,7 +11,7 @@ ob_start();
 		<div class="offset-lg-2 col-lg-8">
 			<div class="row">
 				<div class="offset-lg-1 col-lg-10 cadreLogin">
-					<form action="index.php?action=login" method="post">
+					<form action="" method="post">
 						<div class="form-row">
 	    					<div class="form-group offset-md-1 col-md-5">
 	      						
@@ -28,8 +28,8 @@ ob_start();
 	  						{
 	  						?>
 	  							<div class="form-check">
-		      						<input class="form-check-input" type="checkbox" id="stayOnline" name="stayOnline">
-		      						<label class="form-check-label" for="stayOnline">Rester connecté(e)</label>
+		      						<input class="form-check-input" type="checkbox" id="stayLog" name="stayLog">
+		      						<label class="form-check-label" for="stayLog">Rester connecté(e)</label>
 		    					</div>
 		    				<?php
 	  						}
@@ -37,8 +37,8 @@ ob_start();
 	  						{
 	  						?>
 	  							<div class="form-check">
-		      						<input class="form-check-input" type="checkbox" id="stayOnline" name="stayOnline" disabled>
-		      						<label class="form-check-label" for="stayOnline">Rester connecté(e)</label>
+		      						<input class="form-check-input" type="checkbox" id="stayLog" disabled>
+		      						<label class="form-check-label" for="stayLog">Rester connecté(e)</label>
 		    					</div>
 		   					<?php
 		   					}
@@ -50,7 +50,7 @@ ob_start();
 
 					<div>
 						<p>Vous n'êtes pas inscrit et vous souhaitez nous rejoindre :</p>
-						<a href="index.php?action=register" class="btn btn-outline-success">S'inscrire</a>
+						<a href="../register/" class="btn btn-outline-success">S'inscrire</a>
 					</div>
 				</div>
 			</div>	

@@ -24,7 +24,7 @@ ob_start();
 		</div>		
 		<div class="row">
 			<div class="offset-lg-2 col-lg-4">
-				<a href="index.php?action=adminReportedComment" class="btn btn-outline-info col-lg-6">Y accéder</a>
+				<a href="../adminReportedComment/" class="btn btn-outline-info col-lg-6">Y accéder</a>
 			</div>
 		</div>
 		<div class="row">

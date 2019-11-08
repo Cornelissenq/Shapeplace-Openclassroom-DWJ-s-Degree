@@ -8,7 +8,12 @@ ob_start();
 <div class="row">
 	<div class="col-lg-12">
 		<div class="row">
-			<h4 class="offset-lg-4 col-lg-4">Modifier le spot <?= $area['name'] ?> :</h4>
+			<div class="offset-lg-1 col-lg-3 btnBack">
+				<a href='../adminSection/' class="btn btn-info">Revenir à la gestion des spots</a>
+			</div>
+		</div>
+		<div class="row">
+			<h4 class="offset-lg-2 col-lg-8">Modifier le spot "<?= $area['name'] ?>" :</h4>
 		</div>
 		<div class="row">
 			<div class="offset-lg-3 col-lg-6" id="mymap">
@@ -72,7 +77,7 @@ ob_start();
 			</div>
 		</div>
 		<div class="row">
-			<form action="index.php?action=editSpot&amp;id=<?= $area['id'] ?>" method="post" class="offset-lg-1 col-lg-10">
+			<form action="" method="post" class="offset-lg-1 col-lg-10">
 				<div class="form-group">
 					<label for="name">Nom du spot :</label>
 					<input type="text" class="form-control" name="name" id="name" value="<?= $area['name'] ?>" required="required">

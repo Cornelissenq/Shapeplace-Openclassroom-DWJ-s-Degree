@@ -11,8 +11,9 @@ ob_start();
 		<div class="col-12 col-lg-12" id="formAdd">
 			<div class="row">
 				<div class="col-lg-3">
-					<form action="index.php?action=map" method="post" class="buttonBack">
-						<input type="hidden" name="search" value="<?= $search ?>">
+					<form action="../carte/" method="post" class="buttonBack">
+						<input type="hidden" name="lat" value="<?= $lat ?>">
+						<input type="hidden" name="lng" value="<?= $lng ?>">
 						<button type="submit" class="btn btn-info"> Retour à la carte </button>
 					</form>
 				</div>
@@ -23,28 +24,25 @@ ob_start();
 			
 			<div class="row">
 				<div class="offset-lg-1 col-lg-10">
-					<form action="index.php?action=addArea" class="formAddV" method="post">
+					<form action="../ajouterSpot/" class="formAddV" method="post">
 						<div class="row">
-							<div class="offset-1 col-10 col-lg-12" id="mymap">
+							<div class="offset-1 col-10 offset-lg-3 col-lg-6" id="mymap">
 								<script type="text/javascript">
-									var osmLayer = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', { 
-				       					attribution: '© OpenStreetMap contributors',
-				        				maxZoom: 19,
-				        				accessToken:'pk.eyJ1IjoiZmlzaDgxMTAwIiwiYSI6ImNqdzdxN2NnbDBuNDI0Ym80cnoxbzVicnIifQ.DTl4y65RoISbbNt1RtTzQg'
-				        			});
-				        			var mymap = L.map('mymap').setView([<?=$_POST['lat'] ?>,<?=$_POST['lng']?>], 15)
-				        			mymap.addLayer(osmLayer);
+									var mymap = L.map('mymap', {
+				  						layers: MQ.mapLayer()
+									});
+	        						mymap.setView([<?=$lat ?>,<?=$lng?>], 15)
 				        			var markerAddIcon = L.icon
 									({
-										iconUrl: "public/images/marker/markerAdd.png",
+										iconUrl: "../public/images/marker/markerAdd.png",
 										iconSize: [50,50]
 									});
-				        			var markerAdd = L.marker([<?=$_POST['lat'] ?>,<?=$_POST['lng']?>], {icon:markerAddIcon}).addTo(mymap);
+				        			var markerAdd = L.marker([<?=$lat ?>,<?=$lng?>], {icon:markerAddIcon}).addTo(mymap);
 								</script>
 							</div>
 						</div>
-						<input type="hidden" name="lat" value="<?= $_POST['lat'] ?>">
-						<input type="hidden" name="lng" value="<?= $_POST['lng'] ?>">
+						<input type="hidden" name="lat" value="<?= $lat ?>">
+						<input type="hidden" name="lng" value="<?= $lng ?>">
 
 						<div class="form-group row">
 							<label for="name" class="col-lg-3"> Nom du spot : </label>

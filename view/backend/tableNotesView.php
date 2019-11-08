@@ -27,7 +27,7 @@ ob_start();
 				{
 				?>
 					<tr>
-						<th scope="row"><a class="bulleNum" href="index.php?action=area&amp;id=<?= $note['id_area'] ?>&amp;search=France" target="_blank"><?= $note['id'] ?></th>
+						<th scope="row"><a class="bulleNum" href="../spot/<?= $note['id_area'] ?>" target="_blank"><?= $note['id'] ?></th>
 						<th><?= $note['pseudo'] ?></th>
 						<th class="leftAlign"><?= nl2br($note['content']) ?></th>
 						<th>
@@ -39,7 +39,7 @@ ob_start();
 						if($_SESSION['role'] == 'superAdmin')
 						{
 						?>
-							<th><a href="index.php?action=deleteNotes&amp;id=<?= $note['id'] ?>" class="btn btn-outline-danger" onclick="return confirm('Voulez-vous supprimer l\'avis de <?= $note['pseudo'] ?>?')"><i class="fas fa-trash-alt"></i></a></th>
+							<th><a href="../supprimerAvis/<?= $note['id'] ?>" class="btn btn-outline-danger" onclick="return confirm('Voulez-vous supprimer l\'avis de <?= $note['pseudo'] ?>?')"><i class="fas fa-trash-alt"></i></a></th>
 						<?php
 						}
 						else

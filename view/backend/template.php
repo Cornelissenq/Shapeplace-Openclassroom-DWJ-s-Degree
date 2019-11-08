@@ -14,9 +14,9 @@ if (isset($_COOKIE['id_user']) && !empty($_COOKIE['id_user']))
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 		<title><?= $title ?> - ShapePlace</title>
-		<link href="public/css/style.css" rel="stylesheet" />
-        <link href="bootstrap/css/bootstrap.css" rel="stylesheet"/>
-        <link rel="icon" type="image/png" href="public/images/icone.png" />
+		<link href="../public/css/style.css" rel="stylesheet" />
+        <link href="../bootstrap/css/bootstrap.css" rel="stylesheet"/>
+        <link rel="icon" type="image/png" href="../public/images/icone.png" />
         <link href="https://fonts.googleapis.com/css?family=Mansalva&display=swap" rel="stylesheet">
         <script src="https://kit.fontawesome.com/a204d33b50.js"></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.css" />
@@ -82,16 +82,16 @@ if (isset($_COOKIE['id_user']) && !empty($_COOKIE['id_user']))
 		<div class="jumbotron" id="viewBackend">
 			<div class="row">
 				<div class="col-lg-2" id="navB">
-					<div class="row">
-						<a href="index.php?action=home" class="btn btn-dark offset-lg-1 col-lg-10">Retour au site</a>
-					</div>
-					<div class="row">
-						<a href="index.php?action=logout" class="btn btn-dark offset-lg-1 col-lg-10">Déconnection</a>
-					</div>
+					<ul>
+						<li><a href="../accueil/" >Retour au site</a></li>
+					
+					
+						<li><a href="../deconnexion" >Déconnexion</a></li>
+					</ul>
 					
 					<div class="row">
 						<div class="logoB">
-							<a href="index.php?action=admin" ><img src="public/images/logo.png" alt="logo shapeplace" class="col-lg-12"/></a>
+							<a href="../admin/" ><img src="../public/images/logo.png" alt="logo shapeplace" class="col-lg-12"/></a>
 						</div>
 					</div>
 
@@ -108,15 +108,15 @@ if (isset($_COOKIE['id_user']) && !empty($_COOKIE['id_user']))
 									if($_SESSION['role'] == 'superAdmin')
 									{
 									?>
-										<li><a href="index.php?action=adminUser"><i class="fas fa-chevron-right"></i> Utilisateurs</a></li>
+										<li><a href="../adminUser/"><i class="fas fa-chevron-right"></i> Utilisateurs</a></li>
 									<?php
 									}
 									?>
-									<li><a href="index.php?action=adminSection"><i class="fas fa-chevron-right"></i> Sections</a></li>
-									<li><a href="index.php?action=adminProgram"><i class="fas fa-chevron-right"></i> Programmes</a></li>
-									<li><a href="index.php?action=adminComment"><i class="fas fa-chevron-right"></i> Commentaires</a></li>
-									<li><a href="index.php?action=adminSpot"><i class="fas fa-chevron-right"></i> Spots</a></li>
-									<li><a href="index.php?action=adminNotes"><i class="fas fa-chevron-right"></i> Avis</a></li>
+									<li><a href="../adminSection/"><i class="fas fa-chevron-right"></i> Sections</a></li>
+									<li><a href="../adminProgram/"><i class="fas fa-chevron-right"></i> Programmes</a></li>
+									<li><a href="../adminComment/"><i class="fas fa-chevron-right"></i> Commentaires</a></li>
+									<li><a href="../adminSpot/"><i class="fas fa-chevron-right"></i> Spots</a></li>
+									<li><a href="../adminNotes/"><i class="fas fa-chevron-right"></i> Avis</a></li>
 								</ul>
 							</div>
 						</div>
@@ -133,7 +133,7 @@ if (isset($_COOKIE['id_user']) && !empty($_COOKIE['id_user']))
 
 		<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 		<script src="https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster.js"></script>
-		<script src="bootstrap/js/bootstrap.js"></script>
-		<script src="public/js/sessionStorage.js"></script>
+		<script src="../bootstrap/js/bootstrap.js"></script>
+		<script src="../public/js/sessionStorage.js"></script>
 	</body>
 </html>

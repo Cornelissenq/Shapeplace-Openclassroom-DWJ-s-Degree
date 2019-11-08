@@ -38,6 +38,17 @@ Class UserManager extends Manager
 
 		return $emailTest;
 	}
+
+	public function checkRoles($pseudo,$role,$id)
+	{
+		$db = $this->dbConnect();
+
+		$req = $db->prepare('SELECT * FROM user WHERE pseudo = ? AND role = ? AND id = ?');
+		$req->execute(array($pseudo,$role,$id));
+
+		return $role;
+	}
+
 	public function register($pseudo,$pw,$name,$surname,$email,$date_birth,$city)
 	{
 		$db = $this->dbConnect();

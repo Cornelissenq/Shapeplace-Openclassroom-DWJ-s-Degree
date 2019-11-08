@@ -8,7 +8,10 @@ Class HomeController
 	{
 		require('view/frontend/homeView.php');
 	}
-
+	public function setHome()
+	{
+		header('location : /accueil/');
+	}
 	public function error()
 	{
 		require('view/frontend/errorView.php');
@@ -24,7 +27,7 @@ Class HomeController
 		}
 		else
 		{
-			header('Location: index.php?action=home');
+			header('Location: ../accueil/');
 		}
 	}
 
@@ -38,7 +41,7 @@ Class HomeController
 		}
 		else
 		{
-			header('Location: index.php?action=home');
+			header('Location: ../accueil/');
 		}
 	}
 	public function feedInsta()

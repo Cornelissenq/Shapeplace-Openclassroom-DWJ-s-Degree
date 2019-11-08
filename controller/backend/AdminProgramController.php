@@ -45,26 +45,23 @@ Class AdminProgramController
 		        move_uploaded_file($img['tmp_name'], 'public/images/program/' . basename($file));                 
 		        $imgName = 'public/images/program/' .$file;
 		        
-				header('Location: index.php?action=adminProgram');
+				$added = $programManager->addProgram($nameProgram,$idSection,$extract,$description,$goodPoint,$badPoint,$program,$imgName);
+
+				$_SESSION['success'] = 'Le programme est ajouté';
+
+				header('Location: ../adminProgram/');
 			}
 			else 
 			{
 				$_SESSION['error'] = 'L\'image doit être au format ".jpg/.jpeg/.png".';
-				header('Location: index.php?action=addProgram');
+				header('refresh : 0');
 			}
 		}
 		else
 		{
 			$_SESSION['error'] = 'L\'image doit faire moins de 2Mo.';
-			header('Location: index.php?action=addProgram');
+			header('refresh : 0');
 		}
-
-		$added = $programManager->addProgram($nameProgram,$idSection,$extract,$description,$goodPoint,$badPoint,$program);
-
-		$_SESSION['success'] = 'Le programme est ajouté';
-
-		header('Location: index.php?action=adminProgram');
-		
 	}
 
 	/*  --------------------- edit program --------------------- */
@@ -89,7 +86,7 @@ Class AdminProgramController
 
 		$_SESSION['success'] = 'Le programme est modifié';
 
-		header('Location: index.php?action=adminProgram');		
+		header('Location: ../adminProgram/');		
 
 	}
 	public function editedProgramwAvatar($name,$extract,$description,$goodPoint,$badPoint,$program,$idProgram,$img)
@@ -112,18 +109,18 @@ Class AdminProgramController
 		        $avatar = $programManager->editAvatar($imgName,$idProgram);
 
 		        $_SESSION['success'] = 'Le programme est modifié avec Avatar';
-				header('Location: index.php?action=adminProgram');
+				header('Location: ../adminProgram/');
 			}
 			else
 			{
 				$_SESSION['error'] = 'L\'image doit être au format ".jpg/.jpeg/.png".';
-				header('Location: index.php?action=addProgram');
+				header('refresh : 0');
 			}
 		}
 		else
 		{
 			$_SESSION['error'] = 'L\'image doit faire moins de 2Mo.';
-			header('Location: index.php?action=addProgram');
+			header('refresh : 0');
 		}
 	}
 
@@ -133,10 +130,17 @@ Class AdminProgramController
 	{
 		$programManager = new Cornelissen\Shapeplace\Model\ProgramManager();
 
-		$delete = $programManager->deleteProgram($idProgram);
+		if ($_SESSION['role'] == 'superAdmin')
+		{
+			$delete = $programManager->deleteProgram($idProgram);
 
-		$_SESSION['success'] = 'Le programme est supprimé';
+			$_SESSION['success'] = 'Le programme est supprimé';
+		}
+		else
+		{
+			$_SESSION['error'] = 'Vous n\'avez pas les droits nécessaires';
+		}
 
-		header('Location: index.php?action=adminProgram');
+		header('Location: ../adminProgram/');
 	}
 }

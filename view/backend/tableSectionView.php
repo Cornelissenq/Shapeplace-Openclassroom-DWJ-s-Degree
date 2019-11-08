@@ -12,7 +12,7 @@ ob_start();
 			<h4 class="offset-lg-4 col-lg-4">Gestion des sections :</h4>
 		</div>
 		<div class="row">
-			<a href="index.php?action=addSection" class="offset-lg-10 col-lg-2 btn btn-dark addBtn">Ajouter <i class="fas fa-plus-circle"></i></a>
+			<a href="../ajouterSection/" class="offset-lg-10 col-lg-2 btn btn-dark addBtn">Ajouter <i class="fas fa-plus-circle"></i></a>
 		</div>
 		<table class="table table-striped">
 			<thead class="thead-dark">
@@ -30,16 +30,16 @@ ob_start();
 				{
 				?>
 					<tr>
-						<th scope="row"><a class="bulleNum" href="index.php?action=list&amp;id=<?= $section['id'] ?>" target="_blank"><?= $section['id'] ?></a></th>
+						<th scope="row"><a class="bulleNum" href="../section/<?= $section['id'] ?>" target="_blank"><?= $section['id'] ?></a></th>
 						<th><?= $section['name'] ?></th>
 						<th class="leftAlign"><?= nl2br($section['extract']) ?></th>
-						<th><a href="index.php?action=editSection&amp;id=<?= $section['id'] ?>" class="btn btn-outline-info"><i class="fas fa-edit"></i></a></th>
+						<th><a href="../modifierSection/<?= $section['id'] ?>" class="btn btn-outline-info"><i class="fas fa-edit"></i></a></th>
 							
 						<?php
 						if($_SESSION['role'] == 'superAdmin')
 						{
 						?>
-							<th><a href="index.php?action=deleteSection&amp;id=<?= $section['id'] ?>" class="btn btn-outline-danger" onclick="return confirm('Voulez-vous supprimer <?= $section['name'] ?>?')"><i class="fas fa-trash-alt"></i></a></th>
+							<th><a href="../supprimerSection/<?= $section['id'] ?>" class="btn btn-outline-danger" onclick="return confirm('Voulez-vous supprimer <?= $section['name'] ?>?')"><i class="fas fa-trash-alt"></i></a></th>
 						<?php
 						}
 						else

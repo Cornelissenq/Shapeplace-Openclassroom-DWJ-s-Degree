@@ -40,23 +40,19 @@ Class AdminSectionController
 		        $add = $sectionManager->addSection($nameSection,$extractSection,$contentSection,$imgName);
 
 		        $_SESSION['success'] = 'La section est modifiée.';
-				header('Location: index.php?action=adminSection');
+				header('Location: ../adminSection/');
 			}
 			else
 			{
 				$_SESSION['error'] = 'L\'image doit être au format ".jpg/.jpeg/.png".';
-				header('Location: index.php?action=addProgram');
+				header('refresh : 0');
 			}
 		}
 		else
 		{
 			$_SESSION['error'] = 'L\'image doit faire moins de 2Mo.';
-			header('Location: index.php?action=addProgram');
+			header('refresh : 0');
 		}
-
-		$_SESSION['success'] = 'La section est ajoutée.';
-
-		header('Location: index.php?action=adminSection');
 	}
 
 	/*  --------------------- edit section --------------------- */
@@ -79,7 +75,7 @@ Class AdminSectionController
 
 		$_SESSION['success'] = 'La section est modifiée';
 
-		header('Location: index.php?action=adminSection');
+		header('Location: ../adminSection/');
 	}
 
 	public function editedSectionwAvatar($nameSection,$extractSection,$contentSection,$idSection,$img)
@@ -102,18 +98,18 @@ Class AdminSectionController
 		        $avatar = $sectionManager->editAvatar($imgName,$idSection);
 
 		        $_SESSION['success'] = 'La section est modifiée.';
-				header('Location: index.php?action=adminSection');
+				header('Location: ../adminSection/');
 			}
 			else
 			{
 				$_SESSION['error'] = 'L\'image doit être au format ".jpg/.jpeg/.png".';
-				header('Location: index.php?action=addProgram');
+				header('refresh : 0');
 			}
 		}
 		else
 		{
 			$_SESSION['error'] = 'L\'image doit faire moins de 2Mo.';
-			header('Location: index.php?action=addProgram');
+			header('refresh : 0');
 		}
 	}
 
@@ -127,6 +123,6 @@ Class AdminSectionController
 
 		$_SESSION['success'] = 'La section est supprimée';
 
-		header('Location: index.php?action=adminSection');
+		header('Location: ../adminSection/');
 	}
 }

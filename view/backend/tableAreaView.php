@@ -29,17 +29,17 @@ ob_start();
 				{
 				?>
 					<tr>
-						<th scope="row"><a class="bulleNum" href="index.php?action=area&amp;id=<?= $area['id'] ?>&amp;search=<?= $area['city'] ?>"  target="_blank"><?= $area['id'] ?></a></th>
+						<th scope="row"><a class="bulleNum" href="../spot/<?= $area['id'] ?>"  target="_blank"><?= $area['id'] ?></a></th>
 						<th scope="row"><?= $area['city'] ?></th>
 						<th><?= $area['name'] ?></th>
 						<th class="leftAlign"><?= nl2br($area['content']) ?></th>
-						<th><a href="index.php?action=editSpot&amp;id=<?= $area['id'] ?>" class="btn btn-outline-info"><i class="fas fa-edit"></i></a></th>
+						<th><a href="../modifierSpot/<?= $area['id'] ?>" class="btn btn-outline-info"><i class="fas fa-edit"></i></a></th>
 							
 						<?php
 						if($_SESSION['role'] == 'superAdmin')
 						{
 						?>
-							<th><a href="index.php?action=deleteSpot&amp;id=<?= $area['id'] ?>" class="btn btn-outline-danger" onclick="return confirm('Voulez-vous supprimer le spot <?= $area['name'] ?>?')"><i class="fas fa-trash-alt"></i></a></th>
+							<th><a href="../supprimerSpot/<?= $area['id'] ?>" class="btn btn-outline-danger" onclick="return confirm('Voulez-vous supprimer le spot <?= $area['name'] ?>?')"><i class="fas fa-trash-alt"></i></a></th>
 						<?php
 						}
 						else

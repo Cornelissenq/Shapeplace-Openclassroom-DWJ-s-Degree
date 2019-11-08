@@ -17,9 +17,16 @@ Class AdminNoteController
 	{
 		$noteManager = new Cornelissen\ShapePlace\Model\NoteManager();
 
-		$delete = $noteManager->deleteNote($idNote);
+		if ($_SESSION['role'] == 'superAdmin')
+		{
+			$delete = $noteManager->deleteNote($idNote);
 
-		$_SESSION['success'] = 'L\'avis est supprimé';
-		header('Location: index.php?action=adminNotes');
+			$_SESSION['success'] = 'L\'avis est supprimé';
+		}
+		else
+		{
+			$_SESSION['error'] = 'Vous n\'avez pas les droits nécessaires';
+		}
+		header('Location: ../adminNotes/');
 	}
 }

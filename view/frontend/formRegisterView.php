@@ -10,7 +10,7 @@ ob_start();
   	<div class="offset-lg-1 col-lg-10">
   		<div class="row">
   			<div class="offset-lg-1 col-lg-10 cadreLogin">
-  				<form action="index.php?action=register" method="post">
+  				<form action="" method="post">
   					<div class="form-group">
   						<div class="form-group offset-md-2 col-md-8">
         						<label for="date_birth">Pseudo :</label>
@@ -55,6 +55,10 @@ ob_start();
     					</div>
   					<button type="submit" class="btn btn-outline-secondary">S'inscrire</button>
   				</form>
+          <div>
+            <p>Vous êtes déja inscrit :</p>
+            <a href="../login/" class="btn btn-outline-success">S'identifier</a>
+          </div>
   			</div>
   		</div>	
   	</div>

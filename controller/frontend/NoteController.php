@@ -11,11 +11,11 @@ Class NoteController
 		$notes = $noteManager->getNotes($idArea);
 	}
 
-	public function addNote($idArea,$idUser,$pseudoUser,$note,$content)
+	public function addNote($idArea,$idUser,$note,$content)
 	{
 		$noteManager = new Cornelissen\Shapeplace\Model\NoteManager();
 
-		$add = $noteManager->addNote($idArea,$idUser,$pseudoUser,$note,$content);
+		$add = $noteManager->addNote($idArea,$idUser,$note,$content);
 
 		$_SESSION['success'] = 'L\'avis est ajouté.';
 
@@ -25,7 +25,7 @@ Class NoteController
 		}
 		else
 		{
-			header('Location: index.php?action=home');
+			header('Location: ../spot/'. $idArea);
 		}
 	}
 

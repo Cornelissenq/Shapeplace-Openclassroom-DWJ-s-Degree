@@ -14,6 +14,11 @@ ob_start();
 <div class="row">
 	<div class="col-lg-12">
 		<div class="row">
+			<div class="offset-lg-1 col-lg-3 btnBack">
+				<a href='../adminSection/' class="btn btn-info">Revenir à la gestion des programmes</a>
+			</div>
+		</div>
+		<div class="row">
 			<?php
 			if (isset($program))
 			{
@@ -30,23 +35,12 @@ ob_start();
 			?>
 		</div>
 		<div class="row">
-		<?php
-		if (isset($edit))
-		{
-		?>
-			<form action="index.php?action=editProgram&amp;id=<?= $program['id'] ?>" method="post" class="offset-lg-1 col-lg-10" enctype="multipart/form-data">
-		<?php	
-		}
-		else
-		{
-		?>
-			<form action="index.php?action=addProgram" method="post" class="offset-lg-1 col-lg-10" enctype="multipart/form-data">
-		<?php
-		}
+			<form action="" method="post" class="offset-lg-1 col-lg-10" enctype="multipart/form-data">
+				<?php
 				if (isset($program['avatar']))
 				{
 				?>
-					<img src="<?=$program['avatar']?>" alt="<?=$program['name']?>" class="offset-lg-4 col-lg-4">
+					<img src="../<?=$program['avatar']?>" alt="<?=$program['name']?>" class="offset-lg-4 col-lg-4">
 				<?php
 				}
 				?>
