@@ -9,7 +9,7 @@ ob_start();
 		<div class="col-lg-12 cadreTitle">
 			<div class="row">
 				<div class="col-lg-3 backListProgram">
-					<a href="../section/" class="btn btn-light backSection"><i class="fas fa-arrow-circle-left"></i></a>
+					<a href="section" class="btn btn-light backSection"><i class="fas fa-arrow-circle-left"></i></a>
 				</div>
 			</div>
 			<div class='row'>
@@ -36,12 +36,12 @@ ob_start();
 		while($program = $programs->fetch())
 		{
 		?>
-			<div class="col-lg-4">
+			<div class="col-sm-6 col-lg-4 col-xl-3">
 				<div class="row">
-					<div class="offset-2 col-8 offset-lg-0 col-lg-12 cadreProgram">
+					<div class="offset-1 col-10 offset-lg-0 col-lg-12 cadreProgram">
 						<div class="row">
 							<div class="col-lg-12 imgProgram">
-								<a href="../programme/<?=$program['id']?>-<?=$program['id_section']?>"><img src="../<?= $program['avatar']?>" alt="<?= $program['name'] ?>"/></a>
+								<a href="programme-<?=$program['id']?>-<?=$program['id_section']?>"><img src="<?= $program['avatar']?>" alt="<?= $program['name'] ?>"/></a>
 							</div>
 						</div>
 						<div class="row whiteBg">
@@ -57,8 +57,8 @@ ob_start();
 									</div>
 								</div>
 								<div class="row linkPgm">
-									<div class="offset-lg-4 col-lg-7 ">
-										<a href="../programme/<?=$program['id']?>-<?=$program['id_section']?>" class="btn btn-info "><i class="fas fa-plus-circle"> Accéder</i></a>
+									<div class="offset-lg-4 col-lg-7 offset-xl-3 col-xl-8">
+										<a href="programme-<?=$program['id']?>-<?=$program['id_section']?>" class="btn btn-info "><i class="fas fa-plus-circle"></i> Accéder</a>
 									</div>
 								</div>
 							</div>

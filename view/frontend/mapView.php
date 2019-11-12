@@ -12,13 +12,13 @@ ob_start();
 		<div class="col-lg-12">
 			<div class="row">
 				<div class="offset-1 col-11 offset-lg-1 col-lg-6 formMap" id="formMap">
-					<form action='../carte/' method='post'>
+					<form action='carte' method='post'>
 						<div class="form-group row">
 							<?php
 							if (isset($location))
 							{
 							?>
-								<input type="text" name="search" id="search" class="col-9 form-control" value="<?= $location ?>" required="required">
+								<input type="text" name="search" id="search" class="col-9 form-control" value="<?= htmlspecialchars($location) ?>" required="required">
 							<?php
 							}
 							else
@@ -45,7 +45,7 @@ ob_start();
 				  				layers: MQ.mapLayer()
 							});
 						
-							MQ.geocode().search('<?= $location ?>').on('success', function(e) 
+							MQ.geocode().search('<?= htmlspecialchars($location) ?>').on('success', function(e) 
 							{
 				  				var best = e.result.best,
 				    			latlng = best.latlng;
@@ -67,27 +67,27 @@ ob_start();
 			
 						var markerOne = L.icon
 						({
-							iconUrl: "../public/images/marker/1.png",
+							iconUrl: "public/images/marker/1.png",
 							iconSize: [50,50]
 						});
 						var markerTwo = L.icon
 						({
-							iconUrl: "../public/images/marker/2.png",
+							iconUrl: "public/images/marker/2.png",
 							iconSize: [50,50]
 						});
 						var markerThree = L.icon
 						({
-							iconUrl: "../public/images/marker/3.png",
+							iconUrl: "public/images/marker/3.png",
 							iconSize: [50,50]
 						});
 						var markerFour = L.icon
 						({
-							iconUrl: "../public/images/marker/4.png",
+							iconUrl: "public/images/marker/4.png",
 							iconSize: [50,50]
 						});
 						var markerAddIcon = L.icon
 						({
-							iconUrl: "../public/images/marker/markerAdd.png",
+							iconUrl: "public/images/marker/markerAdd.png",
 							iconSize: [50,50]
 						});
 
@@ -118,7 +118,7 @@ ob_start();
 
 								marker.addEventListener("click",function()
 								{
-									$(location).attr('href', '../spot/<?=$marker['id']?>');	
+									$(location).attr('href', 'spot-<?=$marker['id']?>');	
 								});
 
 							<?php
@@ -130,7 +130,7 @@ ob_start();
 
 								marker.addEventListener("click",function()
 								{
-									$(location).attr('href', '../spot/<?=$marker['id']?>');	
+									$(location).attr('href', 'spot-<?=$marker['id']?>');	
 								});
 							<?php
 							}
@@ -141,7 +141,7 @@ ob_start();
 
 								marker.addEventListener("click",function()
 								{
-									$(location).attr('href', '../spot/<?=$marker['id']?>');	
+									$(location).attr('href', 'spot-<?=$marker['id']?>');	
 								});
 							<?php
 							}
@@ -152,7 +152,7 @@ ob_start();
 
 								marker.addEventListener("click",function()
 								{
-									$(location).attr('href', '../spot/<?=$marker['id']?>');	
+									$(location).attr('href', 'spot-<?=$marker['id']?>');	
 								});
 							<?php
 							}
@@ -165,20 +165,13 @@ ob_start();
 		</div>
 	</div>
 	<div class="row">
-		<?php
-		if(isset($_SESSION['id_user']))
-		{
-		?>
-			<div class="col-lg-5">
-				<form action="../ajouterSpot/" method="post">
-					<input type="hidden" name="lat" id="lat" value="">
-					<input type="hidden" name="lng" id="lng" value="">
-					<button type="submit" id="areaAddBtn"disabled><i class="fas fa-plus-circle"></i> Ajouter un spot</button>
-				</form>
-			</div>
-		<?php
-		}
-		?>
+		<div class="col-lg-5">
+			<form action="ajouterSpot" method="post">
+				<input type="hidden" name="lat" id="lat" value="">
+				<input type="hidden" name="lng" id="lng" value="">
+				<button type="submit" id="areaAddBtn"disabled><i class="fas fa-plus-circle"></i> Ajouter un spot</button>
+			</form>
+		</div>
 	</div>
 </div>
 <?php

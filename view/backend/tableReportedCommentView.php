@@ -32,7 +32,7 @@ ob_start();
 				?>
 					<tr>
 						<th scope="row"><p><?= $comment['id'] ?></p></th>
-						<th scope="row"><a class="bulleNum" href="../programme/<?= $comment['id_section'] ?>-<?= $comment['id_program'] ?>" target="_blank"> <?= $comment['id_program'] ?></a></th>
+						<th scope="row"><a class="bulleNum" href="../programme-<?= $comment['id_section'] ?>-<?= $comment['id_program'] ?>" target="_blank"> <?= $comment['id_program'] ?></a></th>
 						<th><?= $comment['pseudo'] ?></th>
 						<th class="leftAlign"><?= nl2br($comment['comment']) ?></th>	
 						<th><a href="../validateComment/<?= $comment['id'] ?>" class="btn btn-outline-success"><i class="fas fa-thumbs-up"></i></a></th>

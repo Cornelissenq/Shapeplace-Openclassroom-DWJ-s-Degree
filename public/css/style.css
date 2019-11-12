@@ -61,6 +61,24 @@ body
 	background: url('../images/light_toast.png');
 	font-family: 'Arial';
 }
+#RGPD
+{
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	display: flex;
+	color: white;
+	vertical-align: center;
+	padding-top: 10px;
+	z-index:50000;
+	font-style: italic;
+	background: darkslategray;
+
+}
+#RGPD a
+{
+	margin-bottom: 5px;
+}
 #sessionStorage
 {
 	position: fixed;
@@ -69,7 +87,6 @@ body
 	display: flex;
 	color: white;
 	vertical-align: center;
-	border: 1px solid lightblue;
 	padding-top: 10px;
 	z-index:50000;
 	font-style: italic;
@@ -646,7 +663,7 @@ footer a:hover
 {
 	position: absolute;
 	bottom: 2px;
-	left: 0px;
+	left: 5px;
 	z-index: 1999;
 	padding: 7px;
 	background: whitesmoke;
@@ -833,7 +850,7 @@ footer a:hover
 }
 .homeJoin
 {
-	background: #9800fa;
+	background: indianred;
 }
 .pictJoin,.pictSection
 {
@@ -855,7 +872,7 @@ footer a:hover
 }
 /* -------------------------- socialNetworkView -------------------------*/
 
-.cadreSocialNetwork
+.cadreSocialNetwork,.cadreLegal
 {
 	background: whitesmoke;
 	border-radius: 20px;
@@ -875,21 +892,16 @@ footer a:hover
 	border : 3px outset lightgrey;
 	border-radius: 20px;
 	background: whitesmoke;
-	margin-top: 30px;
+	margin-top: 15%;
+	text-align: center;
 }
 .error h4
 {
 	padding-top: 30px;
 	padding-bottom: 30px;
-	text-align: center;
+	text-align: center;	
 }
-.error img
-{
-	border-radius: 20px;
-	border: 3px dashed lightgrey;
-	width: 300px;
-	margin-bottom: 20px;
-}
+
 
 .errorBtn
 {

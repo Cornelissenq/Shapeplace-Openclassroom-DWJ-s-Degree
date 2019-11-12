@@ -14,7 +14,7 @@
 	position: fixed;
 	top: 0;
 	width: 100%;
-	z-index: 100000;
+	z-index: 100001;
 }
 #navbarMobile h5,h6
 {
@@ -33,7 +33,30 @@
 	text-decoration: none;
 	color: whitesmoke;
 }
+#RGPD
+{
+	top: 0;
+	bottom: 0;
+	z-index: 10000;
+	color: darkslategray;
+	background: whitesmoke;
+	text-align: center;
+}
+#RGPD p
+{
+	position: absolute;
+	top: 30%;
+}
+#btnRGPD
+{
+	position: absolute;
+	bottom: 5%;
+}
 
+#btnRGPD a
+{
+	margin-bottom: 2%;
+}
 /* -------------------------- Home -------------------------*/
 
 #oneHome

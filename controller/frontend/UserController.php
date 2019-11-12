@@ -11,7 +11,7 @@ Class UserController
 		{
 			$_SESSION['error'] = 'Vous êtes déja identifié.';
 
-			header('Location: ../accueil/ ');
+			header('Location: accueil ');
 		}
 		else
 		{
@@ -34,7 +34,7 @@ Class UserController
 			$_SESSION['avatar'] = $result['avatar'];
 			$_SESSION['role'] = $result['role'];
 
-			header('Location: ../accueil/');
+			header('Location: accueil');
 		}
 		else
 		{
@@ -64,7 +64,7 @@ Class UserController
 
 			$_SESSION['success'] = 'Vous êtes bien identifié.';
 
-			header('Location: ../accueil/');
+			header('Location: accueil');
 		}	
 		else
 		{
@@ -95,7 +95,7 @@ Class UserController
 		}
 		else
 		{
-			header('Location: ../accueil/');
+			header('Location: accueil');
 		}
 	}
 
@@ -106,7 +106,7 @@ Class UserController
 			session_start();
 			$_SESSION['error'] = 'Vous êtes déja identifié.';
 
-			header('Location: ../accueil/');
+			header('Location: accueil');
 		}
 		else
 		{
@@ -192,7 +192,7 @@ Class UserController
 			$extensionUpload = $infoFile['extension'];
 			$extensionsAllowed = array('jpg', 'jpeg', 'png');
 
-			$file = $_SESSION['id_user']. '.' .$extensionUpload;
+			$file = $_SESSION['pseudo']. '.' .$extensionUpload;
 			if (in_array($extensionUpload, $extensionsAllowed))
 			{
 		        move_uploaded_file($avatar['tmp_name'], 'public/images/user/' . basename($file));                 
@@ -204,19 +204,19 @@ Class UserController
 				}
 				else
 				{
-					header('Location: ../profil/'. $idUser .'-edit');
+					header('Location: profil-'. $idUser .'-edit');
 				}
 			}
 			else
 			{
 				$_SESSION['error'] = 'L\'image doit être au format ".jpg/.jpeg/.png".';
-				header('Location: ../profil/'. $idUser .'-edit');
+				header('Location: profil-'. $idUser .'-edit');
 			}
 		}
 		else
 		{
 			$_SESSION['error'] = 'L\'image doit faire moins de 2Mo.';
-			header('Location: ../profil/'. $idUser .'-edit');
+			header('Location: profil-'. $idUser .'-edit');
 		}
 
 
@@ -247,7 +247,7 @@ Class UserController
 				}
 				else
 				{
-					header('Location: index.php?action=home');
+					header('Location: accueil');
 				}
 			}
 		}
@@ -260,7 +260,7 @@ Class UserController
 			}
 			else
 			{
-				header('Location: index.php?action=home');
+				header('Location: accueil');
 			}
 		}
 
@@ -283,7 +283,7 @@ Class UserController
 				}
 				else
 				{
-					header('Location: ../profil/'. $idUser);
+					header('Location: profil-'. $idUser);
 				}
 			}
 			else
@@ -295,7 +295,7 @@ Class UserController
 				}
 				else
 				{
-					header('Location: ../profil/'. $idUser .'-edit');
+					header('Location: profil-'. $idUser .'-edit');
 				}
 			}
 		}
@@ -308,7 +308,7 @@ Class UserController
 			}
 			else
 			{
-				header('Location: ../profil/'. $idUser .'-edit');
+				header('Location: profil-'. $idUser .'-edit');
 			}
 
 		}
@@ -329,7 +329,7 @@ Class UserController
 			}
 			else
 			{
-				header('Location: ../accueil/');
+				header('Location: accueil');
 			}
 		}
 		else
@@ -341,7 +341,7 @@ Class UserController
 			}
 			else
 			{
-				header('Location: ../profil/'. $idUser .'-edit');
+				header('Location: profil-'. $idUser .'-edit');
 			}
 		}
 	}
@@ -359,7 +359,7 @@ Class UserController
 		}
 		else
 		{
-			header('Location: ../profil/'. $idUser);
+			header('Location: profil-'. $idUser);
 		}
 	}
 

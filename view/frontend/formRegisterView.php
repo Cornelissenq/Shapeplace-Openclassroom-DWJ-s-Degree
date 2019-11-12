@@ -57,7 +57,7 @@ ob_start();
   				</form>
           <div>
             <p>Vous êtes déja inscrit :</p>
-            <a href="../login/" class="btn btn-outline-success">S'identifier</a>
+            <a href="login" class="btn btn-outline-success">S'identifier</a>
           </div>
   			</div>
   		</div>	

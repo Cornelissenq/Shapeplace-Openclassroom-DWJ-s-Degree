@@ -11,7 +11,7 @@ ob_start();
 		<div class="col-12 col-lg-12" id="formAdd">
 			<div class="row">
 				<div class="col-lg-3">
-					<form action="../carte/" method="post" class="buttonBack">
+					<form action="carte" method="post" class="buttonBack">
 						<input type="hidden" name="lat" value="<?= $lat ?>">
 						<input type="hidden" name="lng" value="<?= $lng ?>">
 						<button type="submit" class="btn btn-info"> Retour à la carte </button>
@@ -24,7 +24,7 @@ ob_start();
 			
 			<div class="row">
 				<div class="offset-lg-1 col-lg-10">
-					<form action="../ajouterSpot/" class="formAddV" method="post">
+					<form action="ajouterSpot" class="formAddV" method="post">
 						<div class="row">
 							<div class="offset-1 col-10 offset-lg-3 col-lg-6" id="mymap">
 								<script type="text/javascript">
@@ -34,7 +34,7 @@ ob_start();
 	        						mymap.setView([<?=$lat ?>,<?=$lng?>], 15)
 				        			var markerAddIcon = L.icon
 									({
-										iconUrl: "../public/images/marker/markerAdd.png",
+										iconUrl: "public/images/marker/markerAdd.png",
 										iconSize: [50,50]
 									});
 				        			var markerAdd = L.marker([<?=$lat ?>,<?=$lng?>], {icon:markerAddIcon}).addTo(mymap);

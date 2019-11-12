@@ -7,7 +7,7 @@ require('controller/frontend/AreaController.php');
 require('controller/frontend/NoteController.php');
 require('controller/frontend/HomeController.php');
 
-require('controller/backend/BackendController.php');
+require('controller/backend/BackEndController.php');
 require('controller/backend/AdminCommentController.php');
 require('controller/backend/AdminProgramController.php');
 require('controller/backend/AdminSectionController.php');
@@ -50,12 +50,20 @@ try
 			case 'feedInsta':
 				$homeController->feedInsta();
 				break;
+			case 'legalNotice' :
+				$homeController->legalNotice();
+				break;
+			case 'error' :
+				$homeController->error($error);
+				break;
+
 	/*  --------------------- User Action's --------------------- */
+
 			case 'register':
 				if (isset($_POST['pseudo']) && isset($_POST['pw']) && isset($_POST['pw2']) && isset($_POST['name']) && isset($_POST['surname']) && isset($_POST['mail']) && isset($_POST['date_birth']) && isset($_POST['city']))
 				{
 
-					$userController->register($_POST['pseudo'],$_POST['pw'],$_POST['pw2'],$_POST['name'],$_POST['surname'],$_POST['mail'],$_POST['date_birth'],$_POST['city']);
+					$userController->register(htmlspecialchars($_POST['pseudo']),htmlspecialchars($_POST['pw']),htmlspecialchars($_POST['pw2']),htmlspecialchars($_POST['name']),htmlspecialchars($_POST['surname']),htmlspecialchars($_POST['mail']),htmlspecialchars($_POST['date_birth']),htmlspecialchars($_POST['city']));
 				}
 				else
 				{
@@ -72,11 +80,11 @@ try
 				{
 					if (isset($_POST['stayLog']))  
 					{
-						$userController->loginwCookie($_POST['pseudo'],$_POST['pw'],$_POST['stayOnline']);
+						$userController->loginwCookie(htmlspecialchars($_POST['pseudo']),htmlspecialchars($_POST['pw']),htmlspecialchars($_POST['stayOnline']));
 					}
 					else
 					{
-						$userController->login($_POST['pseudo'],$_POST['pw']);
+						$userController->login(htmlspecialchars($_POST['pseudo']),htmlspecialchars($_POST['pw']));
 					}
 				}
 				else
@@ -126,7 +134,7 @@ try
 			case 'editPw':
 				if (isset($_POST['oldPw']) && isset($_POST['newPw']) && isset($_POST['newPw2']))
 				{
-					$testPw = $userController->editPw($_SESSION['pseudo'],$_POST['oldPw'],$_POST['newPw'],$_POST['newPw2']);
+					$testPw = $userController->editPw($_SESSION['pseudo'],htmlspecialchars($_POST['oldPw']),htmlspecialchars($_POST['newPw']),htmlspecialchars($_POST['newPw2']));
 				}
 				else
 				{
@@ -138,7 +146,7 @@ try
 			case 'editMail':
 				if(isset($_POST['mail']) && isset($_POST['mail2']))
 				{
-					$userController->editMail($_POST['mail'],$_POST['mail2'],$_SESSION['id_user']);
+					$userController->editMail(htmlspecialchars($_POST['mail']),htmlspecialchars($_POST['mail2']),$_SESSION['id_user']);
 				}
 				else
 				{
@@ -149,7 +157,7 @@ try
 			case 'editInsta':
 				if (isset($_POST['insta']))
 				{
-					$editInsta = $userController->editInsta($_POST['insta'],$_SESSION['id_user']);
+					$editInsta = $userController->editInsta(htmlspecialchars($_POST['insta']),$_SESSION['id_user']);
 				}
 				else
 				{
@@ -160,7 +168,7 @@ try
 			case 'editCity':
 				if (isset($_POST['city']))
 				{
-					$editInsta = $userController->editCity($_POST['city'],$_SESSION['id_user']);
+					$editInsta = $userController->editCity(htmlspecialchars($_POST['city']),$_SESSION['id_user']);
 				}
 				else
 				{
@@ -234,7 +242,7 @@ try
 				if (isset($_GET['id']) && $_GET['id'] > 0)
 				{
 					
-					$commentController->editCommentProgram($_POST['commentEdit'],$_GET['id']);
+					$commentController->editCommentProgram(htmlspecialchars($_POST['commentEdit']),$_GET['id']);
 				}
 				else
 				{
@@ -267,7 +275,7 @@ try
 				}
 				elseif(isset($_POST['lat']) && isset($_POST['lng']))
 				{
-					$areaController->setMapwLatLng($_POST['lat'],$_POST['lng']);
+					$areaController->setMapwLatLng(htmlspecialchars($_POST['lat']),htmlspecialchars($_POST['lng']));
 				}
 				else
 				{
@@ -282,7 +290,7 @@ try
 				}
 				else
 				{
-					$areaController->formAddArea($_POST['lat'],$_POST['lng']);
+					$areaController->formAddArea(htmlspecialchars($_POST['lat']),htmlspecialchars($_POST['lng']));
 				}
 				break;
 
@@ -390,7 +398,7 @@ try
 				$backendController = new BackendController;
 				if (isset($_POST['name']) && isset($_POST['extract']) && isset($_POST['content']) && isset($_FILES['image']) && $_FILES['image']['error'] == 0)
 				{
-					$adminSectionController->addedSection($_POST['name'],$_POST['extract'],$_POST['content'],$_FILES['image'],$_FILES['image']);
+					$adminSectionController->addedSection(htmlspecialchars($_POST['name']),htmlspecialchars($_POST['extract']),htmlspecialchars($_POST['content']),$_FILES['image'],$_FILES['image']);
 				}
 				else
 				{
@@ -404,11 +412,11 @@ try
 				{
 					if (isset($_POST['name']) && isset($_POST['extract']) && isset($_POST['content']) && isset($_FILES['image']) && $_FILES['image']['error'] == 0)
 					{
-						$adminSectionController->editedSectionwAvatar($_POST['name'],$_POST['extract'],$_POST['content'],$_GET['id'],$_FILES['image']);
+						$adminSectionController->editedSectionwAvatar(htmlspecialchars($_POST['name']),htmlspecialchars($_POST['extract']),htmlspecialchars($_POST['content']),$_GET['id'],$_FILES['image']);
 					}
 					elseif (isset($_POST['name']) && isset($_POST['extract']) && isset($_POST['content'])) 
 					{
-						$adminSectionController->editedSection($_POST['name'],$_POST['extract'],$_POST['content'],$_GET['id']);
+						$adminSectionController->editedSection(htmlspecialchars($_POST['name']),htmlspecialchars($_POST['extract']),htmlspecialchars($_POST['content']),$_GET['id']);
 					}
 					else
 					{
@@ -443,7 +451,7 @@ try
 				$backendController = new BackendController;
 				if (isset($_POST['name']) && isset($_POST['category']) && isset($_POST['extract']) && isset($_POST['description'])&& isset($_POST['program']) && isset($_FILES['image']))
 				{
-					$adminProgramController->addedProgram($_POST['name'],$_POST['category'],$_POST['extract'],$_POST['description'],$_POST['good_point'],$_POST['bad_point'],$_POST['program'],$_FILES['image']);
+					$adminProgramController->addedProgram(htmlspecialchars($_POST['name']),htmlspecialchars($_POST['category']),htmlspecialchars($_POST['extract']),htmlspecialchars($_POST['description']),htmlspecialchars($_POST['good_point']),htmlspecialchars($_POST['bad_point']),htmlspecialchars($_POST['program']),$_FILES['image']);
 				}
 				else
 				{
@@ -457,11 +465,11 @@ try
 				{
 					if (isset($_POST['name']) && isset($_POST['extract']) && isset($_POST['description'])&& isset($_POST['program']) && isset($_FILES['image']) && $_FILES['image']['error'] == 0)
 					{
-						$adminProgramController->editedProgramwAvatar($_POST['name'],$_POST['extract'],$_POST['description'],$_POST['good_point'],$_POST['bad_point'],$_POST['program'],$_GET['id'],$_FILES['image']);
+						$adminProgramController->editedProgramwAvatar(htmlspecialchars($_POST['name']),htmlspecialchars($_POST['extract']),htmlspecialchars($_POST['description']),htmlspecialchars($_POST['good_point']),htmlspecialchars($_POST['bad_point']),htmlspecialchars($_POST['program']),$_GET['id'],$_FILES['image']);
 					}
 					elseif (isset($_POST['name']) && isset($_POST['extract']) && isset($_POST['description'])&& isset($_POST['program']))
 					{
-						$adminProgramController->editedProgram($_POST['name'],$_POST['extract'],$_POST['description'],$_POST['good_point'],$_POST['bad_point'],$_POST['program'],$_GET['id']);
+						$adminProgramController->editedProgram(htmlspecialchars($_POST['name']),htmlspecialchars($_POST['extract']),htmlspecialchars($_POST['description']),htmlspecialchars($_POST['good_point']),htmlspecialchars($_POST['bad_point']),htmlspecialchars($_POST['program']),$_GET['id']);
 					}
 					else
 					{
@@ -533,7 +541,7 @@ try
 				{
 					if(isset($_POST['name']) && isset($_POST['content']) && isset($_POST['city']) && isset($_POST['id_category']))
 					{
-						$adminAreaController->editedArea($_POST['name'],$_POST['content'],$_POST['city'],$_POST['id_category'],$_GET['id']);
+						$adminAreaController->editedArea(htmlspecialchars($_POST['name']),htmlspecialchars($_POST['content']),htmlspecialchars($_POST['city']),htmlspecialchars($_POST['id_category']),$_GET['id']);
 					}
 					else
 					{
@@ -578,6 +586,7 @@ try
 				}			
 
 				break;
+
 			default :
 				$homeController->home();
 				break;
@@ -587,10 +596,11 @@ try
 	}
 	else
 	{
-		$homeController->setHome();
+		$homeController->home();
 	}
 	
 }
 catch(Exception $e)  {
-	echo 'Erreur : ' . $e->getMessage();		
+	$error = 'Erreur ' . $e->getMessage();	
+	require('view/errorView.php');
 }

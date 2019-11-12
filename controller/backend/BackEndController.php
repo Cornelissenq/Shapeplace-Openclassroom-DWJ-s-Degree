@@ -24,21 +24,21 @@ Class BackendController
 				{
 					$_SESSION['error'] = 'Vous n\'avez pas les droits nécessaire pour y accéder.';
 
-					header('Location: ../accueil/');
+					header('Location: ../accueil');
 				}
 			}
 			else
 			{
 				$_SESSION['error'] = 'Vous n\'avez pas les droits nécessaire pour y accéder.';
 
-				header('Location: ../accueil/');
+				header('Location: ../accueil');
 			}
 		}
 		else  
 		{
 			$_SESSION['error'] = 'Vous n\'êtes pas identifié.';
 
-			header('Location: ../accueil/');
+			header('Location: ../accueil');
 		}
 	}
 

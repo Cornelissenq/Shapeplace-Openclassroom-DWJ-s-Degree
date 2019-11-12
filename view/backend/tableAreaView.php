@@ -29,7 +29,7 @@ ob_start();
 				{
 				?>
 					<tr>
-						<th scope="row"><a class="bulleNum" href="../spot/<?= $area['id'] ?>"  target="_blank"><?= $area['id'] ?></a></th>
+						<th scope="row"><a class="bulleNum" href="../spot-<?= $area['id'] ?>"  target="_blank"><?= $area['id'] ?></a></th>
 						<th scope="row"><?= $area['city'] ?></th>
 						<th><?= $area['name'] ?></th>
 						<th class="leftAlign"><?= nl2br($area['content']) ?></th>

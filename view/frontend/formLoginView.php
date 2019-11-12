@@ -50,7 +50,7 @@ ob_start();
 
 					<div>
 						<p>Vous n'êtes pas inscrit et vous souhaitez nous rejoindre :</p>
-						<a href="../register/" class="btn btn-outline-success">S'inscrire</a>
+						<a href="register" class="btn btn-outline-success">S'inscrire</a>
 					</div>
 				</div>
 			</div>	

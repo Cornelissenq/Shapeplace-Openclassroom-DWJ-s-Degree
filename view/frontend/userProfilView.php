@@ -42,19 +42,19 @@ ob_start();
 							<h4>Information :</h4>
 							<div class="row">
 								<p class="offset-1 col-4 offset-lg-1 col-lg-5 infoProfil">Pseudo :</p>
-								<p class="col-4 col-lg-4"><?= $user['pseudo'] ?></p>
+								<p class="col-4 col-lg-4"><?= htmlspecialchars($user['pseudo']) ?></p>
 							</div>
 							<div class="row">
 								<p class="offset-1 col-4 offset-lg-1 col-lg-5 infoProfil">Prénom :</p>
-								<p class="col-4 col-lg-4"><?= $user['name'] ?></p>
+								<p class="col-4 col-lg-4"><?= htmlspecialchars($user['name']) ?></p>
 							</div>
 							<div class="row">
 								<p class="offset-1 col-4 offset-lg-1 col-lg-5 infoProfil">Ville :</p>
-								<p class="col-4 col-lg-4"><?= $user['city'] ?></p>
+								<p class="col-4 col-lg-4"><?= htmlspecialchars($user['city']) ?></p>
 							</div>
 							<div class="row">
 								<p class="offset-1 col-4 offset-lg-1 col-lg-5 infoProfil">Date de naissance :</p>
-								<p class="col-4 col-lg-4"><?= $user['date_birth_fr'] ?></p>
+								<p class="col-4 col-lg-4"><?= htmlspecialchars($user['date_birth_fr']) ?></p>
 							</div>
 							<?php
 							if (isset($user['instagram']))
@@ -84,7 +84,7 @@ ob_start();
 									?>
 										<div class="row">
 											<div class="col-lg-12 lastCommentProfil">
-												<a href="../programme/<?= $comment['id_program'] ?>-<?= $comment['id_section']?>" target="_blank"><?= $comment['comment'] ?></a>
+												<a href="../programme/<?= $comment['id_program'] ?>-<?= $comment['id_section']?>" target="_blank"><?= htmlspecialchars($comment['comment']) ?></a>
 											</div>
 										</div>
 									<?php	

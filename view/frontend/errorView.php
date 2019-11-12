@@ -11,22 +11,33 @@ ob_start();
 		<div class="col-lg-12">
 			<div class="row">
 				<div class="offset-lg-4 col-lg-4">
-					<h4>Page introuvable</h4>
+					<?php 
+					if(isset($error))
+					{
+					?>
+						<h4><?=$error?></h4>
+					<?php
+					}
+					else
+					{
+					?>
+						<h4>Page introuvable</h4>
+					<?php
+					}
+					?>
 				</div>
 			</div>
 			<div class="row">
-				<div class="offset-lg-1 col-lg-3">
-					<img src="../public/images/error.png" alt="Error 404"/>
-				</div>
-				<div class="offset-lg-1 col-lg-6">
+				
+				<div class="offset-lg-1 col-lg-10">
 					<p>Malheuresement, cette page n'existe pas ou n'est plus accessible.</p>
 					<p>Vous avez toute fois la possibilité de vous redirigé sur la page d'accueil.</p>
 				</div>
 			</div>
 			<div class="row">
-				<div class="offset-lg-3 col-lg-6">
+				<div class="offset-lg-4 col-lg-4">
 					<div class="errorBtn">
-						<a href="index.php?action=home" class="btn btn-secondary offset-lg-1 col-lg-10"> Revenir à l'accueil </a>
+						<a href="accueil" class="btn btn-secondary offset-lg-1 col-lg-10"> Revenir à l'accueil </a>
 					</div>
 				</div>
 			</div>

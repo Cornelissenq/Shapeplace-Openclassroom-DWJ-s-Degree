@@ -9,7 +9,7 @@ ob_start();
 <div class="container contenant">
 	<div class="editUser">
 		<div class="row buttonBack">
-			<a href="../profil/<?=$_SESSION['id_user']?>" class="offset-1 offset-lg-1 backProfile"><i class="fas fa-arrow-circle-left"></i> Retourner a mon profil</a>
+			<a href="profil-<?=$_SESSION['id_user']?>" class="offset-1 offset-lg-1 backProfile"><i class="fas fa-arrow-circle-left"></i> Retourner a mon profil</a>
 		</div>
 		<div class="row">
 			<div class="offset-lg-2 col-lg-8">
@@ -19,10 +19,10 @@ ob_start();
 				</div>
 				<div class="row">
 					<div class="offset-3 offset-lg-1 col-lg-3 avatar">
-						<img src="../<?= $user['avatar'] ?>" alt="Avatar de <?= $user['pseudo'] ?>"/>
+						<img src="<?= $user['avatar'] ?>" alt="Avatar de <?= $user['pseudo'] ?>"/>
 					</div>
 					<div class="offset-2 offset-lg-2 col-lg-6" id="editAvatar">
-						<form action="../editAvatar/" method="post" enctype="multipart/form-data">
+						<form action="editAvatar" method="post" enctype="multipart/form-data">
 							<div class="form-group">
 								<label for="avatar">Modifier votre image de profil :</label>
 								<input type="file" name="avatar" id="avatar" class="form-control-file">
@@ -35,7 +35,7 @@ ob_start();
 					<button class="offset-lg-8 col-lg-4 btn btn-secondary" id="showEditPw">Modifier le mot de passe</button>
 				</div>
 				<div class="row" id="editPassword">
-					<form action="../editPw/" method="post"  class="col-lg-12">
+					<form action="editPw" method="post"  class="col-lg-12">
 						<div class="form-group offset-lg-3 col-lg-5">
 							<label for="oldPw" required="required"> Votre mot de passe actuel :</label>
 							<input type="password" name="oldPw" id="oldPw" class="form-control">
@@ -69,7 +69,7 @@ ob_start();
 					?>
 				</div>
 				<div class="row" id="editInsta">
-					<form action="../editInsta/" method="post"  class="col-lg-12">
+					<form action="editInsta" method="post"  class="col-lg-12">
 						<?php
 						if (!empty($user['instagram']))
 						{
@@ -92,7 +92,7 @@ ob_start();
 					<button class="offset-lg-8 col-lg-4 btn btn-secondary" id="showEditMail">Modifier l'adresse mail'</button>
 				</div>
 				<div class="row" id="editMail">
-					<form action="../editMail/" method="post"  class="col-lg-12">
+					<form action="editMail" method="post"  class="col-lg-12">
 
 						<div class="form-group offset-lg-3 col-lg-6">
 							<label for="oldMail"> Votre adresse mail actuelle :</label>
@@ -113,7 +113,7 @@ ob_start();
 					<button class="offset-lg-8 col-lg-4 btn btn-secondary" id="showEditCity">Modifier la ville</button>
 				</div>
 				<div class="row" id="editCity">
-					<form action="../editCity/" method="post"  class="col-lg-12">
+					<form action="editCity" method="post"  class="col-lg-12">
 
 						<div class="form-group offset-lg-3 col-lg-6">
 							<label for="oldCity"> Votre ville actuelle :</label>

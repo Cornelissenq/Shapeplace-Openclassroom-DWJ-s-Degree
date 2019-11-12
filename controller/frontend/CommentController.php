@@ -23,7 +23,7 @@ Class CommentController
 		}
 		else
 		{
-			header('Location: ../programme/'. $idProgram .'-'. $idSection);
+			header('Location: programme-'. $idProgram .'-'. $idSection);
 		}
 	}
 
@@ -45,7 +45,7 @@ Class CommentController
 			}
 			else
 			{
-				header('Location: ../accueil/');
+				header('Location: accueil');
 			}
 		}
 		else
@@ -58,7 +58,7 @@ Class CommentController
 			}
 			else
 			{
-				header('Location: ../accueil/');
+				header('Location: accueil');
 			}
 		}
 
@@ -84,7 +84,7 @@ Class CommentController
 		}
 		else
 		{
-			header('Location: ../accueil/');
+			header('Location: accueil');
 		}
 		
 	}
@@ -106,7 +106,7 @@ Class CommentController
 		}
 		else
 		{
-			header('Location: ../accueil/');
+			header('Location: accueil');
 		}
 	}
 

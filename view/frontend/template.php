@@ -15,9 +15,9 @@ if (isset($_COOKIE['id_user']) && !empty($_COOKIE['id_user']))
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 		<meta name="description" content="Trouvez un spot de musculation près de chez vous ou bien un programme de musculation !" />
 		<title><?= $title ?> - ShapePlace</title>
-		<link href="../public/css/style.css" rel="stylesheet" />
-		<link rel=" stylesheet" media="screen and (max-width: 768px)" href="../public/css/responsive.css" />
-        <link href="../bootstrap/css/bootstrap.css" rel="stylesheet"/>
+		<link href="public/css/style.css" rel="stylesheet" />
+		<link rel=" stylesheet" media="screen and (max-width: 992px)" href="public/css/responsive.css" />
+        <link href="bootstrap/css/bootstrap.css" rel="stylesheet"/>
         <link rel="icon" type="image/png" href="../public/images/icone.png" />
         <link href="https://fonts.googleapis.com/css?family=Mansalva&display=swap" rel="stylesheet">
         <script src="https://kit.fontawesome.com/a204d33b50.js"></script>
@@ -33,15 +33,15 @@ if (isset($_COOKIE['id_user']) && !empty($_COOKIE['id_user']))
 			<div class="navbar navbar-default menulogo" id="navbarOrdi">
 				<div class="container">
 					<div class="col-lg-2 logo">
-						<a href="../accueil/"><img src="../public/images/logo.png" alt="logo shapeplace"/></a>
+						<a href="accueil"><img src="public/images/logo.png" alt="logo shapeplace"/></a>
 					</div>
 					<div class="offset-lg-2 col-lg-5 menu">
 						<div class="row">
 							<div class="col-lg-6">
-								<a class="offset-lg-1 col-lg-10 btn btn-outline-light" href="../accueil/">Accueil</a>
+								<a class="offset-lg-1 col-lg-10 btn btn-outline-light" href="accueil">Accueil</a>
 							</div>
 							<div class="col-lg-6">
-								<a class="offset-lg-1 col-lg-10 btn btn-outline-light" href="../section/" >Programmes</a>
+								<a class="offset-lg-1 col-lg-10 btn btn-outline-light" href="section" >Programmes</a>
 							</div>
 						</div>
 					</div>
@@ -51,15 +51,15 @@ if (isset($_COOKIE['id_user']) && !empty($_COOKIE['id_user']))
 						{
 						?>  
 							<div class="dropdown">
-  								<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="../<?= $_SESSION['avatar'] ?>" alt="<?= $_SESSION['pseudo'] ?>" class="avatarMenu"/></button>
+  								<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="<?= $_SESSION['avatar'] ?>" alt="<?= $_SESSION['pseudo'] ?>" class="avatarMenu"/></button>
  								<div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id="dropDown">
-    								<a class="dropdown-item" href="../profil/<?=$_SESSION['id_user'] ?>">Mon profil</a>
-    								<a class="dropdown-item" href="../deconnexion/">Déconnexion</a>
+    								<a class="dropdown-item" href="profil<?=$_SESSION['id_user'] ?>">Mon profil</a>
+    								<a class="dropdown-item" href="deconnexion">Déconnexion</a>
     								<?php
 									if($_SESSION['role'] == "admin" OR $_SESSION['role'] == "superAdmin")
 									{
 									?>
-										<a class="dropdown-item" href="../admin/">Administration</a>
+										<a class="dropdown-item" href="admin/">Administration</a>
 									<?php
 									}
 									?>
@@ -70,7 +70,7 @@ if (isset($_COOKIE['id_user']) && !empty($_COOKIE['id_user']))
 						else
 						{
 						?> 
-							<a href="../login/"><i class="fas fa-user"></i></a>
+							<a href="login"><i class="fas fa-user"></i></a>
 						<?php 
 						} 
 						?>
@@ -81,7 +81,7 @@ if (isset($_COOKIE['id_user']) && !empty($_COOKIE['id_user']))
   				<nav class="row navbar navbar-dark bg-dark">
 
 	  					<div class="col-xs-2 logo">
-							<a href="index.php?action=home"><img src="../public/images/logo.png" alt="logo shapeplace"/></a>
+							<a href="accueil"><img src="public/images/logowhite.png" alt="logo shapeplace"/></a>
 						</div>
 						<div class="offset-xs-8 col-xs-1" id="navMobilebtn">
 		   					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -93,8 +93,8 @@ if (isset($_COOKIE['id_user']) && !empty($_COOKIE['id_user']))
    					<div class="bg-dark p-4">
       					<h5 class="text-white h5">Menu</h5>
       					<ul>
-      						<li><a href="../accueil/"><i class="fas fa-caret-right"></i> Accueil</a></li>
-      						<li><a href="../section/" ><i class="fas fa-caret-right"></i> Programmes</a></li>
+      						<li><a href="accueil"><i class="fas fa-caret-right"></i> Accueil</a></li>
+      						<li><a href="section" ><i class="fas fa-caret-right"></i> Programmes</a></li>
       					</ul>
       					<?php
       					if(isset($_SESSION['id_user']))
@@ -102,16 +102,16 @@ if (isset($_COOKIE['id_user']) && !empty($_COOKIE['id_user']))
       					?>
       						<h6 class="text-white"><?= $_SESSION['pseudo'] ?> :</h6>
       						<ul>
-	      						<li><a href="../profil/<?=$_SESSION['id_user'] ?>"><i class="fas fa-caret-right"></i> Mon profil</a></li>
+	      						<li><a href="profil-<?=$_SESSION['id_user'] ?>"><i class="fas fa-caret-right"></i> Mon profil</a></li>
 	      						<?php
       							if($_SESSION['role'] == "admin" OR $_SESSION['role'] == "superAdmin")
       							{
       							?>
-      								<li><a href="../admin/"><i class="fas fa-caret-right"></i> Administration</a></li>
+      								<li><a href="admin/"><i class="fas fa-caret-right"></i> Administration</a></li>
       							<?php
       							}
       							?>
-	    						<li><a href="../deconnexion/"><i class="fas fa-caret-right"></i> Déconnexion</a></li>
+	    						<li><a href="deconnexion"><i class="fas fa-caret-right"></i> Déconnexion</a></li>
       						</ul>
       					<?php
       					}
@@ -119,8 +119,8 @@ if (isset($_COOKIE['id_user']) && !empty($_COOKIE['id_user']))
       					{
       					?>
       						<ul>
-      							<li><a href="../login/"><i class="fas fa-caret-right"></i> S'identifier</a></li>
-      							<li><a href="../register/"><i class="fas fa-caret-right"></i> S'inscrire</a></li>
+      							<li><a href="login"><i class="fas fa-caret-right"></i> S'identifier</a></li>
+      							<li><a href="register"><i class="fas fa-caret-right"></i> S'inscrire</a></li>
       						</ul>
       					<?php
       					}
@@ -138,14 +138,14 @@ if (isset($_COOKIE['id_user']) && !empty($_COOKIE['id_user']))
 		{
 		?>
 			<div class="row">
-				<div id="sessionStorage" class="col-lg-12 gray">    	
-					<p class="offset-lg-1 col-lg-7">
+				<div id="RGPD" class="col-lg-12"> 
+					<p class="offset-1 col-10 offset-sm-3 col-sm-6 offset-lg-1 col-lg-8">
 						En poursuivant votre navigation sur ce site, vous acceptez l’utilisation de Cookies pour vous proposer la sauvegarde d'identification.
 					</p>
-					<div class="col-lg-4">
+					<div class="col-12 col-sm-12 col-lg-3" id="btnRGPD">
 						<div class="row">
-							<a href="index.php?action=RGPD" class="btn btn-secondary offset-lg-2 col-lg-4">Accepter</a>
-							<a href="index.php?action=NORGPD" class="btn btn-secondary offset-lg-2 col-lg-4">Refuser</a>
+							<a href="index.php?action=RGPD" class="btn btn-secondary offset-3 col-6 offset-lg-3 col-lg-4"><i class="fas fa-check"></i> Accepter</a>
+							<a href="index.php?action=NORGPD" class="btn btn-secondary offset-3 col-6 offset-lg-1 col-lg-4"><i class="fas fa-times"></i> Refuser</a>
 						</div>
 					</div>
 				</div>
@@ -190,7 +190,7 @@ if (isset($_COOKIE['id_user']) && !empty($_COOKIE['id_user']))
 			<div class="container">
 				<div class="row">
 					<div class="col-lg-4">
-						<p><a href=""> Mentions Légales </a></p>
+						<p><a href="mentionslegales"> Mentions Légales </a></p>
 					</div>
 					<div class="col-lg-4 socialNetwork">
 						<h6>Nos réseaux sociaux</h6>

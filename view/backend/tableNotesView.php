@@ -27,7 +27,7 @@ ob_start();
 				{
 				?>
 					<tr>
-						<th scope="row"><a class="bulleNum" href="../spot/<?= $note['id_area'] ?>" target="_blank"><?= $note['id'] ?></th>
+						<th scope="row"><a class="bulleNum" href="../spot-<?= $note['id_area'] ?>" target="_blank"><?= $note['id'] ?></th>
 						<th><?= $note['pseudo'] ?></th>
 						<th class="leftAlign"><?= nl2br($note['content']) ?></th>
 						<th>

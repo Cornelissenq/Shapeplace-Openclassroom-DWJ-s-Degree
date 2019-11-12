@@ -25,7 +25,7 @@ Class NoteController
 		}
 		else
 		{
-			header('Location: ../spot/'. $idArea);
+			header('Location: spot-'. $idArea);
 		}
 	}
 
@@ -43,7 +43,7 @@ Class NoteController
 		}
 		else
 		{
-			header('Location: index.php?action=home');
+			header('Location: accueil');
 		}
 	}
 

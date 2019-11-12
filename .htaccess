@@ -1,57 +1,64 @@
-RewriteEngine On
 Options +FollowSymlinks
+RewriteEngine ON
+
+<Files ~ “^w+.(gif|jpg|png|txt)$”>
+order deny,allow
+allow from all
+</Files>
+
 
 #                           Partie FRONTEND
 
 #Accueil
 
-RewriteRule ^accueil/$ index.php?action=home
-#faire une redirection de rien a l'accueil
-RewriteRule ^
+RewriteRule ^accueil$ index.php?action=home
+
+RewriteRule ^erreur$ index.php?action=error
+RewriteRule ^mentionslegales$ index.php?action=legalNotice
+
 #Programmes
 
-RewriteRule ^section/$ index.php?action=section
-RewriteRule ^section/([0-9]+)$ index.php?action=list&id=$1
-RewriteRule ^programme/([0-9]+)-([0-9]+)$ index.php?action=program&id=$1&section=$2
+RewriteRule ^section$ index.php?action=section
+RewriteRule ^section-([0-9]+)$ index.php?action=list&id=$1
+RewriteRule ^programme-([0-9]+)-([0-9]+)$ index.php?action=program&id=$1&section=$2
 
 #commentaires 
 
-RewriteRule ^ajouterCommentaire/([0-9]+)-([0-9]+)$ index.php?action=addCommentP&id=$1&idsection=$2
-RewriteRule ^supprimerCommentaire/([0-9]+)$ index.php?action=deleteCommentP&id=$1
-RewriteRule ^editerCommentaire/([0-9]+)$ index.php?action=editCommentP&id=$1
-RewriteRule ^signalerCommentaire/([0-9]+)$ index.php?action=report&id=$1
+RewriteRule ^ajouterCommentaire-([0-9]+)-([0-9]+)$ index.php?action=addCommentP&id=$1&idsection=$2
+RewriteRule ^supprimerCommentaire-([0-9]+)$ index.php?action=deleteCommentP&id=$1
+RewriteRule ^editerCommentaire-([0-9]+)$ index.php?action=editCommentP&id=$1
+RewriteRule ^signalerCommentaire-([0-9]+)$ index.php?action=report&id=$1
 
 #Map
 
-RewriteRule ^carte/$ index.php?action=map
-RewriteRule ^ajouterSpot/$ index.php?action=addArea
-RewriteRule ^spot/([0-9]+)$ index.php?action=area&id=$1
+RewriteRule ^carte$ index.php?action=map
+RewriteRule ^ajouterSpot$ index.php?action=addArea
+RewriteRule ^spot-([0-9]+)$ index.php?action=area&id=$1
 
 #notes
 
-RewriteRule ^ajouterNote/([0-9]+)$ index.php?action=addNote&id=$1
-RewriteRule ^supprimerNote/([0-9]+)$ index.php?action=deleteNote&id=$1
+RewriteRule ^ajouterNote-([0-9]+)$ index.php?action=addNote&id=$1
+RewriteRule ^supprimerNote-([0-9]+)$ index.php?action=deleteNote&id=$1
 
 
 #feedInstagram
 
-RewriteRule ^rejoins-nous/$ index.php?action=feedInsta
+RewriteRule ^rejoins-nous$ index.php?action=feedInsta
+
 #Espace utilisateur
 
-RewriteRule ^register/$ index.php?action=register
-RewriteRule ^login/$ index.php?action=login
-RewriteRule ^logincheck/$ index.php?action=logincheck
-RewriteRule ^profil/([0-9]+)$ index.php?action=userProfil&id=$1
-RewriteRule ^profil/([0-9]+)-edit$ index.php?action=editProfil&id=$1
-RewriteRule ^editAvatar/$ index.php?action=editAvatar
-RewriteRule ^editPw/$ index.php?action=editPw
-RewriteRule ^editInsta/$ index.php?action=editInsta
-RewriteRule ^editMail/$ index.php?action=editMail
-RewriteRule ^editCity/$ index.php?action=editCity
-RewriteRule ^deconnexion/$ index.php?action=logout
+RewriteRule ^register$ index.php?action=register
+RewriteRule ^login$ index.php?action=login
+RewriteRule ^logincheck$ index.php?action=logincheck
+RewriteRule ^profil-([0-9]+)$ index.php?action=userProfil&id=$1
+RewriteRule ^profil-([0-9]+)-edit$ index.php?action=editProfil&id=$1
+RewriteRule ^editAvatar$ index.php?action=editAvatar
+RewriteRule ^editPw$ index.php?action=editPw
+RewriteRule ^editInsta$ index.php?action=editInsta
+RewriteRule ^editMail$ index.php?action=editMail
+RewriteRule ^editCity$ index.php?action=editCity
+RewriteRule ^deconnexion$ index.php?action=logout
 
-
-RedirectPermanent ^$  /accueil/
 
 
 
@@ -101,3 +108,19 @@ RewriteRule ^adminNotes/$ index.php?action=adminNotes
 RewriteRule ^supprimerAvis/([0-9]+)$ index.php?action=deleteNotes&id=$1
 
 
+
+
+#                    ERROR
+
+ErrorDocument 400 http://shapeplace.cornelissenquentin.fr/erreur
+ErrorDocument 401 http://shapeplace.cornelissenquentin.fr/erreur
+ErrorDocument 402 http://shapeplace.cornelissenquentin.fr/erreur
+ErrorDocument 403 http://shapeplace.cornelissenquentin.fr/erreur
+ErrorDocument 404 http://shapeplace.cornelissenquentin.fr/erreur
+ErrorDocument 405 http://shapeplace.cornelissenquentin.fr/erreur
+ErrorDocument 500 http://shapeplace.cornelissenquentin.fr/erreur
+ErrorDocument 501 http://shapeplace.cornelissenquentin.fr/erreur
+ErrorDocument 502 http://shapeplace.cornelissenquentin.fr/erreur
+ErrorDocument 503 http://shapeplace.cornelissenquentin.fr/erreur
+ErrorDocument 504 http://shapeplace.cornelissenquentin.fr/erreur
+ErrorDocument 505 http://shapeplace.cornelissenquentin.fr/erreur
