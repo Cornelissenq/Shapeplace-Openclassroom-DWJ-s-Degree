@@ -198,6 +198,8 @@ Class UserController
 		        move_uploaded_file($avatar['tmp_name'], 'public/images/user/' . basename($file));                 
 		        $avatarName = 'public/images/user/' .$file;
 		        $userManager->editAvatar($avatarName,$idUser);
+		        unset($_SESSION['avatar']);
+		        $_SESSION['avatar'] = $avatarName;
 		        if (isset($_SERVER["HTTP_REFERER"]))
 				{
 					header('Refresh: 0 ' . $_SERVER["HTTP_REFERER"]);

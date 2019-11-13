@@ -124,6 +124,7 @@ footer
 	bottom: -20px;
 	width: 100%;
 	margin-top: 10%;
+	padding: 10px 0 10px 0;
 }
 footer  .socialNetwork i
 {
@@ -293,13 +294,17 @@ footer a:hover
 	margin : 20px 0 0 0;
 	border-top-right-radius : 20px;
 	border-top-left-radius : 20px;
-	background: lightblue;
+	background: darkslategrey;
 }
 .backSection a , .backListProgram a
 {
 	margin-top: 5px;
 	border-radius: 20px;
-	color : lightblue;
+	color : white;
+}
+.backListProgram a
+{
+	background: darkslategrey;
 }
 .titreSection, .titreProgram
 {
@@ -315,18 +320,19 @@ footer a:hover
 	text-align: left;
 	font-style: italic;
 	color: whitesmoke;
-	font-weight: 900;
-	font-size: 0.8em;		
+	font-weight: 700;
+	font-size: 0.8em;
+	line-height: 50px;		
 }
 .accessCategory a
 {
 	text-decoration: none;
-	color: grey;
+	color: whitesmoke;
 }
 .accessCategory a:hover
 {
 	text-decoration: none;
-	color: whitesmoke;
+	color: white;
 }
 .content,.contentSection
 {
@@ -355,9 +361,9 @@ footer a:hover
 {
 	border:3px inset white;
 	border-radius: 20px;
-	background:cadetblue;
+	background:darkslategrey;
 	color: white;
-	padding: 10px;
+	padding: 25px;
 	position: sticky;
 	top: 200px;
 
@@ -374,12 +380,10 @@ footer a:hover
 	font-weight: 700;
 	font-style: italic;
 	color: whitesmoke;
+	padding-bottom: 10px;
 }
 .formComment
 {
-	background: aliceblue;
-	border-radius: 20px;
-	border: 1px outset white;
 	margin: 10px 0 10px 0;
 	padding: 25px 0 25px 0;
 	text-align: center;
@@ -387,6 +391,10 @@ footer a:hover
 #formComment
 {
 	display: none;
+	background: whitesmoke;
+	border-radius: 20px;
+	padding: 20px;
+
 }
 .noLogin
 {
@@ -394,8 +402,6 @@ footer a:hover
 }
 .cadreComment,.cadreNote
 {
-	background: whitesmoke;
-	border-radius: 20px;
 	padding: 0 0 10px 0;
 }
 .titleComment,.titleNote
@@ -409,9 +415,9 @@ footer a:hover
 	background: white;
 	border-top-left-radius: 20px;
 	border-top-right-radius: 20px;
-	border: 1px dashed lightgrey;
+	border: 1px solid lightgrey;
 	height: 40px;
-	padding: 5px 0 5px 0;
+	padding: 8px 0 8px 0;
 
 }
 .pseudoComment a,.pseudoNote a
@@ -428,7 +434,7 @@ footer a:hover
 .dateComment,.dateNote
 {
 	font-size: 0.6em;
-	padding: 5px 0 0 0;
+	padding: 8px 0 0 0;
 }
 .btnComment a,.btnNote a
 {
@@ -438,7 +444,7 @@ footer a:hover
 {
 	border-bottom-right-radius: 20px;
 	border-bottom-left-radius: 20px;
-	border:2px solid silver;
+	border:1px solid silver;
 	padding: 5px 0 5px 0;
 	margin-bottom: 20px;
 }
@@ -750,7 +756,7 @@ footer a:hover
 #contentArea
 {
 	background: whitesmoke;
-	padding: 10px;
+	padding: 25px;
 	border: 1px solid
 	lightgray;
 	border-radius: 20px;
@@ -760,7 +766,7 @@ footer a:hover
 {
     height: 10px;
     width: 60px;
-    margin: 6px 5px 0 10px;
+    margin: 8px 5px 0 10px;
     position: relative;
     content: '';
     padding: 0;

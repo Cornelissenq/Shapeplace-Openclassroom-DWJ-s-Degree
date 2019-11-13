@@ -29,7 +29,7 @@ ob_start();
 						{
 						?>
 							<tr>
-								<th scope="row" class="imgTableUser"><a href="../profil-<?= $user['id'] ?>"><img src="../<?= $user['avatar'] ?>" alt="<?= $user['pseudo'] ?>" /></a></th>
+								<th scope="row" class="imgTableUser"><a href="../profil-<?= $user['id'] ?>" target="_blank"><img src="../<?= $user['avatar'] ?>" alt="<?= $user['pseudo'] ?>" /></a></th>
 								<th><?= $user['pseudo'] ?></th>
 								<?php
 								if($user['role'] != 'admin')

@@ -10,12 +10,12 @@ ob_start();
 		<h3 class="offset-lg-3 col-lg-6">Pouvoir s'entrainer partout avec ShapePlace. </h3>
 	</div>
 	<div class="row">
-		<div class="offset-1 col-10 offset-lg-2 col-lg-6 offset-col-xl-1" >
+		<div class="offset-1 col-10 offset-lg-1 col-lg-6 offset-col-xl-1" >
 			<div class="offset-sm-1 col-sm-10 offset-lg-1 col-lg-10 formMap" id="formMapHome">
 				<form action='carte' method='post'>
 					<label for="address">Entrez votre adresse pour trouver les spots de workout à proximité</label>
 					<div class="form-group row">
-						<input type="text" name="search" id="search" class="offset-1 col-8 offset-sm-2 col-sm-8 offset-lg-1 col-lg-10 form-control" placeholder="Adresse, Ville CP">
+						<input type="text" name="search" id="search" class="offset-1 col-8 offset-sm-2 col-sm-8 offset-lg-0 col-lg-10  form-control" placeholder="Adresse, Ville CP">
 						<button type="submit" class="btn btn-outline-success"><i class="fas fa-search"></i></button>
 					</div>
 				</form>

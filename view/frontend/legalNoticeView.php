@@ -12,6 +12,8 @@ ob_start();
 			<div class="row">
 				<div class="offset-1 col-10">
 					<h2>Informations légales</h2>
+					<p>Projet réalisé pour la formation Developpeur Web Junior d'<a href="https://openclassrooms.com/fr/" target="_blank">openclassroom</a></p>
+					<br/>
 					<h3>1. Présentation du site.</h3>
 					<p>En vertu de l'article 6 de la loi n° 2004-575 du 21 juin 2004 pour la confiance dans l'économie numérique, il est précisé aux utilisateurs du site <a href="http://www.shapeplace.cornelissenquentin.fr/">www.shapeplace.cornelissenquentin.fr</a> l'identité des différents intervenants dans le cadre de sa réalisation et de son suivi :</p>
 					<p><strong>Propriétaire</strong> : Cornelissen Quentin –  – 37 rue croix de fournes<br />

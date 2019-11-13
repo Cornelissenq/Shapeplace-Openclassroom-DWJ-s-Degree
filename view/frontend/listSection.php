@@ -15,9 +15,9 @@ ob_start();
 		while ($section = $sections->fetch())
 		{
 		?>
-			<div class="col-sm-6 col-lg-4 col-xl-3 Section">
+			<div class="col-12 col-sm-6 col-lg-4 col-xl-3 Section">
 				<div class="row">
-					<div class="offset-1 col-10 offset-lg-0 col-lg-12 cadreSection">
+					<div class="offset-lg-0 col-lg-12 cadreSection">
 						<div class="row ">
 							<div class="col-lg-12 imgSection">
 								<a href="section-<?=$section['id']?>"><img src="<?= $section['img']?>" alt="<?= $section['name'] ?>"</></a>

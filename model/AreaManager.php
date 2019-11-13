@@ -19,7 +19,7 @@ Class AreaManager extends Manager
 	{
 		$db = $this->dbConnect();
 
-		$req = $db->prepare('SELECT *,tools.type AS type FROM area LEFT JOIN tools ON (area.id_category = tools.id) WHERE area.id = ? ');
+		$req = $db->prepare('SELECT *,area.id AS id ,tools.type AS type FROM area LEFT JOIN tools ON (area.id_category = tools.id) WHERE area.id = ? ');
 		$req->execute(array($idArea));
 
 		$area = $req->fetch();

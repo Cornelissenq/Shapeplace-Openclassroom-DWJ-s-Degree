@@ -80,12 +80,12 @@ ob_start();
 				    </select>
 				</div>
 				<div class="form-group">
-					<label for="extract">Extrait (255 caractères max) :</label>
+					<label for="extract">Extrait (180 caractères max) :</label>
 					<?php 
 					if(isset($program['extract']))
 					{
 					?>
-						<textarea class="form-control" name="extract" id="extract" maxlength="255" rows="3" required="required"><?=$program['extract'];?></textarea>
+						<textarea class="form-control" name="extract" id="extract" maxlength="180" rows="3" required="required"><?=$program['extract'];?></textarea>
 					<?php
 					}
 					else

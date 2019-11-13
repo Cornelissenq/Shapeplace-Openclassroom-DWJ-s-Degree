@@ -83,7 +83,7 @@ if (isset($_COOKIE['id_user']) && !empty($_COOKIE['id_user']))
 			<div class="row">
 				<div class="col-lg-2" id="navB">
 					<ul>
-						<li><a href="../accueil/" >Retour au site</a></li>
+						<li><a href="../accueil" >Retour au site</a></li>
 					
 					
 						<li><a href="../deconnexion" >Déconnexion</a></li>

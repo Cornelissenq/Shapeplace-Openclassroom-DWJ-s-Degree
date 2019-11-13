@@ -28,7 +28,7 @@ ob_start();
 				</div>
 			</div>
 			<div class="row">
-				<div class="offset-1 col-10 offset-lg-3 col-lg-6" id="mymap">
+				<div class="offset-1 col-10 offset-lg-2 col-lg-8" id="mymap">
 					<script type="text/javascript">
 						var mymap = L.map('mymap', {
 				  				layers: MQ.mapLayer()
@@ -87,7 +87,7 @@ ob_start();
 			</div>
 
 			<div class="row">
-				<div class="offset-lg-1 col-lg-10" id="textArea">
+				<div class="offset-lg-1 col-lg-10" >
 					<?php 
 					if (isset($avgNote['avg']))
 					{
@@ -102,17 +102,14 @@ ob_start();
 					<?php
 					}
 					?>
-					
-					<div class="row">
-						<h6 class="offset-1 col-6 col-lg-4">La description du spot :</h6>
-					</div>
-					<div class="row">
-						<div class="offset-1 col-10 offset-lg-2 col-lg-8" id="contentArea">
-							<p><?= htmlspecialchars(nl2br($area['content'])) ?></p>
-						</div>
-					</div>
-
-						
+				</div>
+			</div>
+			<div class="row" id="textArea">
+				<h6 class="offset-1 col-6 offset-lg-2 col-lg-4">La description du spot :</h6>
+			</div>
+			<div class="row">
+				<div class="offset-1 col-10 offset-lg-2 col-lg-8" id="contentArea">
+					<p><?= htmlspecialchars(nl2br($area['content'])) ?></p>
 				</div>
 			</div>
 		</div>
@@ -205,7 +202,7 @@ ob_start();
 			?>
 				<div class="row">
 					<div class="offset-1 col-10 offset-lg-0 col-lg-12">
-						<div class="row headerNote">
+						<div class="row headerNote" id="<?=$note['id']?>">
 							<div class="star" id="star">
 								<div class="starNote" style="width: calc( (<?= $note['note'] ?> * 100%) / 5 )"></div>
 							</div>

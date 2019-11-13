@@ -53,7 +53,7 @@ if (isset($_COOKIE['id_user']) && !empty($_COOKIE['id_user']))
 							<div class="dropdown">
   								<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="<?= $_SESSION['avatar'] ?>" alt="<?= $_SESSION['pseudo'] ?>" class="avatarMenu"/></button>
  								<div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id="dropDown">
-    								<a class="dropdown-item" href="profil<?=$_SESSION['id_user'] ?>">Mon profil</a>
+    								<a class="dropdown-item" href="profil-<?=$_SESSION['id_user'] ?>">Mon profil</a>
     								<a class="dropdown-item" href="deconnexion">Déconnexion</a>
     								<?php
 									if($_SESSION['role'] == "admin" OR $_SESSION['role'] == "superAdmin")
@@ -80,10 +80,10 @@ if (isset($_COOKIE['id_user']) && !empty($_COOKIE['id_user']))
 			<div class="pos-f-t" id="navbarMobile">	
   				<nav class="row navbar navbar-dark bg-dark">
 
-	  					<div class="col-xs-2 logo">
+	  					<div class="offset-1 col-1 logo">
 							<a href="accueil"><img src="public/images/logowhite.png" alt="logo shapeplace"/></a>
 						</div>
-						<div class="offset-xs-8 col-xs-1" id="navMobilebtn">
+						<div id="navMobilebtn">
 		   					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
 		      					<span class="navbar-toggler-icon"></span>
 		    				</button>
@@ -210,10 +210,10 @@ if (isset($_COOKIE['id_user']) && !empty($_COOKIE['id_user']))
 
 		<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 		<script src="https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster.js"></script>
-		<script src="../bootstrap/js/bootstrap.js"></script>
-		<script src="../public/js/commentForm.js"></script>
-		<script src="../public/js/sessionStorage.js"></script>
-		<script src="../public/js/editProfilUser.js"></script>
+		<script src="bootstrap/js/bootstrap.js"></script>
+		<script src="public/js/commentForm.js"></script>
+		<script src="public/js/sessionStorage.js"></script>
+		<script src="public/js/editProfilUser.js"></script>
 		<script src="https://cdn.lightwidget.com/widgets/lightwidget.js"></script>
 	</body>
 </html>

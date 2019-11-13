@@ -41,16 +41,16 @@ ob_start();
 						<div class="offset-lg-1 col-lg-10">
 							
 							<div class="contentProgram">
-								<h4 id="description"><i class="fas fa-bullseye"></i> La description : </h4>
-								<p><?= htmlspecialchars(nl2br($program['description'])) ?></p>
+								<h4 id="description"><i class="fas fa-angle-right"></i> La description : </h4>
+								<p><?= nl2br($program['description']) ?></p>
 							</div>
 							<?php	
 							if (isset($program['good_point']) && $program['good_point'] != '')
 							{
 							?>
 								<div class="contentProgram">
-									<h4 id="goodPoint"><i class="fas fa-bullseye"></i> Les bon points : </h4>
-									<?= htmlspecialchars(nl2br($program['good_point'])) ?>
+									<h4 id="goodPoint"><i class="fas fa-angle-right"></i> Les bon points : </h4>
+									<?= nl2br($program['good_point']) ?>
 								</div>
 							<?php
 							}
@@ -59,15 +59,15 @@ ob_start();
 							{
 							?>
 								<div class="contentProgram">
-									<h4 id="badPoint"><i class="fas fa-bullseye"></i> Les mauvais points : </h4>
-									<?= htmlspecialchars(nl2br($program['bad_point'])) ?>
+									<h4 id="badPoint"><i class="fas fa-angle-right"></i> Les mauvais points : </h4>
+									<?= nl2br($program['bad_point']) ?>
 								</div>
 							<?php
 							}
 							?>
 							<div class="contentProgram">
-								<h4 id="program"><i class="fas fa-bullseye"></i> Le programme : </h4>
-								<?= htmlspecialchars(nl2br($program['program'])) ?>
+								<h4 id="program"><i class="fas fa-angle-right"></i>	 Le programme : </h4>
+								<?= nl2br($program['program']) ?>
 							</div>
 						</div>
 					</div>
@@ -159,8 +159,8 @@ ob_start();
 				{
 				?>
 					<div class="row">
-						<div class="offset-lg-1 col-lg-10">
-							<div class="row headerComment" id="<?php $comment['id'] ?>">
+						<div class="col-lg-12">
+							<div class="row headerComment" id="<?= $comment['id'] ?>">
 								<div class="col-lg-4 pseudoComment">
 									<a href="profil-<?=$comment['id_user']?>" target="_blank"><?=htmlspecialchars($comment['pseudo'])?></a>
 								</div>
@@ -186,7 +186,7 @@ ob_start();
 						
 							</div>
 							<div class="row contentComment">
-								<a href="profil-<?=$comment['id_user']?>" class="col-lg-1" target="_blank"><img src="../<?=$comment['avatar']?>" alt="<?=$comment['pseudo']?>" class="imgComment"></a>
+								<a href="profil-<?=$comment['id_user']?>" class="col-lg-1" target="_blank"><img src="<?=$comment['avatar']?>" alt="<?=$comment['pseudo']?>" class="imgComment"></a>
 								<div class="offset-lg-1 col-lg-9">
 									<form action="editerCommentaire-<?=$comment['id']?>" method="post">
 										<div class="form-group">
@@ -208,8 +208,8 @@ ob_start();
 				{
 				?>
 					<div class="row">
-						<div class="offset-lg-1 col-lg-10">
-							<div class="row headerComment" id="<?php $comment['id'] ?>">
+						<div class="col-lg-12">
+							<div class="row headerComment" id="<?= $comment['id'] ?>">
 								<div class="col-2 offset-lg-1 col-lg-4 pseudoComment"> 
 									<a href="profil-<?=$comment['id_user']?>" target="_blank"><?=$comment['pseudo']?></a>
 								</div>

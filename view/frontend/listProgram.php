@@ -36,9 +36,9 @@ ob_start();
 		while($program = $programs->fetch())
 		{
 		?>
-			<div class="col-sm-6 col-lg-4 col-xl-3">
+			<div class="col-12 col-sm-6 col-lg-4 col-xl-3">
 				<div class="row">
-					<div class="offset-1 col-10 offset-lg-0 col-lg-12 cadreProgram">
+					<div class="offset-lg-0 col-lg-12 cadreProgram">
 						<div class="row">
 							<div class="col-lg-12 imgProgram">
 								<a href="programme-<?=$program['id']?>-<?=$program['id_section']?>"><img src="<?= $program['avatar']?>" alt="<?= $program['name'] ?>"/></a>
