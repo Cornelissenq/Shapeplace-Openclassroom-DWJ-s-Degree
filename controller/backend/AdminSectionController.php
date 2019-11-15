@@ -31,16 +31,25 @@ Class AdminSectionController
 			$infoFile = pathinfo($img['name']);
 			$extensionUpload = $infoFile['extension'];
 			$extensionsAllowed = array('jpg', 'jpeg', 'png');
-
+			$name = $img['name'];
 			$file = $nameSection. '.' .$extensionUpload;
 			if (in_array($extensionUpload, $extensionsAllowed))
 			{
-		        move_uploaded_file($img['tmp_name'], 'public/images/section/' . basename($file));                 
-		        $imgName = 'public/images/section/' .$file;
-		        $add = $sectionManager->addSection($nameSection,$extractSection,$contentSection,$imgName);
+				if( preg_match('#[\x00-\x1F\x7F-\x9F/\\\\]#', $name) )
+				{
+					$_SESSION['error'] = 'Le fichier n\'est pas une image';
+					header('refresh : 0');
+				}
+				else
+				{
+					move_uploaded_file($img['tmp_name'], 'public/images/section/' . basename($file));                 
+		        	$imgName = 'public/images/section/' .$file;
+		        	$add = $sectionManager->addSection($nameSection,$extractSection,$contentSection,$imgName);
 
-		        $_SESSION['success'] = 'La section est modifiée.';
-				header('Location: ../adminSection/');
+		        	$_SESSION['success'] = 'La section est modifiée.';
+					header('Location: ../adminSection/');
+				}
+		        
 			}
 			else
 			{
@@ -88,17 +97,26 @@ Class AdminSectionController
 			$infoFile = pathinfo($img['name']);
 			$extensionUpload = $infoFile['extension'];
 			$extensionsAllowed = array('jpg', 'jpeg', 'png');
-
+			$name = $img['name'];
 			$file = $nameSection. '.' .$extensionUpload;
 			if (in_array($extensionUpload, $extensionsAllowed))
 			{
-		        move_uploaded_file($img['tmp_name'], 'public/images/section/' . basename($file));                 
-		        $imgName = 'public/images/section/' .$file;
-		        $edited = $sectionManager->editSection($nameSection,$extractSection,$contentSection,$idSection);
-		        $avatar = $sectionManager->editAvatar($imgName,$idSection);
+				if( preg_match('#[\x00-\x1F\x7F-\x9F/\\\\]#', $name) )
+				{
+					$_SESSION['error'] = 'Le fichier n\'est pas une image';
+					header('refresh : 0');
+				}
+				else
+				{
+					move_uploaded_file($img['tmp_name'], 'public/images/section/' . basename($file));                 
+		        	$imgName = 'public/images/section/' .$file;
+		        	$edited = $sectionManager->editSection($nameSection,$extractSection,$contentSection,$idSection);
+		        	$avatar = $sectionManager->editAvatar($imgName,$idSection);
 
-		        $_SESSION['success'] = 'La section est modifiée.';
-				header('Location: ../adminSection/');
+		        	$_SESSION['success'] = 'La section est modifiée.';
+					header('Location: ../adminSection/');
+				}
+		        
 			}
 			else
 			{

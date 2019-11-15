@@ -89,7 +89,7 @@ ob_start();
 					</form>
 				</div>
 				<div class="row">
-					<button class="offset-lg-8 col-lg-4 btn btn-secondary" id="showEditMail">Modifier l'adresse mail'</button>
+					<button class="offset-lg-8 col-lg-4 btn btn-secondary" id="showEditMail">Modifier l'adresse mail</button>
 				</div>
 				<div class="row" id="editMail">
 					<form action="editMail" method="post"  class="col-lg-12">

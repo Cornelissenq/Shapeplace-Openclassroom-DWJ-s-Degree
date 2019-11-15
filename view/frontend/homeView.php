@@ -10,8 +10,8 @@ ob_start();
 		<h3 class="offset-lg-3 col-lg-6">Pouvoir s'entrainer partout avec ShapePlace. </h3>
 	</div>
 	<div class="row">
-		<div class="offset-1 col-10 offset-lg-1 col-lg-6 offset-col-xl-1" >
-			<div class="offset-sm-1 col-sm-10 offset-lg-1 col-lg-10 formMap" id="formMapHome">
+		<div class="offset-1 col-10 offset-lg-1 col-lg-6 offset-xl-2 col-xl-10" >
+			<div class="offset-sm-1 col-sm-10 offset-lg-1 col-lg-10 offset-xl-2 col-xl-5 formMap" id="formMapHome">
 				<form action='carte' method='post'>
 					<label for="address">Entrez votre adresse pour trouver les spots de workout à proximité</label>
 					<div class="form-group row">

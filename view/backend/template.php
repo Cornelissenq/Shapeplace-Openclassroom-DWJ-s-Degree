@@ -23,6 +23,7 @@ if (isset($_COOKIE['id_user']) && !empty($_COOKIE['id_user']))
         <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.js"></script>
         <script src="https://www.mapquestapi.com/sdk/leaflet/v2.2/mq-map.js?key=myM1G6Q4D8yFlzD4AG07TLWWZQUP5ljI"></script>
 		<script src="https://www.mapquestapi.com/sdk/leaflet/v2.2/mq-geocoding.js?key=myM1G6Q4D8yFlzD4AG07TLWWZQUP5ljI"></script>
+		<script src="../ckeditor/ckeditor.js"></script>
 
 	</head>
 
@@ -135,5 +136,6 @@ if (isset($_COOKIE['id_user']) && !empty($_COOKIE['id_user']))
 		<script src="https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster.js"></script>
 		<script src="../bootstrap/js/bootstrap.js"></script>
 		<script src="../public/js/sessionStorage.js"></script>
+
 	</body>
 </html>

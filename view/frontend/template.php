@@ -7,6 +7,31 @@ if (isset($_COOKIE['id_user']) && !empty($_COOKIE['id_user']))
 	$_SESSION['avatar'] = $_COOKIE['avatar'];
 	$_SESSION['role'] = $_COOKIE['role'];
 }
+if (isset($_COOKIE['var']) && isset($_SESSION['var']))
+{
+	if ($_COOKIE['var'] == $_SESSION['var'])
+	{
+		$ticket = session_id().microtime().rand(0, 999);
+		$ticket = hash('sha512', $ticket);
+		setcookie("var", $ticket, time() + (60 * 20));
+		unset($_SESSION['var']);
+		$_SESSION['var'] = $ticket;
+	}
+	else
+	{
+		$_SESSION = array();
+		session_destroy();
+		$_SESSION['error'] = 'Votre session a expirée.';
+	}
+}
+if (isset($_COOKIE['RGPD']))
+{
+	$ticket = session_id().microtime().rand(0,9999);
+	$ticket = hash('sha512', $ticket);
+	setcookie("var", $ticket, time() + (60 * 20));
+	$_SESSION['var'] = $ticket;
+}
+
 ?>
 <!DOCTYPE html>
 <html>

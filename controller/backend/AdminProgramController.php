@@ -38,18 +38,25 @@ Class AdminProgramController
 			$infoFile = pathinfo($img['name']);
 			$extensionUpload = $infoFile['extension'];
 			$extensionsAllowed = array('jpg', 'jpeg', 'png');
-
+			$name = $img['name'];
 			$file = $nameProgram. '.' .$extensionUpload;
 			if (in_array($extensionUpload, $extensionsAllowed))
 			{
-		        move_uploaded_file($img['tmp_name'], 'public/images/program/' . basename($file));                 
-		        $imgName = 'public/images/program/' .$file;
+				if( preg_match('#[\x00-\x1F\x7F-\x9F/\\\\]#', $name) )
+				{
+					$_SESSION['error'] = 'Le fichier n\'est pas une image';
+					header('refresh : 0');
+				}
+				else
+				{
+					move_uploaded_file($img['tmp_name'], 'public/images/program/' . basename($file));                 
+		        	$imgName = 'public/images/program/' .$file;
+					$added = $programManager->addProgram($nameProgram,$idSection,$extract,$description,$goodPoint,$badPoint,$program,$imgName);
+
+					$_SESSION['success'] = 'Le programme est ajouté';
+					header('Location: ../adminProgram/');
+				}
 		        
-				$added = $programManager->addProgram($nameProgram,$idSection,$extract,$description,$goodPoint,$badPoint,$program,$imgName);
-
-				$_SESSION['success'] = 'Le programme est ajouté';
-
-				header('Location: ../adminProgram/');
 			}
 			else 
 			{
@@ -99,17 +106,26 @@ Class AdminProgramController
 			$infoFile = pathinfo($img['name']);
 			$extensionUpload = $infoFile['extension'];
 			$extensionsAllowed = array('jpg', 'jpeg', 'png');
-
+			$name = $img['name'];
 			$file = $program. '.' .$extensionUpload;
 			if (in_array($extensionUpload, $extensionsAllowed))
 			{
-		        move_uploaded_file($img['tmp_name'], 'public/images/program/' . basename($file));                 
-		        $imgName = 'public/images/program/' .$file;
-		        $edited = $programManager->editProgram($name,$extract,$description,$goodPoint,$badPoint,$program,$idProgram);
-		        $avatar = $programManager->editAvatar($imgName,$idProgram);
+				if( preg_match('#[\x00-\x1F\x7F-\x9F/\\\\]#', $name) )
+				{
+					$_SESSION['error'] = 'Le fichier n\'est pas une image';
+					header('refresh : 0');
+				}
+				else
+				{
+					move_uploaded_file($img['tmp_name'], 'public/images/program/' . basename($file));                 
+		        	$imgName = 'public/images/program/' .$file;
+		        	$edited = $programManager->editProgram($name,$extract,$description,$goodPoint,$badPoint,$program,$idProgram);
+		        	$avatar = $programManager->editAvatar($imgName,$idProgram);
 
-		        $_SESSION['success'] = 'Le programme est modifié avec Avatar';
-				header('Location: ../adminProgram/');
+		        	$_SESSION['success'] = 'Le programme est modifié avec Avatar';
+					header('Location: ../adminProgram/');
+				}
+		        
 			}
 			else
 			{

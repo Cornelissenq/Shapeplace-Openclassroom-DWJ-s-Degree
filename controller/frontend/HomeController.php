@@ -48,4 +48,28 @@ Class HomeController
 	{
 		require('view/frontend/legalNoticeView.php');
 	}
+
+	public function checkUser()
+	{
+		if (isset($_COOKIE['RGPD']))
+		{
+			if ($_COOKIE['ticket'] == $_SESSION['ticket'])
+			{
+				$ticket = session_id().microtime().rand(0, 999);
+				$ticket = hash('sha512', $ticket);
+				unset($_SESSION['ticket']);
+				setcookie("ticket", "$ticket",time() + 60*180);
+
+				$_SESSION['ticket'] = $ticket;
+			}
+			else
+			{
+				$_SESSION = array();
+				session_destroy();
+				header('Location: accueil');
+			}
+		}
+		
+	}
+	
 }

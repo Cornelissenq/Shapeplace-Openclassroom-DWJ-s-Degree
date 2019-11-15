@@ -26,7 +26,7 @@ Class UserController
 
 	
 		if ($result)
-		{			
+		{		
 			$_SESSION['success'] = 'Vous êtes bien identifié.';
 
 			$_SESSION['id_user'] = $result['id'];
@@ -191,23 +191,32 @@ Class UserController
 			$infoFile = pathinfo($avatar['name']);
 			$extensionUpload = $infoFile['extension'];
 			$extensionsAllowed = array('jpg', 'jpeg', 'png');
-
+			$name = $avatar['name'];
 			$file = $_SESSION['pseudo']. '.' .$extensionUpload;
 			if (in_array($extensionUpload, $extensionsAllowed))
 			{
-		        move_uploaded_file($avatar['tmp_name'], 'public/images/user/' . basename($file));                 
-		        $avatarName = 'public/images/user/' .$file;
-		        $userManager->editAvatar($avatarName,$idUser);
-		        unset($_SESSION['avatar']);
-		        $_SESSION['avatar'] = $avatarName;
-		        if (isset($_SERVER["HTTP_REFERER"]))
+		        if( preg_match('#[\x00-\x1F\x7F-\x9F/\\\\]#', $name) )
 				{
-					header('Refresh: 0 ' . $_SERVER["HTTP_REFERER"]);
-				}
-				else
-				{
+					$_SESSION['error'] = 'Le fichier n\'est pas une image';
 					header('Location: profil-'. $idUser .'-edit');
 				}
+				else 
+				{
+					move_uploaded_file($avatar['tmp_name'], 'public/images/user/' . basename($file));                 
+		        	$avatarName = 'public/images/user/' .$file;
+		        	$userManager->editAvatar($avatarName,$idUser);
+		        	unset($_SESSION['avatar']);
+		       		$_SESSION['avatar'] = $avatarName;
+		       		$_SESSION['success'] = 'L\'avatar est bien modifié';
+		        	if (isset($_SERVER["HTTP_REFERER"]))
+					{
+						header('Refresh: 0 ' . $_SERVER["HTTP_REFERER"]);
+					}
+					else
+					{
+						header('Location: profil-'. $idUser .'-edit');
+					}
+				}   
 			}
 			else
 			{

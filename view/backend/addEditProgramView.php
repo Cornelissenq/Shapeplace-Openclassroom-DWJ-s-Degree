@@ -15,7 +15,7 @@ ob_start();
 	<div class="col-lg-12">
 		<div class="row">
 			<div class="offset-lg-1 col-lg-3 btnBack">
-				<a href='../adminSection/' class="btn btn-info">Revenir à la gestion des programmes</a>
+				<a href='../adminProgram/' class="btn btn-info">Revenir à la gestion des programmes</a>
 			</div>
 		</div>
 		<div class="row">
@@ -164,6 +164,13 @@ ob_start();
 					}
 					?>
 				</div>
+				<script>
+                	CKEDITOR.replace( 'extract' );
+                	CKEDITOR.replace( 'description' );
+                	CKEDITOR.replace( 'good_point' );
+                	CKEDITOR.replace( 'bad_point' );
+                	CKEDITOR.replace( 'program' );
+            	</script>
 				<?php
 				if (isset($edit))
 				{

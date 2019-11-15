@@ -32,7 +32,7 @@ ob_start();
 				{
 				?>
 					<tr>
-						<th scope="row"><a class="bulleNum" href="../programme-<?= $program['id_section'] ?>-<?= $program['id'] ?>" target="_blank"><?= $program['id'] ?></a></th>
+						<th scope="row"><a class="bulleNum" href="../programme-<?= $program['id'] ?>-<?= $program['id_section'] ?>" target="_blank"><?= $program['id'] ?></a></th>
 						<th scope="row"><a class="bulleNum" href="../section-<?= $program['id_section'] ?>" target="_blank"><?= $program['id_section'] ?></a></th>
 						<th><?= $program['name'] ?></th>
 						<th class="leftAlign"><?= nl2br($program['extract']) ?></th>
