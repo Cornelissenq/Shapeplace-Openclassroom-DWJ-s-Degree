@@ -42,9 +42,17 @@ Class AdminSectionController
 				}
 				else
 				{
+					
+					$urlSlug = preg_replace('~[^\pL\d]+~u', '-', $nameSection);
+					$urlSlug = iconv('utf-8', 'us-ascii//TRANSLIT', $urlSlug);
+					$urlSlug = preg_replace('~[^-\w]+~', '', $urlSlug);
+					$urlSlug = trim($urlSlug, '-');
+					$urlSlug = preg_replace('~-+~', '-', $urlSlug);
+					$urlSlug = strtolower($urlSlug);
+
 					move_uploaded_file($img['tmp_name'], 'public/images/section/' . basename($file));                 
 		        	$imgName = 'public/images/section/' .$file;
-		        	$add = $sectionManager->addSection($nameSection,$extractSection,$contentSection,$imgName);
+		        	$add = $sectionManager->addSection($nameSection,$urlSlug,$extractSection,$contentSection,$imgName);
 
 		        	$_SESSION['success'] = 'La section est modifiée.';
 					header('Location: ../adminSection/');
@@ -80,7 +88,14 @@ Class AdminSectionController
 	{
 		$sectionManager = new Cornelissen\Shapeplace\Model\SectionManager();
 
-		$edited = $sectionManager->editSection($nameSection,$extractSection,$contentSection,$idSection);
+		$urlSlug = preg_replace('~[^\pL\d]+~u', '-', $nameSection);
+		$urlSlug = iconv('utf-8', 'us-ascii//TRANSLIT', $urlSlug);
+		$urlSlug = preg_replace('~[^-\w]+~', '', $urlSlug);
+		$urlSlug = trim($urlSlug, '-');
+		$urlSlug = preg_replace('~-+~', '-', $urlSlug);
+		$urlSlug = strtolower($urlSlug);
+
+		$edited = $sectionManager->editSection($nameSection,$urlSlug,$extractSection,$contentSection,$idSection);
 
 		$_SESSION['success'] = 'La section est modifiée';
 
@@ -90,6 +105,7 @@ Class AdminSectionController
 	public function editedSectionwAvatar($nameSection,$extractSection,$contentSection,$idSection,$img)
 	{
 		$sectionManager = new Cornelissen\Shapeplace\Model\SectionManager();
+
 
 		if ($img['size'] <= 2100000)
 		{
@@ -108,9 +124,16 @@ Class AdminSectionController
 				}
 				else
 				{
+					$urlSlug = preg_replace('~[^\pL\d]+~u', '-', $nameSection);
+					$urlSlug = iconv('utf-8', 'us-ascii//TRANSLIT', $urlSlug);
+					$urlSlug = preg_replace('~[^-\w]+~', '', $urlSlug);
+					$urlSlug = trim($urlSlug, '-');
+					$urlSlug = preg_replace('~-+~', '-', $urlSlug);
+					$urlSlug = strtolower($urlSlug);
+
 					move_uploaded_file($img['tmp_name'], 'public/images/section/' . basename($file));                 
 		        	$imgName = 'public/images/section/' .$file;
-		        	$edited = $sectionManager->editSection($nameSection,$extractSection,$contentSection,$idSection);
+		        	$edited = $sectionManager->editSection($nameSection,$urlSlug,$extractSection,$contentSection,$idSection);
 		        	$avatar = $sectionManager->editAvatar($imgName,$idSection);
 
 		        	$_SESSION['success'] = 'La section est modifiée.';

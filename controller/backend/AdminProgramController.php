@@ -49,9 +49,16 @@ Class AdminProgramController
 				}
 				else
 				{
+					$urlSlug = preg_replace('~[^\pL\d]+~u', '-', $nameProgram);
+					$urlSlug = iconv('utf-8', 'us-ascii//TRANSLIT', $urlSlug);
+					$urlSlug = preg_replace('~[^-\w]+~', '', $urlSlug);
+					$urlSlug = trim($urlSlug, '-');
+					$urlSlug = preg_replace('~-+~', '-', $urlSlug);
+					$urlSlug = strtolower($urlSlug);
+
 					move_uploaded_file($img['tmp_name'], 'public/images/program/' . basename($file));                 
 		        	$imgName = 'public/images/program/' .$file;
-					$added = $programManager->addProgram($nameProgram,$idSection,$extract,$description,$goodPoint,$badPoint,$program,$imgName);
+					$added = $programManager->addProgram($nameProgram,$urlSlug,$idSection,$extract,$description,$goodPoint,$badPoint,$program,$imgName);
 
 					$_SESSION['success'] = 'Le programme est ajouté';
 					header('Location: ../adminProgram/');
@@ -89,7 +96,14 @@ Class AdminProgramController
 	{
 		$programManager = new Cornelissen\Shapeplace\Model\ProgramManager();
 
-		$edited = $programManager->editProgram($name,$extract,$description,$goodPoint,$badPoint,$program,$idProgram);
+		$urlSlug = preg_replace('~[^\pL\d]+~u', '-', $name);
+		$urlSlug = iconv('utf-8', 'us-ascii//TRANSLIT', $urlSlug);
+		$urlSlug = preg_replace('~[^-\w]+~', '', $urlSlug);
+		$urlSlug = trim($urlSlug, '-');
+		$urlSlug = preg_replace('~-+~', '-', $urlSlug);
+		$urlSlug = strtolower($urlSlug);
+
+		$edited = $programManager->editProgram($name,$urlSlug,$extract,$description,$goodPoint,$badPoint,$program,$idProgram);
 
 		$_SESSION['success'] = 'Le programme est modifié';
 
@@ -117,9 +131,16 @@ Class AdminProgramController
 				}
 				else
 				{
+					$urlSlug = preg_replace('~[^\pL\d]+~u', '-', $name);
+					$urlSlug = iconv('utf-8', 'us-ascii//TRANSLIT', $urlSlug);
+					$urlSlug = preg_replace('~[^-\w]+~', '', $urlSlug);
+					$urlSlug = trim($urlSlug, '-');
+					$urlSlug = preg_replace('~-+~', '-', $urlSlug);
+					$urlSlug = strtolower($urlSlug);
+
 					move_uploaded_file($img['tmp_name'], 'public/images/program/' . basename($file));                 
 		        	$imgName = 'public/images/program/' .$file;
-		        	$edited = $programManager->editProgram($name,$extract,$description,$goodPoint,$badPoint,$program,$idProgram);
+		        	$edited = $programManager->editProgram($name,$urlSlug,$extract,$description,$goodPoint,$badPoint,$program,$idProgram);
 		        	$avatar = $programManager->editAvatar($imgName,$idProgram);
 
 		        	$_SESSION['success'] = 'Le programme est modifié avec Avatar';

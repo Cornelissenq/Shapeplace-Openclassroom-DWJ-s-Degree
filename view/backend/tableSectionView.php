@@ -30,7 +30,7 @@ ob_start();
 				{
 				?>
 					<tr>
-						<th scope="row"><a class="bulleNum" href="../section-<?= $section['id'] ?>" target="_blank"><?= $section['id'] ?></a></th>
+						<th scope="row"><a class="bulleNum" href="../section-<?= $section['url_slug'] ?>-<?= $section['id'] ?>" target="_blank"><?= $section['id'] ?></a></th>
 						<th><?= $section['name'] ?></th>
 						<th class="leftAlign"><?= nl2br($section['extract']) ?></th>
 						<th><a href="../modifierSection/<?= $section['id'] ?>" class="btn btn-outline-info"><i class="fas fa-edit"></i></a></th>

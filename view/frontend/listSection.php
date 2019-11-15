@@ -20,7 +20,7 @@ ob_start();
 					<div class="offset-lg-0 col-lg-12 cadreSection">
 						<div class="row ">
 							<div class="col-lg-12 imgSection">
-								<a href="section-<?=$section['id']?>"><img src="<?= $section['img']?>" alt="<?= $section['name'] ?>"</></a>
+								<a href="section-<?= $section['url_slug'] ?>-<?=$section['id']?>"><img src="<?= $section['img']?>" alt="<?= $section['name'] ?>"</></a>
 							</div>
 						</div>
 						<div class="row whiteBg">
@@ -37,7 +37,7 @@ ob_start();
 								</div>
 								<div class="row btnSection">
 									<div class="offset-lg-4 col-lg-7 offset-xl-3 col-xl-8">
-										<a href="section-<?=$section['id']?>" class="btn btn-info"><i class="fas fa-plus-circle"></i> Accéder</a>
+										<a href="section-<?= $section['url_slug'] ?>-<?=$section['id']?>" class="btn btn-info"><i class="fas fa-plus-circle"></i> Accéder</a>
 									</div>
 								</div>
 							</div>

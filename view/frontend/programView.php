@@ -10,7 +10,7 @@ ob_start();
 		<div class="col-lg-12 cadreTitle">
 			<div class="row">
 				<div class="col-lg-1 backListProgram">
-					<a href="section-<?= $program['id_section'] ?>" class="btn btn-light"><i class="fas fa-arrow-circle-left"></i></a>
+					<a href="section-<?= $program['sectionUrl']?>-<?= $program['id_section'] ?>" class="btn btn-light"><i class="fas fa-arrow-circle-left"></i></a>
 				</div>
 				<div class="col-lg-6 accessCategory">
 					<p>

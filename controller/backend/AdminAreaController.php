@@ -27,7 +27,14 @@ Class AdminAreaController
 	{
 		$areaManager = new Cornelissen\Shapeplace\Model\AreaManager();
 
-		$edit = $areaManager->editArea($name,$description,$city,$idCategory,$idArea);
+		$urlSlug = preg_replace('~[^\pL\d]+~u', '-', $name);
+		$urlSlug = iconv('utf-8', 'us-ascii//TRANSLIT', $urlSlug);
+		$urlSlug = preg_replace('~[^-\w]+~', '', $urlSlug);
+		$urlSlug = trim($urlSlug, '-');
+		$urlSlug = preg_replace('~-+~', '-', $urlSlug);
+		$urlSlug = strtolower($urlSlug);
+
+		$edit = $areaManager->editArea($name,$urlSlug,$description,$city,$idCategory,$idArea);
 
 		$_SESSION['success'] = 'Le spot est modifié';
 		header('Location: ../adminSpot/');

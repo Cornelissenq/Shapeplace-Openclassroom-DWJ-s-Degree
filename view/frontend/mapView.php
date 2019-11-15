@@ -118,7 +118,7 @@ ob_start();
 
 								marker.addEventListener("click",function()
 								{
-									$(location).attr('href', 'spot-<?=$marker['id']?>');	
+									$(location).attr('href', 'spot-<?=$marker['url_slug']?>-<?=$marker['id']?>');	
 								});
 
 							<?php
@@ -130,7 +130,7 @@ ob_start();
 
 								marker.addEventListener("click",function()
 								{
-									$(location).attr('href', 'spot-<?=$marker['id']?>');	
+									$(location).attr('href', 'spot-<?=$marker['url_slug']?>-<?=$marker['id']?>');	
 								});
 							<?php
 							}
@@ -141,7 +141,7 @@ ob_start();
 
 								marker.addEventListener("click",function()
 								{
-									$(location).attr('href', 'spot-<?=$marker['id']?>');	
+									$(location).attr('href', 'spot-<?=$marker['url_slug']?>-<?=$marker['id']?>');	
 								});
 							<?php
 							}
@@ -152,7 +152,7 @@ ob_start();
 
 								marker.addEventListener("click",function()
 								{
-									$(location).attr('href', 'spot-<?=$marker['id']?>');	
+									$(location).attr('href', 'spot-<?=$marker['url_slug']?>-<?=$marker['id']?>');	
 								});
 							<?php
 							}

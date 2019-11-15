@@ -27,20 +27,20 @@ Class AreaManager extends Manager
 		return $area;
 	}
 
-	public function addPlace($name,$lattitude,$longitude,$content,$city,$category)
+	public function addPlace($name,$urlSlug,$lattitude,$longitude,$content,$city,$category)
 	{
 		$db = $this->dbConnect();
 
-		$insert = $db->prepare('INSERT INTO area(name,lat,lng,content,city,id_category) VALUES(?, ?, ?, ?, ?, ?)');
-		$add = $insert->execute(array($name,$lattitude,$longitude,$content,$city,$category));
+		$insert = $db->prepare('INSERT INTO area(name,url_slug,lat,lng,content,city,id_category) VALUES(?, ?, ?, ?, ?, ?, ?)');
+		$add = $insert->execute(array($name,$urlSlug,$lattitude,$longitude,$content,$city,$category));
 	}
 
-	public function editArea($name,$description,$city,$idCategory,$idArea)
+	public function editArea($name,$urlSlug,$description,$city,$idCategory,$idArea)
 	{
 		$db = $this->dbConnect();
 
-		$edit = $db->prepare('UPDATE area SET name = ?, content = ?, city = ?, id_category = ? WHERE id = ?');
-		$edit->execute(array($name,$description,$city,$idCategory,$idArea));
+		$edit = $db->prepare('UPDATE area SET name = ?, url_slug = ?, content = ?, city = ?, id_category = ? WHERE id = ?');
+		$edit->execute(array($name,$urlSlug,$description,$city,$idCategory,$idArea));
 	}
 
 	public function deleteArea($idArea)

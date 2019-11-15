@@ -43,7 +43,7 @@ Class CommentManager extends Manager
 	{
 		$db = $this->dbConnect();
 
-		$comments = $db->prepare('SELECT * FROM comments where id_user = ? ORDER BY date_creation DESC LIMIT 0,5');
+		$comments = $db->prepare('SELECT *,comments.id AS id FROM comments LEFT JOIN program ON (comments.id_program = program.id) WHERE id_user = ? ORDER BY date_creation DESC LIMIT 0,5');
 		$comments->execute(array($idComment));
 
 		return $comments;

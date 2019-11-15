@@ -13,7 +13,7 @@ Class ProgramManager extends Manager
 	{
 		$db = $this->dbConnect();
 
-		$list = $db->query('SELECT * FROM program ORDER BY ID DESC');	
+		$list = $db->query('SELECT *,program.url_slug AS programUrl,program.name AS name, program.extract AS extract, program.id AS id, section.url_slug AS sectionUrl FROM program LEFT JOIN section ON (program.id_section = section.id)');	
 
 		return $list;
 	}
@@ -31,7 +31,7 @@ Class ProgramManager extends Manager
 	{
 		$db = $this->dbConnect();
 
-		$req = $db->prepare('SELECT * FROM program WHERE id = ?');
+		$req = $db->prepare('SELECT *,program.name AS name, program.extract AS extract, program.id AS id, section.url_slug AS sectionUrl FROM program LEFT JOIN section ON (program.id_section = section.id) WHERE program.id = ?');
 		$req->execute(array($idProgram));
 		$program = $req->fetch();
 
@@ -41,23 +41,23 @@ Class ProgramManager extends Manager
 
 	/*  --------------------- add program --------------------- */
 
-	public function addProgram($nameProgram,$idSection,$extract,$description,$goodPoint,$badPoint,$program,$imgName)  
+	public function addProgram($nameProgram,$urlSlug,$idSection,$extract,$description,$goodPoint,$badPoint,$program,$imgName)  
 	{
 		$db = $this->dbConnect();
 
-		$req = $db->prepare('INSERT INTO program(name,id_section,extract,description,good_point,bad_point,program,avatar) VALUES (?, ?, ?, ?, ?, ?, ?, ?)');
-		$addedprogram = $req->execute(array($nameProgram,$idSection,$extract,$description,$goodPoint,$badPoint,$program,$imgName));
+		$req = $db->prepare('INSERT INTO program(name,url_slug,id_section,extract,description,good_point,bad_point,program,avatar) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)');
+		$addedprogram = $req->execute(array($nameProgram,$urlSlug,$idSection,$extract,$description,$goodPoint,$badPoint,$program,$imgName));
 	}
 
 
 	/*  --------------------- edit program --------------------- */
 
-	public function editProgram($name,$extract,$description,$goodPoint,$badPoint,$program,$idProgram)
+	public function editProgram($name,$urlSlug,$extract,$description,$goodPoint,$badPoint,$program,$idProgram)
 	{
 		$db = $this->dbConnect();
 
-		$req = $db->prepare('UPDATE program SET name = ?,extract = ?, description = ?,good_point = ?,bad_point = ?,program = ? WHERE id = ?');
-		$req->execute(array($name,$extract,$description,$goodPoint,$badPoint,$program,$idProgram));
+		$req = $db->prepare('UPDATE program SET name = ?,url_slug = ?,extract = ?, description = ?,good_point = ?,bad_point = ?,program = ? WHERE id = ?');
+		$req->execute(array($name,$urlSlug,$extract,$description,$goodPoint,$badPoint,$program,$idProgram));
 	}
 
 	public function editAvatar($avatar,$idProgram)

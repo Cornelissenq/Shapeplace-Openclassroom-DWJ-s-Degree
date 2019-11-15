@@ -19,8 +19,8 @@ RewriteRule ^mentionslegales$ index.php?action=legalNotice
 #Programmes
 
 RewriteRule ^section$ index.php?action=section
-RewriteRule ^section-([0-9]+)$ index.php?action=list&id=$1
-RewriteRule ^programme-([0-9]+)-([0-9]+)$ index.php?action=program&id=$1&section=$2
+RewriteRule ^section-([a-zA-Z0-9-_]+)-([0-9]+)$ index.php?action=list&id=$2
+RewriteRule ^programme-([a-zA-Z0-9-_]+)-([0-9]+)-([0-9]+)$ index.php?action=program&id=$2&section=$3
 
 #commentaires 
 
@@ -33,7 +33,7 @@ RewriteRule ^signalerCommentaire-([0-9]+)$ index.php?action=report&id=$1
 
 RewriteRule ^carte$ index.php?action=map
 RewriteRule ^ajouterSpot$ index.php?action=addArea
-RewriteRule ^spot-([0-9]+)$ index.php?action=area&id=$1
+RewriteRule ^spot-([a-zA-Z0-9-_]+)-([0-9]+)$ index.php?action=area&id=$2
 
 #notes
 
@@ -50,7 +50,7 @@ RewriteRule ^rejoins-nous$ index.php?action=feedInsta
 RewriteRule ^register$ index.php?action=register
 RewriteRule ^login$ index.php?action=login
 RewriteRule ^logincheck$ index.php?action=logincheck
-RewriteRule ^profil-([0-9]+)$ index.php?action=userProfil&id=$1
+RewriteRule ^profil-([0-9]+)$ index.php?action=userProfil&id=$2
 RewriteRule ^profil-([0-9]+)-edit$ index.php?action=editProfil&id=$1
 RewriteRule ^editAvatar$ index.php?action=editAvatar
 RewriteRule ^editPw$ index.php?action=editPw

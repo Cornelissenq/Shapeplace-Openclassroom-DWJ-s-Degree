@@ -31,22 +31,22 @@ Class SectionManager extends Manager
 
 	/*  --------------------- add section --------------------- */
 
-	public function addSection($nameSection,$extractSection,$contentSection,$imgName)
+	public function addSection($nameSection,$urlSlug,$extractSection,$contentSection,$imgName)
 	{
 		$db = $this->dbConnect();
 
-		$req = $db->prepare('INSERT INTO section(name,extract,content,img) VALUES(?, ?, ?, ?)');
-		$req->execute(array($nameSection,$extractSection,$contentSection,$imgName));
+		$req = $db->prepare('INSERT INTO section(name,url_slug,extract,content,img) VALUES(?, ?, ?, ?, ?)');
+		$req->execute(array($nameSection,$urlSlug,$extractSection,$contentSection,$imgName));
 	}
 
 	/*  --------------------- edit section --------------------- */
 
-	public function editSection($nameSection,$extractSection,$contentSection,$idSection)
+	public function editSection($nameSection,$urlSlug,$extractSection,$contentSection,$idSection)
 	{
 		$db = $this->dbConnect();
 
-		$req = $db->prepare('UPDATE section SET name = ?, extract = ?, content = ? WHERE id = ?');
-		$edit = $req->execute(array($nameSection,$extractSection,$contentSection,$idSection));
+		$req = $db->prepare('UPDATE section SET name = ?, url_slug = ?, extract = ?, content = ? WHERE id = ?');
+		$edit = $req->execute(array($nameSection,$urlSlug,$extractSection,$contentSection,$idSection));
 	}
 
 	public function editAvatar($imgName,$idSection)

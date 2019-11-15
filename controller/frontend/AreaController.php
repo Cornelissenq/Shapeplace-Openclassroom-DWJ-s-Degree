@@ -41,7 +41,14 @@ Class AreaController
 	{
 		$areaManager = new Cornelissen\Shapeplace\Model\AreaManager();
 
-		$addArea = $areaManager->addPlace($name,$lattitude,$longitude,$content,$city,$category);
+		$urlSlug = preg_replace('~[^\pL\d]+~u', '-', $name);
+		$urlSlug = iconv('utf-8', 'us-ascii//TRANSLIT', $urlSlug);
+		$urlSlug = preg_replace('~[^-\w]+~', '', $urlSlug);
+		$urlSlug = trim($urlSlug, '-');
+		$urlSlug = preg_replace('~-+~', '-', $urlSlug);
+		$urlSlug = strtolower($urlSlug);
+
+		$addArea = $areaManager->addPlace($name,$urlSlug,$lattitude,$longitude,$content,$city,$category);
 
 
 		$_SESSION['success'] = 'Merci, le lieu est ajouté';

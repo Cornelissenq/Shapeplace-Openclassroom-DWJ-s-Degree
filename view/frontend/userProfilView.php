@@ -84,7 +84,7 @@ ob_start();
 									?>
 										<div class="row">
 											<div class="col-lg-12 lastCommentProfil">
-												<a href="programme-<?= $comment['id_program'] ?>-<?= $comment['id_section']?>#<?= $comment['id']?>" target="_blank"><?= htmlspecialchars($comment['comment']) ?></a>
+												<a href="programme-<?=$comment['url_slug']?>-<?= $comment['id_program'] ?>-<?= $comment['id_section']?>#<?= $comment['id']?>" target="_blank"><?= htmlspecialchars($comment['comment']) ?></a>
 											</div>
 										</div>
 									<?php	

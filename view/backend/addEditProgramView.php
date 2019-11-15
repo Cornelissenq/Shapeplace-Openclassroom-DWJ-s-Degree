@@ -165,7 +165,6 @@ ob_start();
 					?>
 				</div>
 				<script>
-                	CKEDITOR.replace( 'extract' );
                 	CKEDITOR.replace( 'description' );
                 	CKEDITOR.replace( 'good_point' );
                 	CKEDITOR.replace( 'bad_point' );
